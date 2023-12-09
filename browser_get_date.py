@@ -1,28 +1,26 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 import time
 
-from selenium.webdriver.common.by import By
-from selenium import webdriver
+link = "http://suninjuly.github.io/simple_form_find_task.html"
+browser = webdriver.Chrome()
+browser.get(link)
+try:
+    input1 = browser.find_element(By.NAME, 'first_name')
+    input1.send_keys("Ivan")
+    input2 = browser.find_element(By.NAME, 'last_name')
+    input2.send_keys("Petrov")
+    input3 = browser.find_element(By.CLASS_NAME, 'form-control.city')
+    input3.send_keys("Smolensk")
+    input4 = browser.find_element(By.ID, "country")
+    input4.send_keys("Russia")
+    button = browser.find_element(By.CSS_SELECTOR, "button.btn")
+    button.click()
 
-
-driver = webdriver.Chrome()
-
-driver.get('https://suninjuly.github.io/text_input_task.html')
-# Метод find_element позволяет найти нужный элемент на сайте, указав путь к нему. Способы поиска элементов мы обсудим позже
-# Метод принимает в качестве аргументов способ поиска и значение, по которому мы будем искать
-textarea = driver.find_element(By.CSS_SELECTOR, ".textarea")
-
-# Напишем текст ответа в найденное поле
-textarea.send_keys("get()")
-time.sleep(5)
-
-# Найдем кнопку, которая отправляет введенное решение
-submit_button = driver.find_element(By.CSS_SELECTOR, ".submit-submission")
-
-# Скажем драйверу, что нужно нажать на кнопку. После этой команды мы должны увидеть сообщение о правильном ответе
-submit_button.click()
-time.sleep(5)
-
-# После выполнения всех действий мы должны не забыть закрыть окно браузера
-driver.quit()
+finally:
+    # успеваем скопировать код за 30 секунд
+    time.sleep(30)
+    # закрываем браузер после всех манипуляций
+    browser.quit()
 
 
