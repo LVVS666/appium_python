@@ -12,7 +12,6 @@ try:
     button = browser.find_element(By.CSS_SELECTOR, "button.btn")
     button.click()
     alert = browser.switch_to
-    print(alert.text)
 finally:
     time.sleep(30)
     browser.quit()
