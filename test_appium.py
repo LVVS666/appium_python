@@ -23,7 +23,7 @@ def driver():
         app_driver = webdriver.Remote(appium_server_url, options=UiAutomator2Options().load_capabilities(capabilities))
         yield app_driver
         if driver:
-            driver.quit()
+            app_driver.quit()
 
 
 def test_find_battery(driver) -> None:
