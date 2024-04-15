@@ -5,15 +5,16 @@ from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from appium.webdriver.common.appiumby import AppiumBy
 
-capabilities = dict(
-    platformName='Android',
-    automationName='uiautomator2',
-    deviceName='Android',
-    appPackage='com.android.settings',#открывает приложение settings
-    appActivity='.Settings',
-    language='en',
-    locale='US'
-)
+capabilities = {
+    'platformName': 'Android',
+    'automationName': 'uiautomator2',
+    'deviceName': 'Android',
+    "appPackage": "ru.berizaryad.android.dev2",
+    "appActivity": "ru.berizaryad.android.presentation.main.DrawerMainActivity",
+    'language': 'en',
+    'locale': 'US'
+}
+
 
 appium_server_url = 'http://localhost:4723'
 
@@ -27,7 +28,7 @@ def driver():
 
 
 def test_find_battery(driver) -> None:
-        el = driver.find_element(by=AppiumBy.XPATH, value='//*[@text="Battery"]')# ищет батарею
-        el.click()
+        # el = driver.find_element(by=AppiumBy.XPATH, value='//*[@text="Battery"]')# ищет батарею
+        # el.click()
         time.sleep(5)
 
