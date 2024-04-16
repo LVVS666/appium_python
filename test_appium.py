@@ -4,6 +4,9 @@ import pytest
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from appium.webdriver.common.appiumby import AppiumBy
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 capabilities = {
     'platformName': 'Android',
@@ -28,7 +31,10 @@ def driver():
 
 
 def test_find_battery(driver) -> None:
-        # el = driver.find_element(by=AppiumBy.XPATH, value='//*[@text="Battery"]')# ищет батарею
-        # el.click()
-        time.sleep(5)
-
+    element_wait = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((AppiumBy.XPATH,
+                                        "//android.view.ViewGroup[@resource-id='ru.berizaryad.android.dev2:id/phoneBtnInclusion']"))
+    )
+    element = driver.find_element(AppiumBy.XPATH, "//android.view.ViewGroup[@resource-id='ru.berizaryad.android.dev2:id/phoneBtnInclusion']")
+    time.sleep(5)
+    assert element, f'Элемент не найден'
