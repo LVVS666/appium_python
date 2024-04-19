@@ -21,7 +21,7 @@
    - Введите в терминал команду 'pytest -u'
 
 ## Ресурсы
-- [Документация Appium](http://appium.io/docs/en/about-appium/intro/](https://appium.io/docs/en/latest/quickstart/install/))
+- [Документация Appium](https://appium.io/docs/en/latest/quickstart/install/)
 - [Документация Python](https://docs.python.org/3/)
 - [Официальный сайт Python](https://www.python.org/)
 - [Официальный сайт Appium](http://appium.io/)
