@@ -31,14 +31,14 @@ def driver():
             app_driver.quit()
 
 
-def test_find_battery(driver) -> None:
+def test_open_app_and_auth(driver) -> None:
     '''Заходим по телефону'''
-    # WebDriverWait(driver, 10).until(
-    #     EC.presence_of_element_located((AppiumBy.XPATH,
-    #                                     "//android.view.ViewGroup[@resource-id='ru.berizaryad.android.staging:id/phoneBtnInclusion']"))
-    # )
-    # element = driver.find_element(AppiumBy.XPATH, "//android.view.ViewGroup[@resource-id='ru.berizaryad.android.staging:id/phoneBtnInclusion']")
-    # element.click()
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((AppiumBy.XPATH,
+                                        "//android.view.ViewGroup[@resource-id='ru.berizaryad.android.staging:id/phoneBtnInclusion']"))
+    )
+    element = driver.find_element(AppiumBy.XPATH, "//android.view.ViewGroup[@resource-id='ru.berizaryad.android.staging:id/phoneBtnInclusion']")
+    element.click()
     '''Выбираем коды страны'''
     WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((AppiumBy.XPATH,
