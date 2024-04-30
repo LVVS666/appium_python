@@ -50,12 +50,12 @@ def test_open_app_and_auth(driver) -> None:
     element = driver.find_element(AppiumBy.XPATH, '//android.widget.EditText[@resource-id="ru.berizaryad.android.staging:id/text_input_country_prefix"]')
     element.click()
     '''Выбираем Россию'''
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((AppiumBy.XPATH,
-                                        '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvItem" and @text="(+7) Russia"]'))
+    WebDriverWait(driver, 15).until(
+        EC.element_to_be_clickable((AppiumBy.XPATH,
+                                        '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvItem" and @text="(+7) Россия"]'))
     )
     element = driver.find_element(AppiumBy.XPATH,
-                                  '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvItem" and @text="(+7) Russia"]')
+                                  '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvItem" and @text="(+7) Россия"]')
     element.click()
     '''Находим строку ввода номера'''
     WebDriverWait(driver, 10).until(
@@ -82,7 +82,40 @@ def test_open_app_and_auth(driver) -> None:
     driver.press_keycode(7)
     driver.press_keycode(7)
     driver.press_keycode(8)
-    assert WebDriverWait(driver, 10).until(
+    '''Выбираем страну'''
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((AppiumBy.XPATH, '(//androidx.cardview.widget.CardView[@resource-id="ru.berizaryad.android.staging:id/root"])[1]/android.view.ViewGroup')))
+    driver.find_element(AppiumBy.XPATH, '(//androidx.cardview.widget.CardView[@resource-id="ru.berizaryad.android.staging:id/root"])[1]/android.view.ViewGroup').click()
+    '''Подтверждаем'''
+    driver.find_element(AppiumBy.XPATH, '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/btnSelect"]').click()
+    '''Ожидаем открытие карты'''
+    WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((AppiumBy.XPATH,
                                         '//android.widget.RelativeLayout[@resource-id="ru.berizaryad.android.staging:id/mapView"]/android.view.View'))
-    ), f'Авторизация не произошла'
+    )
+    '''Открываем меню сбоку'''
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.ImageButton[@content-desc="Открыть навигацию"]'))
+    )
+    driver.find_element(AppiumBy.XPATH, '//android.widget.ImageButton[@content-desc="Открыть навигацию"]').click()
+    '''Выбираем профиль'''
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Профиль"]'))
+    )
+    driver.find_element(AppiumBy.XPATH, '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Профиль"]').click()
+    '''Открываем выходи из профиля'''
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.ImageView[@content-desc="Другие параметры"]'))
+    )
+    driver.find_element(AppiumBy.XPATH, '//android.widget.ImageView[@content-desc="Другие параметры"]').click()
+    '''Удаляем аккаунт'''
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/title" and @text="Удалить аккаунт"]'))
+    )
+    driver.find_element(AppiumBy.XPATH, '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/title" and @text="Удалить аккаунт"]').click()
+    '''Подтверждение удаления'''
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btnConfirm"]'))
+    )
+    driver.find_element(AppiumBy.XPATH, '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btnConfirm"]').click()
+    '''Аккаунт удален'''
+    assert WebDriverWait(driver, 10).until(EC.presence_of_element_located((AppiumBy.XPATH, '//android.widget.TextView[@text="Твой аккаунт удален"]')))
