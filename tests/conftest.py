@@ -3,8 +3,7 @@ from appium import webdriver
 from appium.options.android import UiAutomator2Options
 
 
-
-capabilities = {
+capabilities_android = {
     'platformName': 'Android',
     'automationName': 'uiautomator2',
     'deviceName': 'Android',
@@ -20,8 +19,8 @@ appium_server_url = 'http://localhost:4723'
 
 
 @pytest.fixture()
-def driver():
-        app_driver = webdriver.Remote(appium_server_url, options=UiAutomator2Options().load_capabilities(capabilities))
-        yield app_driver
-        if driver:
-            app_driver.quit()
+def driver_android():
+    app_driver = webdriver.Remote(appium_server_url, options=UiAutomator2Options().load_capabilities(capabilities_android))
+    yield app_driver
+    if app_driver:
+        app_driver.quit()

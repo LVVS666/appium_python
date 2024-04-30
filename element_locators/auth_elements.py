@@ -1,5 +1,6 @@
 from appium.webdriver.common.appiumby import AppiumBy
 
+phone = '9232769943'
 
 login_in_phone = (
     AppiumBy.XPATH,
