@@ -9,12 +9,15 @@ class BaseApp:
         self.app = app
 
     def find(self, args):
-        '''Ожидаем и находим нужный элемент'''
-        WebDriverWait(self.app, 10).until(
+        '''Поиск элемента'''
+        return self.app.find_element(*args)
+
+    def wait(self, args):
+        '''Ожидание элемента'''
+        return WebDriverWait(self.app, 10).until(
             EC.presence_of_element_located(
                 args)
         )
-        self.app.find_element(*args)
 
     def sms(self):
         '''Ввод смс подтверждения'''
