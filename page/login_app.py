@@ -1,5 +1,5 @@
-from page.base_app import BaseApp
 from element_locators import auth_elements as el
+from page.base_app import BaseApp
 
 
 class LoginApp(BaseApp):
@@ -7,7 +7,6 @@ class LoginApp(BaseApp):
 
     def auth(self, code_phone, country, phone):
         '''Авторизация пользователя через телефон'''
-
         self.wait_click(el.login_in_phone)
         method_start = self.find(el.login_in_phone)
         method_start.click()
@@ -35,7 +34,6 @@ class LoginApp(BaseApp):
 
     def delete_user(self):
         '''Удаление активного пользователя'''
-
         menu = self.find(el.main_menu)
         menu.click()
         self.wait_click(el.profile_user)
