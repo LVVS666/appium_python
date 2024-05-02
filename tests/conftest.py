@@ -23,4 +23,5 @@ def driver_android():
     app_driver = webdriver.Remote(appium_server_url, options=UiAutomator2Options().load_capabilities(capabilities_android))
     yield app_driver
     if app_driver:
+        app_driver.close()
         app_driver.quit()

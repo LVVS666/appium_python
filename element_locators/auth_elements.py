@@ -19,8 +19,19 @@ code_country = (
 
 russian_code = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvItem" and @text="(+7) Russia"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvItem" and @text="(+7) Россия"]'
     )
+
+belarussia_code = (
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvItem" and @text="(+375) Беларусь"]'
+)
+
+kazahstan_code = (
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvItem" and @text="(+7) Казахстан"]'
+)
+
 
 form_phone = (
     AppiumBy.XPATH,
@@ -61,6 +72,11 @@ kirgistan = (
     AppiumBy.XPATH,
     '(//androidx.cardview.widget.CardView[@resource-id="ru.berizaryad.android.staging:id/root"])[4]/android.view.ViewGroup'
     )
+
+button_send_country = (
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/btnSelect"]'
+)
 
 main_menu = (
     AppiumBy.XPATH,

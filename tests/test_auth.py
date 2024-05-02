@@ -4,5 +4,17 @@ from element_locators import auth_elements as el
 
 def test_auth_in_phone_to_russian(driver_android):
     app_login = LoginApp(driver_android)
-    app_login.auth(el.russian_code, phone='9232769943')
+    app_login.auth(code_phone=el.russian_code, country=el.russia, phone='9232769943')
+    app_login.delete_user()
 
+
+def test_auth_in_phone_to_belarussia(driver_android):
+    app_login = LoginApp(driver_android)
+    app_login.auth(code_phone=el.belarussia_code, country=el.belarussia, phone='9232769943')
+    app_login.delete_user()
+
+
+def test_auth_in_phone_to_kazahstan(driver_android):
+    app_login = LoginApp(driver_android)
+    app_login.auth(code_phone=el.kazahstan_code, country=el.kazahstan, phone='9232769943')
+    app_login.delete_user()
