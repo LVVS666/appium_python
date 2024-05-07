@@ -9,7 +9,7 @@ capabilities_android = {
     "appPackage": "ru.berizaryad.android.staging",
     "appActivity": "ru.berizaryad.android.presentation.main.DrawerMainActivity",
     'language': 'en',
-    'noReset': True,
+    'noReset': False,
     'locale': 'US'
 }
 
