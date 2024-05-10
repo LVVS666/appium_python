@@ -1,3 +1,5 @@
+import time
+
 from element_locators import auth_elements as el
 from page.base_app import BaseApp
 
@@ -13,6 +15,11 @@ class LoginApp(BaseApp):
         self.wait_click(el.code_country)
         on_country_code = self.find(el.code_country)
         on_country_code.click()
+        if code_phone == el.kirgistan_code:
+            self.wait(el.search_country)
+            send_country = self.find(el.search_country)
+            send_country.click()
+            send_country.send_keys('Киргизия')
         self.wait_click(code_phone)
         on_russian_code = self.find(code_phone)
         on_russian_code.click()
@@ -28,6 +35,7 @@ class LoginApp(BaseApp):
         self.wait_click(country)
         on_country = self.find(country)
         on_country.click()
+        time.sleep(2)
         button_send_country = self.find(el.button_send_country)
         button_send_country.click()
         self.wait(el.main_map)

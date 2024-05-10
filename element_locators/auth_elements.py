@@ -1,6 +1,7 @@
 from appium.webdriver.common.appiumby import AppiumBy
 
-phone = '9232769943'
+rus_kz_phone = '9992769943'
+bld_kgz_phone = '255108000'
 
 login_in_phone = (
     AppiumBy.XPATH,
@@ -17,6 +18,11 @@ code_country = (
     '//android.widget.EditText[@resource-id="ru.berizaryad.android.staging:id/text_input_country_prefix"]'
     )
 
+search_country = (
+    AppiumBy.XPATH,
+    '//android.widget.EditText[@resource-id="ru.berizaryad.android.staging:id/etSearch"]'
+)
+
 russian_code = (
     AppiumBy.XPATH,
     '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvItem" and @text="(+7) Россия"]'
@@ -32,6 +38,10 @@ kazahstan_code = (
     '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvItem" and @text="(+7) Казахстан"]'
 )
 
+kirgistan_code = (
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvItem" and @text="(+996) Киргизия"]'
+)
 
 form_phone = (
     AppiumBy.XPATH,
@@ -55,22 +65,22 @@ main_map = (
 
 russia = (
     AppiumBy.XPATH,
-    '(//androidx.cardview.widget.CardView[@resource-id="ru.berizaryad.android.staging:id/root"])[1]/android.view.ViewGroup'
+    '(//android.widget.CheckBox[@resource-id="ru.berizaryad.android.staging:id/checkBox"])[1]'
     )
 
 belarussia = (
     AppiumBy.XPATH,
-    '(//androidx.cardview.widget.CardView[@resource-id="ru.berizaryad.android.staging:id/root"])[2]/android.view.ViewGroup'
+    '(//android.widget.CheckBox[@resource-id="ru.berizaryad.android.staging:id/checkBox"])[2]'
     )
 
 kazahstan = (
     AppiumBy.XPATH,
-    '(//androidx.cardview.widget.CardView[@resource-id="ru.berizaryad.android.staging:id/root"])[3]/android.view.ViewGroup'
+    '(//android.widget.CheckBox[@resource-id="ru.berizaryad.android.staging:id/checkBox"])[3]'
     )
 
 kirgistan = (
     AppiumBy.XPATH,
-    '(//androidx.cardview.widget.CardView[@resource-id="ru.berizaryad.android.staging:id/root"])[4]/android.view.ViewGroup'
+    '(//android.widget.CheckBox[@resource-id="ru.berizaryad.android.staging:id/checkBox"])[4]'
     )
 
 button_send_country = (
