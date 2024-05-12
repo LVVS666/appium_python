@@ -56,3 +56,26 @@ class LoginApp(BaseApp):
         self.wait_click(el.on_delete)
         delete = self.find(el.on_delete)
         delete.click()
+
+    def button_sub(self):
+        self.wait(el.subscription)
+        assert self.find(el.subscription), 'Кнопка подписки не найдена'
+
+    def button_bon(self):
+        self.wait(el.bonuse)
+        assert self.find(el.bonuse), 'Кнопка бонусов не найдена'
+
+
+    def documents(self):
+        menu = self.find(el.main_menu)
+        menu.click()
+        self.wait(el.documents)
+        documents = self.find(el.documents)
+        documents.click()
+        self.wait(el.russian_documents)
+        assert self.find(el.russian_documents),'В документах отсутствует раздел Российской Федерации'
+        assert self.find(el.kazahstan_documents), 'В документах отсутствует раздел Казахстана'
+        assert self.find(el.kirgistan_documents), 'В документах отсутствует раздел Кыргызстан'
+        assert self.find(el.belarussia_documents), 'В документах отсутствует раздел Беларуссии'
+        back = self.find(el.button_back_documents)
+        back.click()

@@ -6,6 +6,8 @@ def test_auth_in_phone_to_russian(driver_android):
     '''Регистрация через телефон для России, после удаление аккаунта'''
     app_login = LoginApp(driver_android)
     app_login.auth(code_phone=el.russian_code, country=el.russia, phone=el.rus_kz_phone)
+    app_login.button_sub()
+    app_login.button_bon()
     app_login.delete_user()
 
 
@@ -26,7 +28,14 @@ def test_auth_in_phone_to_kirgistan(driver_android):
     '''Регистрация через телефон для Киргизии, после удаление аккаунта'''
     app_login = LoginApp(driver_android)
     app_login.auth(code_phone=el.kirgistan_code, country=el.kirgistan, phone=el.bld_kgz_phone)
+    app_login.button_bon()
     app_login.delete_user()
 
 
+def test_list_country_in_doc(driver_android):
+    '''Проверка отображения всех стран в разделе документов'''
+    app_login = LoginApp(driver_android)
+    app_login.auth(code_phone=el.russian_code, country=el.russia, phone=el.rus_kz_phone)
+    app_login.documents()
+    app_login.delete_user()
 
