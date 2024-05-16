@@ -5,10 +5,37 @@ from page.base_app import BaseApp
 
 
 class LoginApp(BaseApp):
-    '''Класс авторизации пользователя'''
+    '''Авторизаця/Регистранция пользователя'''
 
     def auth(self, code_phone, country, phone):
-        '''Авторизация пользователя через телефон'''
+        '''Регистрация пользователя через телефон'''
+        self.wait_click(el.login_in_phone)
+        method_start = self.find(el.login_in_phone)
+        method_start.click()
+        self.wait_click(el.code_country)
+        on_country_code = self.find(el.code_country)
+        on_country_code.click()
+        if code_phone == el.kirgistan_code:
+            self.wait(el.search_country)
+            send_country = self.find(el.search_country)
+            send_country.click()
+            send_country.send_keys('Киргизия')
+        self.wait_click(code_phone)
+        on_russian_code = self.find(code_phone)
+        on_russian_code.click()
+        self.wait(el.form_phone)
+        send_phone = self.find(el.form_phone)
+        send_phone.send_keys(phone)
+        button_send_phone = self.find(el.button_send_phone)
+        button_send_phone.click()
+        self.wait_click(el.code_input)
+        input_code = self.find(el.code_input)
+        input_code.click()
+        self.sms()
+        self.wait(el.main_map)
+
+    def registration(self, code_phone, country, phone):
+        '''Регистрация пользователя через телефон'''
         self.wait_click(el.login_in_phone)
         method_start = self.find(el.login_in_phone)
         method_start.click()
@@ -58,15 +85,31 @@ class LoginApp(BaseApp):
         delete.click()
 
     def button_sub(self):
+        '''Проверка кнопки подписки на карте'''
         self.wait(el.subscription)
         assert self.find(el.subscription), 'Кнопка подписки не найдена'
 
     def button_bon(self):
+        '''Проверка кнопки бонусов на карте'''
         self.wait(el.bonuse)
         assert self.find(el.bonuse), 'Кнопка бонусов не найдена'
 
+    def exit(self):
+        '''Выход из аккаунта'''
+        menu = self.find(el.main_menu)
+        menu.click()
+        self.wait_click(el.profile_user)
+        profile = self.find(el.profile_user)
+        profile.click()
+        self.wait_click(el.exit_and_delete)
+        exit_delete = self.find(el.exit_and_delete)
+        exit_delete.click()
+        self.wait(el.button_exit)
+        bt_exit = self.find(el.button_exit)
+        bt_exit.click()
 
     def documents(self):
+        '''Проверка наличия всех стран в документах'''
         menu = self.find(el.main_menu)
         menu.click()
         self.wait(el.documents)

@@ -158,3 +158,8 @@ on_delete = (
     AppiumBy.XPATH,
     '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btnConfirm"]'
     )
+
+button_exit = (
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/title" and @text="Выйти"]'
+)
