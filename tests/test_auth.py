@@ -3,7 +3,7 @@ from page.login_app import LoginApp
 
 
 def test_registration_in_phone_to_russian_on_logout(driver_android):
-    '''Регистрация через телефон для России, после логуат'''
+    '''Регистрация через телефон для России, после Логаут'''
     app_login = LoginApp(driver_android)
     app_login.registration(code_phone=el.russian_code, country=el.russia, phone=el.rus_kz_phone)
     app_login.exit()
