@@ -1,6 +1,6 @@
 import time
 
-from element_locators import auth_elements as el_auth, doc_elements as el_doc
+from element_locators import auth_elements as el_auth, doc_elements as el_doc, tariff_elements as el_tariff
 from page.base_app import BaseApp
 
 
@@ -69,6 +69,7 @@ class AndroidApp(BaseApp):
 
     def delete_user(self):
         '''Удаление активного пользователя'''
+        self.wait(el_auth.main_menu)
         menu = self.find(el_auth.main_menu)
         menu.click()
         self.wait_click(el_auth.profile_user)
@@ -96,6 +97,7 @@ class AndroidApp(BaseApp):
 
     def exit(self):
         '''Выход из аккаунта'''
+        self.wait(el_auth.main_menu)
         menu = self.find(el_auth.main_menu)
         menu.click()
         self.wait_click(el_auth.profile_user)
@@ -127,16 +129,16 @@ class AndroidApp(BaseApp):
         back.click()
 
     def documents_in_country(
-            self,
-            user_consent,
-            consent_text,
-            assert_consent,
-            politice_date,
-            politice_text,
-            assert_politice,
-            requisites,
-            requisites_text,
-            assert_requisites
+                             self,
+                             user_consent,
+                             consent_text,
+                             assert_consent,
+                             politice_date,
+                             politice_text,
+                             assert_politice,
+                             requisites,
+                             requisites_text,
+                             assert_requisites
                             ):
         '''Проверка документов у стран'''
         self.wait(el_auth.outside_map)
@@ -190,5 +192,22 @@ class AndroidApp(BaseApp):
         button_close = self.find(el_doc.button_close)
         button_close.click()
         self.wait(el_auth.outside_map)
+
+    def tarif(self, tariff_country, assert_text):
+        '''Проверка тарифа для страны'''
+        self.wait(el_auth.main_menu)
+        menu = self.find(el_auth.main_menu)
+        menu.click()
+        self.wait(el_tariff.tariff_menu)
+        tariff = self.find(el_tariff.tariff_menu)
+        tariff.click()
+        self.wait(tariff_country)
+        text_tariff = self.find(tariff_country)
+        assert assert_text == text_tariff.text, 'Название тарифа не соответствует'
+        self.wait(el_tariff.tariff_close)
+        close = self.find(el_tariff.tariff_close)
+        close.click()
+
+
 
 
