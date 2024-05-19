@@ -128,3 +128,8 @@ button_exit = (
     AppiumBy.XPATH,
     '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/title" and @text="Выйти"]'
 )
+
+outside_map = (
+    AppiumBy.XPATH,
+    '//android.view.View[@resource-id="ru.berizaryad.android.staging:id/touch_outside"]'
+)

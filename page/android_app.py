@@ -110,6 +110,9 @@ class AndroidApp(BaseApp):
 
     def documents(self):
         '''Проверка наличия всех стран в документах'''
+        self.wait(el_auth.outside_map)
+        map = self.find(el_auth.outside_map)
+        map.click()
         menu = self.find(el_auth.main_menu)
         menu.click()
         self.wait(el_doc.documents)
@@ -122,3 +125,70 @@ class AndroidApp(BaseApp):
         assert self.find(el_doc.belarussia_documents), 'В документах отсутствует раздел Беларуссии'
         back = self.find(el_doc.button_back_documents)
         back.click()
+
+    def documents_in_country(
+            self,
+            user_consent,
+            consent_text,
+            assert_consent,
+            politice_date,
+            politice_text,
+            assert_politice,
+            requisites,
+            requisites_text,
+            assert_requisites
+                            ):
+        '''Проверка документов у стран'''
+        self.wait(el_auth.outside_map)
+        map = self.find(el_auth.outside_map)
+        map.click()
+        menu = self.find(el_auth.main_menu)
+        menu.click()
+        self.wait(el_doc.documents)
+        documents = self.find(el_doc.documents)
+        documents.click()
+        self.wait(user_consent)
+        consent = self.find(user_consent)
+        consent.click()
+        self.wait(consent_text)
+        assert_consent_text = self.find(consent_text)
+        assert assert_consent_text.text in assert_consent, 'Текст из <Пользовательского соглашения> не соответствует'
+        button_close = self.find(el_doc.button_close)
+        button_close.click()
+        self.wait(el_auth.outside_map)
+        map = self.find(el_auth.outside_map)
+        map.click()
+        self.wait(el_auth.main_menu)
+        menu = self.find(el_auth.main_menu)
+        menu.click()
+        self.wait(el_doc.documents)
+        documents = self.find(el_doc.documents)
+        documents.click()
+        self.wait(politice_date)
+        consent = self.find(politice_date)
+        consent.click()
+        self.wait(politice_text)
+        assert_politice_text = self.find(politice_text)
+        assert assert_politice_text.text in assert_politice, 'Текст из <Политика персональных данных> не соответствует'
+        button_close = self.find(el_doc.button_close)
+        button_close.click()
+        self.wait(el_auth.outside_map)
+        map = self.find(el_auth.outside_map)
+        map.click()
+        self.wait(el_auth.main_menu)
+        menu = self.find(el_auth.main_menu)
+        menu.click()
+        self.wait(el_doc.documents)
+        documents = self.find(el_doc.documents)
+        documents.click()
+        self.wait(requisites)
+        consent = self.find(requisites)
+        consent.click()
+        self.wait(requisites_text)
+        assert_requisites_text = self.find(requisites_text)
+        assert assert_requisites_text.text in assert_requisites, 'Текст из <Реквизиты> не соответствует'
+        button_close = self.find(el_doc.button_close)
+        button_close.click()
+        self.wait(el_auth.outside_map)
+
+
