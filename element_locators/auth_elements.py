@@ -111,7 +111,7 @@ profile_user = (
 
 exit_and_delete = (
     AppiumBy.XPATH,
-    '//android.widget.ImageView[@content-desc="Другие параметры"]'
+    '//android.widget.ImageView[@content-desc="Ещё"]'
     )
 
 delete_user = (
