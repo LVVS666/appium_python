@@ -1,5 +1,7 @@
 import time
 
+from selenium.common import TimeoutException
+
 from element_locators import auth_elements as el_auth, doc_elements as el_doc, tariff_elements as el_tariff
 from page.base_app import BaseApp
 
@@ -90,10 +92,26 @@ class AndroidApp(BaseApp):
         self.wait(el_auth.subscription)
         assert self.find(el_auth.subscription), 'Кнопка подписки не найдена'
 
+    def not_button_sub(self):
+        '''Проверка отсутствия кнопки подписки на карте'''
+        try:
+            self.wait(el_auth.subscription)
+            assert self.find(el_auth.subscription) is None, 'Кнопка подписки найдена'
+        except TimeoutException:
+            return True
+
     def button_bon(self):
         '''Проверка кнопки бонусов на карте'''
         self.wait(el_auth.bonuse)
         assert self.find(el_auth.bonuse), 'Кнопка бонусов не найдена'
+
+    def not_button_bon(self):
+        '''Проверка отсутствия кнопки бонусов на карте'''
+        try:
+            self.wait(el_auth.bonuse)
+            assert self.find(el_auth.bonuse) is None, 'Кнопка бонусов найдена'
+        except TimeoutException:
+            return True
 
     def exit(self):
         '''Выход из аккаунта'''
