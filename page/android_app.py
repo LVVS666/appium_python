@@ -153,8 +153,8 @@ class AndroidApp(BaseApp):
         consent = self.find(user_consent)
         consent.click()
         self.wait(consent_text)
-        assert_consent_text = self.find(consent_text)
-        assert assert_consent_text.text in assert_consent, 'Текст из <Пользовательского соглашения> не соответствует'
+        assert_consent_text = self.find(consent_text).text
+        assert assert_consent_text == assert_consent, 'Текст из <Пользовательского соглашения> не соответствует'
         button_close = self.find(el_doc.button_close)
         button_close.click()
         self.wait(el_auth.outside_map)
@@ -170,8 +170,8 @@ class AndroidApp(BaseApp):
         consent = self.find(politice_date)
         consent.click()
         self.wait(politice_text)
-        assert_politice_text = self.find(politice_text)
-        assert assert_politice_text.text in assert_politice, 'Текст из <Политика персональных данных> не соответствует'
+        assert_politice_text = self.find(politice_text).text
+        assert assert_politice_text == assert_politice, 'Текст из <Политика персональных данных> не соответствует'
         button_close = self.find(el_doc.button_close)
         button_close.click()
         self.wait(el_auth.outside_map)
@@ -187,8 +187,8 @@ class AndroidApp(BaseApp):
         consent = self.find(requisites)
         consent.click()
         self.wait(requisites_text)
-        assert_requisites_text = self.find(requisites_text)
-        assert assert_requisites_text.text in assert_requisites, 'Текст из <Реквизиты> не соответствует'
+        assert_requisites_text = self.find(requisites_text).text
+        assert assert_requisites_text == assert_requisites, 'Текст из <Реквизиты> не соответствует'
         button_close = self.find(el_doc.button_close)
         button_close.click()
         self.wait(el_auth.outside_map)
@@ -202,8 +202,8 @@ class AndroidApp(BaseApp):
         tariff = self.find(el_tariff.tariff_menu)
         tariff.click()
         self.wait(tariff_country)
-        text_tariff = self.find(tariff_country)
-        assert assert_text == text_tariff.text, 'Название тарифа не соответствует'
+        text_tariff = self.find(tariff_country).text
+        assert assert_text == text_tariff, 'Название тарифа не соответствует'
         self.wait(el_tariff.tariff_close)
         close = self.find(el_tariff.tariff_close)
         close.click()

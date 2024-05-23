@@ -44,27 +44,27 @@ russian_consent = (
 )
 russian_consent_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_russian_consent_text = 'Пользовательское соглашение РФ'
+assert_russian_consent_text = 'Пользовательское соглашение России\n'
 russian_politice = (
     AppiumBy.XPATH,
     '(//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvDocumentName"])[2]'
 )
 russian_politice_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_russian_politice_text = 'Персональные данные Россиии'
+assert_russian_politice_text = 'Персональные данные России\n'
 russian_requisites = (
     AppiumBy.XPATH,
     '(//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvDocumentName"])[3]'
 )
 russian_requisites_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_russian_requisites_text = 'Реквизиты России'
+assert_russian_requisites_text = 'Реквизиты России\n'
 
 
 '''Документы Казахстана'''
@@ -74,27 +74,27 @@ kazahstan_consent = (
 )
 kazahstan_consent_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_kazahstan_consent_text = 'Пользовательское соглашение Казахстана'
+assert_kazahstan_consent_text = 'Пользовательское соглашение Казахстана \n'
 kazahstan_politice = (
     AppiumBy.XPATH,
     '(//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvDocumentName"])[5]'
 )
 kazahstan_politice_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_kazahstan_politice_text = 'Персональные данные Казахстана'
+assert_kazahstan_politice_text = 'Персональные данные Казахстана\n'
 kazahstan_requisites = (
     AppiumBy.XPATH,
     '(//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvDocumentName"])[6]'
 )
 kazahstan_requisites_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_kazahstan_requisites_text = 'Реквизиты Казахстана'
+assert_kazahstan_requisites_text = 'Реквизиты Казахстана\n'
 
 
 '''Документы Киргизстана'''
@@ -104,27 +104,27 @@ kirgistan_consent = (
 )
 kirgistan_consent_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_kirgistan_consent_text = 'Пользовательское соглашение Киргизии'
+assert_kirgistan_consent_text = 'Пользовательское соглашение Киргизии\n'
 kirgistan_politice = (
     AppiumBy.XPATH,
     '(//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvDocumentName"])[8]'
 )
 kirgistan_politice_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_kirgiztan_politice_text = 'Персональные данные Киргизии'
+assert_kirgiztan_politice_text = 'Персональные данные Киргизии\n'
 kirgistan_requisites = (
     AppiumBy.XPATH,
     '(//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvDocumentName"])[9]'
 )
 kirgistan_requisites_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_kirgistan_requisites_text = 'Реквизиты Киргизии'
+assert_kirgistan_requisites_text = 'Реквизиты Киргизии\n'
 
 
 '''Документы Беларуси'''
@@ -134,24 +134,24 @@ belarussia_consent = (
 )
 belarussia_consent_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_belarussia_consent_text = 'Пользовательское соглашение Беларуси'
+assert_belarussia_consent_text = 'Пользовательское соглашение Беларуси\n'
 belarussia_politice = (
     AppiumBy.XPATH,
     '(//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvDocumentName"])[11]'
 )
 belarussia_politice_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_belarussia_politice_text = 'Персональные данные Беларуси'
+assert_belarussia_politice_text = 'Персональные данные Беларуси\n'
 belarussia_requisites = (
     AppiumBy.XPATH,
     '(//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvDocumentName"])[12]'
 )
 belarussia_requisites_text = (
     AppiumBy.XPATH,
-    '//android.widget.ScrollView[@resource-id="ru.berizaryad.android.staging:id/svAgreements"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvContent"]'
 )
-assert_belarussia_requisites_text = 'Реквизиты Беларуси'
+assert_belarussia_requisites_text = 'Реквизиты Беларуси\n'
