@@ -207,7 +207,18 @@ class AndroidApp(BaseApp):
         self.wait(el_tariff.tariff_close)
         close = self.find(el_tariff.tariff_close)
         close.click()
-
-
+    #
+    # def add_card_main_button(self, form_number_card, number, form_year_card, year, form_cvc, cvc):
+    #     self.wait(main_button_card)
+    #     button_card = self.find(main_button_card)
+    #     button_card.click()
+    #     self.wait(form_number_card)
+    #     number_card = self.find(form_number_card)
+    #     number_card.send_keys(number)
+    #     year_card = self.find(form_year_card)
+    #     year_card.send_keys(year)
+    #     cvc_card = self.find(form_cvc)
+    #     cvc_card.send_keys(cvc)
+    #     button_send_date_card = self.find(button_pay)
 
 
