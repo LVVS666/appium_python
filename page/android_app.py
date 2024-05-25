@@ -146,70 +146,62 @@ class AndroidApp(BaseApp):
         back = self.find(el_doc.button_back_documents)
         back.click()
 
-    def documents_in_country(
-                             self,
-                             user_consent,
-                             consent_text,
-                             assert_consent,
-                             politice_date,
-                             politice_text,
-                             assert_politice,
-                             requisites,
-                             requisites_text,
-                             assert_requisites
-                            ):
-        '''Проверка документов у стран'''
-        self.wait(el_auth.outside_map)
-        map = self.find(el_auth.outside_map)
-        map.click()
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(el_doc.documents)
-        documents = self.find(el_doc.documents)
-        documents.click()
-        self.wait(user_consent)
-        consent = self.find(user_consent)
-        consent.click()
-        self.wait(consent_text)
-        assert_consent_text = self.find(consent_text).text
-        assert assert_consent_text == assert_consent, 'Текст из <Пользовательского соглашения> не соответствует'
-        button_close = self.find(el_doc.button_close)
-        button_close.click()
-        self.wait(el_auth.outside_map)
-        map = self.find(el_auth.outside_map)
-        map.click()
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(el_doc.documents)
-        documents = self.find(el_doc.documents)
-        documents.click()
-        self.wait(politice_date)
-        consent = self.find(politice_date)
-        consent.click()
-        self.wait(politice_text)
-        assert_politice_text = self.find(politice_text).text
-        assert assert_politice_text == assert_politice, 'Текст из <Политика персональных данных> не соответствует'
-        button_close = self.find(el_doc.button_close)
-        button_close.click()
-        self.wait(el_auth.outside_map)
-        map = self.find(el_auth.outside_map)
-        map.click()
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(el_doc.documents)
-        documents = self.find(el_doc.documents)
-        documents.click()
-        self.wait(requisites)
-        consent = self.find(requisites)
-        consent.click()
-        self.wait(requisites_text)
-        assert_requisites_text = self.find(requisites_text).text
-        assert assert_requisites_text == assert_requisites, 'Текст из <Реквизиты> не соответствует'
-        button_close = self.find(el_doc.button_close)
-        button_close.click()
-        self.wait(el_auth.outside_map)
+
+    def documents_in_russia(self):
+        '''Проверка документов у России'''
+        self.documents_in_country(
+            user_consent=el_doc.russian_consent,
+            consent_text=el_doc.russian_consent_text,
+            assert_consent=el_doc.assert_russian_consent_text,
+            politice_date=el_doc.russian_politice,
+            politice_text=el_doc.russian_politice_text,
+            assert_politice=el_doc.assert_russian_politice_text,
+            requisites=el_doc.russian_requisites,
+            requisites_text=el_doc.russian_requisites_text,
+            assert_requisites=el_doc.assert_russian_requisites_text
+        )
+
+    def documents_in_kazahstan(self):
+        '''Проверка документов у Казахстана'''
+        self.documents_in_country(
+            user_consent=el_doc.kazahstan_consent,
+            consent_text=el_doc.kazahstan_consent_text,
+            assert_consent=el_doc.assert_kazahstan_consent_text,
+            politice_date=el_doc.kazahstan_politice,
+            politice_text=el_doc.kazahstan_politice_text,
+            assert_politice=el_doc.assert_kazahstan_politice_text,
+            requisites=el_doc.kazahstan_requisites,
+            requisites_text=el_doc.kazahstan_requisites_text,
+            assert_requisites=el_doc.assert_kazahstan_requisites_text
+        )
+
+    def documents_in_kirgistan(self):
+        '''Проверка документов у Киргизтана'''
+        self.documents_in_country(
+            user_consent=el_doc.kirgistan_consent,
+            consent_text=el_doc.kirgistan_consent_text,
+            assert_consent=el_doc.assert_kirgistan_consent_text,
+            politice_date=el_doc.kirgistan_politice,
+            politice_text=el_doc.kirgistan_politice_text,
+            assert_politice=el_doc.assert_kirgiztan_politice_text,
+            requisites=el_doc.kirgistan_requisites,
+            requisites_text=el_doc.kirgistan_requisites_text,
+            assert_requisites=el_doc.assert_kirgistan_requisites_text
+        )
+
+    def documents_in_belarussia(self):
+        '''Проверка документов у Беларуси'''
+        self.documents_in_country(
+            user_consent=el_doc.belarussia_consent,
+            consent_text=el_doc.belarussia_consent_text,
+            assert_consent=el_doc.assert_belarussia_consent_text,
+            politice_date=el_doc.belarussia_politice,
+            politice_text=el_doc.belarussia_politice_text,
+            assert_politice=el_doc.assert_belarussia_politice_text,
+            requisites=el_doc.belarussia_requisites,
+            requisites_text=el_doc.belarussia_requisites_text,
+            assert_requisites=el_doc.assert_belarussia_requisites_text
+        )
 
     def tarif(self, tariff_country, assert_text):
         '''Проверка тарифа для страны'''
@@ -225,39 +217,3 @@ class AndroidApp(BaseApp):
         self.wait(el_tariff.tariff_close)
         close = self.find(el_tariff.tariff_close)
         close.click()
-
-    def add_card_main_button(self, form_number_card, number, form_year_card, year, form_cvc, cvc):
-        '''Добавление карты с главной страницы'''
-        self.wait(main_button_card)
-        button_card = self.find(main_button_card)
-        button_card.click()
-        self.wait(form_number_card)
-        number_card = self.find(form_number_card)
-        number_card.send_keys(number)
-        year_card = self.find(form_year_card)
-        year_card.send_keys(year)
-        cvc_card = self.find(form_cvc)
-        cvc_card.send_keys(cvc)
-        button_send_date_card = self.find(button_pay)
-        self.wait(operation_button_ok)
-        button_ok = self.find(operation_button_ok)
-        button_ok.click()
-        self.wait(banner_off)
-        banner_close = self.find(banner_off)
-        banner_close.click()
-
-    def find_card(self):
-        '''Проверка добавленной карты в меню'''
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(user_cards)
-        cards = self.find(user_cards)
-        cards.click()
-        self.wait(bin_card)
-        self.find(bin_card)
-        back = self.find(back_to_map)
-        back.click()
-
-    def add_card_menu(self):
-        '''Добавление карты через меню'''
