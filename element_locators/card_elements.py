@@ -24,6 +24,11 @@ banner_card_ok = (
     AppiumBy.XPATH,
     '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.LinearLayout'
 )
+add_card = (
+    AppiumBy.XPATH,
+    '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btChange"]'
+)
+
 
 
 '''Данные для России'''

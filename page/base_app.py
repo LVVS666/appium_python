@@ -131,16 +131,16 @@ class BaseApp:
         back = self.find(el_card.back_to_map)
         back.click()
 
-    def add_card_menu(self, form_number_card, number, form_year_card, year, form_cvc, cvc):
+    def add_card_menu(self, form_number_card, number, form_year_card, year, form_cvc, cvc, button_pay, operation_button_ok, bin_country):
         '''Добавление карты через меню'''
         self.wait(el_auth.main_menu)
         menu = self.find(el_auth.main_menu)
         menu.click()
-        self.wait(user_cards)
-        cards = self.find(user_cards)
+        self.wait(el_card.user_cards)
+        cards = self.find(el_card.user_cards)
         cards.click()
-        self.wait(add_card)
-        button_add_card = self.find(add_card)
+        self.wait(el_card.add_card)
+        button_add_card = self.find(el_card.add_card)
         button_add_card.click()
         self.wait(form_number_card)
         number_card = self.find(form_number_card)
@@ -154,6 +154,14 @@ class BaseApp:
         self.wait(operation_button_ok)
         button_ok = self.find(operation_button_ok)
         button_ok.click()
-        self.wait(banner_off)
-        banner_close = self.find(banner_off)
+        self.wait(el_card.banner_card_ok)
+        self.wait(el_card.bin_card)
+        access_bin = self.find(el_card.bin_card).text
+        assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
+        self.wait(el_card.back_to_map)
+        back = self.find(el_card.back_to_map)
+        time.sleep(2)
+        back.click()
+        self.wait_click(el_card.banner_off)
+        banner_close = self.find(el_card.banner_off)
         banner_close.click()

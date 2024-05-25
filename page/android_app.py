@@ -219,6 +219,7 @@ class AndroidApp(BaseApp):
         close.click()
 
     def add_card_in_russia(self):
+        '''Добавление карты для России с главной страницы'''
         self.add_card_main_button(
             form_number_card=el_card.form_number_card_in_russia,
             number=el_card.number_russia,
@@ -228,4 +229,18 @@ class AndroidApp(BaseApp):
             cvc=el_card.cvc_russia,
             button_pay=el_card.button_pay_in_russia,
             operation_button_ok=el_card.operation_button_ok_in_russia
+        )
+
+    def add_card_in_russia_menu(self):
+        '''Добавление карты для России из меню'''
+        self.add_card_menu(
+            form_number_card=el_card.form_number_card_in_russia,
+            number=el_card.number_russia,
+            form_year_card=el_card.form_year_card_in_russia,
+            year=el_card.year_russia,
+            form_cvc=el_card.form_cvc_in_russia,
+            cvc=el_card.cvc_russia,
+            button_pay=el_card.button_pay_in_russia,
+            operation_button_ok=el_card.operation_button_ok_in_russia,
+            bin_country=el_card.bin_russia
         )
