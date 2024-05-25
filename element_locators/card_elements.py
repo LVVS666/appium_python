@@ -30,7 +30,6 @@ add_card = (
 )
 
 
-
 '''Данные для России'''
 form_number_card_in_russia = (
     AppiumBy.XPATH,
@@ -57,3 +56,57 @@ operation_button_ok_in_russia = (
 )
 bin_russia = '**** 0013'
 
+
+# '''Данные для Беларуси'''
+#
+# form_number_card_in_belarussia = (
+#     AppiumBy.XPATH,
+#     '//android.view.View[@text="BePaidWidget"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.widget.EditText'
+# )
+# number_belarussia = '4200000000000000'
+# form_year_card_in_belarussia = (
+#     AppiumBy.XPATH,
+#     '//android.view.View[@text="BePaidWidget"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View/android.widget.EditText'
+# )
+# year_belarussia = '1224'
+# form_cvc_in_belarussia = (
+#     AppiumBy.XPATH,
+#     '//android.view.View[@text="BePaidWidget"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[3]/android.view.View/android.view.View[1]/android.widget.EditText'
+# )
+# cvc_belarussia = '123'
+# button_pay_in_belarussia = (
+#     AppiumBy.XPATH,
+#     '//android.widget.Button[@text="Pay 4.00 BYN"]'
+# )
+# operation_button_ok_in_belarussia = (
+#     AppiumBy.XPATH,
+#     '//android.widget.Button[@text="Continue"]'
+# )
+
+
+
+'''Данные для Казахстана '''
+form_number_card_in_kazahstan = (
+    AppiumBy.XPATH,
+    '//android.widget.EditText[@resource-id="ru.berizaryad.android.staging:id/edCardNumber"]'
+)
+number_kazahstan = '4242424242424242'
+form_year_card_in_kazahstan = (
+    AppiumBy.XPATH,
+    '//android.widget.EditText[@resource-id="ru.berizaryad.android.staging:id/edCardDate"]'
+)
+year_kazahstan = '1224'
+form_cvc_in_kazahstan = (
+    AppiumBy.XPATH,
+    '//android.widget.EditText[@resource-id="ru.berizaryad.android.staging:id/edCardCvv"]'
+)
+cvc_kazahstan = '123'
+button_pay_in_kazahstan = (
+    AppiumBy.XPATH,
+    '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btChargeOrder"]'
+)
+operation_button_ok_in_kazahstan = (
+    AppiumBy.XPATH,
+    '//android.widget.Button[@text="Успех"]'
+)
+bin_kazahstan = '**** 4242'

@@ -95,7 +95,7 @@ class BaseApp:
         self.app.press_keycode(7)
         self.app.press_keycode(8)
 
-    def add_card_main_button(self, form_number_card, number, form_year_card, year, form_cvc, cvc, button_pay, operation_button_ok):
+    def add_card_main_button(self, form_number_card, number, form_year_card, year, form_cvc, cvc, button_pay, ):
         '''Добавление карты с главной страницы'''
         self.wait(el_card.main_button_card)
         button_card = self.find(el_card.main_button_card)
@@ -110,16 +110,11 @@ class BaseApp:
         cvc_card.send_keys(cvc)
         button_send_date_card = self.find(button_pay)
         button_send_date_card.click()
-        self.wait(operation_button_ok)
-        button_ok = self.find(operation_button_ok)
-        button_ok.click()
-        self.wait(el_card.banner_card_ok)
-        self.wait(el_card.banner_off)
-        banner_close = self.find(el_card.banner_off)
-        banner_close.click()
+
 
     def find_card(self, bin_country):
         '''Проверка добавленной карты в меню'''
+        self.wait(el_auth.main_menu)
         menu = self.find(el_auth.main_menu)
         menu.click()
         self.wait(el_card.user_cards)
@@ -162,6 +157,4 @@ class BaseApp:
         back = self.find(el_card.back_to_map)
         time.sleep(2)
         back.click()
-        self.wait_click(el_card.banner_off)
-        banner_close = self.find(el_card.banner_off)
-        banner_close.click()
+

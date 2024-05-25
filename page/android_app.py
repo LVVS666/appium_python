@@ -1,7 +1,6 @@
 import time
 
 from selenium.common import TimeoutException
-
 from element_locators import auth_elements as el_auth, doc_elements as el_doc, tariff_elements as el_tariff, card_elements as el_card
 from page.base_app import BaseApp
 
@@ -146,7 +145,6 @@ class AndroidApp(BaseApp):
         back = self.find(el_doc.button_back_documents)
         back.click()
 
-
     def documents_in_russia(self):
         '''Проверка документов у России'''
         self.documents_in_country(
@@ -228,8 +226,14 @@ class AndroidApp(BaseApp):
             form_cvc=el_card.form_cvc_in_russia,
             cvc=el_card.cvc_russia,
             button_pay=el_card.button_pay_in_russia,
-            operation_button_ok=el_card.operation_button_ok_in_russia
         )
+        self.wait(el_card.operation_button_ok_in_russia)
+        button_ok = self.find(el_card.operation_button_ok_in_russia)
+        button_ok.click()
+        self.wait(el_card.banner_card_ok)
+        self.wait(el_card.banner_off)
+        banner_close = self.find(el_card.banner_off)
+        banner_close.click()
 
     def add_card_in_russia_menu(self):
         '''Добавление карты для России из меню'''
@@ -244,3 +248,38 @@ class AndroidApp(BaseApp):
             operation_button_ok=el_card.operation_button_ok_in_russia,
             bin_country=el_card.bin_russia
         )
+        self.wait_click(el_card.banner_off)
+        banner_close = self.find(el_card.banner_off)
+        banner_close.click()
+
+    def add_card_in_kazahstan(self):
+        '''Добавление карты для Казахстан с главной страницы'''
+        self.add_card_main_button(
+            form_number_card=el_card.form_number_card_in_kazahstan,
+            number=el_card.number_kazahstan,
+            form_year_card=el_card.form_year_card_in_kazahstan,
+            year=el_card.year_kazahstan,
+            form_cvc=el_card.form_cvc_in_kazahstan,
+            cvc=el_card.cvc_kazahstan,
+            button_pay=el_card.button_pay_in_kazahstan,
+        )
+        self.wait(el_card.operation_button_ok_in_kazahstan)
+        button_ok = self.find(el_card.operation_button_ok_in_kazahstan)
+        button_ok.click()
+        self.wait(el_card.banner_card_ok)
+        time.sleep(2)
+
+    def add_card_in_kazahstan_menu(self):
+        '''Добавление карты для Казахстана из меню'''
+        self.add_card_menu(
+            form_number_card=el_card.form_number_card_in_kazahstan,
+            number=el_card.number_kazahstan,
+            form_year_card=el_card.form_year_card_in_kazahstan,
+            year=el_card.year_kazahstan,
+            form_cvc=el_card.form_cvc_in_kazahstan,
+            cvc=el_card.cvc_kazahstan,
+            button_pay=el_card.button_pay_in_kazahstan,
+            operation_button_ok=el_card.operation_button_ok_in_kazahstan,
+            bin_country=el_card.bin_kazahstan
+        )
+

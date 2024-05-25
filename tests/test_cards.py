@@ -17,3 +17,20 @@ def test_add_card_in_russia_menu(driver_android):
     app_login.registration(code_phone=el_auth.russian_code, country=el_auth.russia, phone=el_auth.rus_kz_phone)
     app_login.add_card_in_russia_menu()
     app_login.delete_user()
+
+
+def test_add_card_in_kazahstan_main(driver_android):
+    '''Добавление карты, для Казахстана, через кнопку на главном экране'''
+    app_login = AndroidApp(driver_android)
+    app_login.registration(code_phone=el_auth.kazahstan_code, country=el_auth.kazahstan, phone=el_auth.rus_kz_phone)
+    app_login.add_card_in_kazahstan()
+    app_login.find_card(bin_country=el_card.bin_kazahstan)
+    app_login.delete_user()
+
+
+def test_add_card_in_kazahstan_menu(driver_android):
+    '''Добавление карты, для Казахстана, через меню'''
+    app_login = AndroidApp(driver_android)
+    app_login.registration(code_phone=el_auth.kazahstan_code, country=el_auth.kazahstan, phone=el_auth.rus_kz_phone)
+    app_login.add_card_in_kazahstan_menu()
+    app_login.delete_user()
