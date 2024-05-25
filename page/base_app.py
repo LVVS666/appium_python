@@ -1,6 +1,8 @@
+import time
+
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from element_locators import auth_elements as el_auth, doc_elements as el_doc
+from element_locators import auth_elements as el_auth, doc_elements as el_doc, card_elements as el_card
 
 
 class BaseApp:
@@ -93,11 +95,53 @@ class BaseApp:
         self.app.press_keycode(7)
         self.app.press_keycode(8)
 
-    def add_card_main_button(self, form_number_card, number, form_year_card, year, form_cvc, cvc):
+    def add_card_main_button(self, form_number_card, number, form_year_card, year, form_cvc, cvc, button_pay, operation_button_ok):
         '''Добавление карты с главной страницы'''
-        self.wait(main_button_card)
-        button_card = self.find(main_button_card)
+        self.wait(el_card.main_button_card)
+        button_card = self.find(el_card.main_button_card)
         button_card.click()
+        time.sleep(2)
+        self.wait(form_number_card)
+        number_card = self.find(form_number_card)
+        number_card.send_keys(number)
+        year_card = self.find(form_year_card)
+        year_card.send_keys(year)
+        cvc_card = self.find(form_cvc)
+        cvc_card.send_keys(cvc)
+        button_send_date_card = self.find(button_pay)
+        button_send_date_card.click()
+        self.wait(operation_button_ok)
+        button_ok = self.find(operation_button_ok)
+        button_ok.click()
+        self.wait(el_card.banner_card_ok)
+        self.wait(el_card.banner_off)
+        banner_close = self.find(el_card.banner_off)
+        banner_close.click()
+
+    def find_card(self, bin_country):
+        '''Проверка добавленной карты в меню'''
+        menu = self.find(el_auth.main_menu)
+        menu.click()
+        self.wait(el_card.user_cards)
+        cards = self.find(el_card.user_cards)
+        cards.click()
+        self.wait(el_card.bin_card)
+        access_bin = self.find(el_card.bin_card).text
+        assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
+        back = self.find(el_card.back_to_map)
+        back.click()
+
+    def add_card_menu(self, form_number_card, number, form_year_card, year, form_cvc, cvc):
+        '''Добавление карты через меню'''
+        self.wait(el_auth.main_menu)
+        menu = self.find(el_auth.main_menu)
+        menu.click()
+        self.wait(user_cards)
+        cards = self.find(user_cards)
+        cards.click()
+        self.wait(add_card)
+        button_add_card = self.find(add_card)
+        button_add_card.click()
         self.wait(form_number_card)
         number_card = self.find(form_number_card)
         number_card.send_keys(number)
@@ -113,19 +157,3 @@ class BaseApp:
         self.wait(banner_off)
         banner_close = self.find(banner_off)
         banner_close.click()
-
-    def find_card(self):
-        '''Проверка добавленной карты в меню'''
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(user_cards)
-        cards = self.find(user_cards)
-        cards.click()
-        self.wait(bin_card)
-        self.find(bin_card)
-        back = self.find(back_to_map)
-        back.click()
-
-    def add_card_menu(self):
-        '''Добавление карты через меню'''
