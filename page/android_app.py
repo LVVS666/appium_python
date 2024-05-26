@@ -252,6 +252,22 @@ class AndroidApp(BaseApp):
         banner_close = self.find(el_card.banner_off)
         banner_close.click()
 
+    def add_card_in_russia_subscription(self):
+        '''Добавление карты для России с помощью покупки подписки'''
+        self.add_card_in_subscription(
+            form_number_card=el_card.form_number_card_in_russia,
+            number=el_card.number_russia,
+            form_year_card=el_card.form_year_card_in_russia,
+            year=el_card.year_russia,
+            form_cvc=el_card.form_cvc_in_russia,
+            cvc=el_card.cvc_russia,
+            button_pay=el_card.button_pay_in_russia,
+        )
+        self.wait(el_card.operation_button_ok_in_russia)
+        button_ok = self.find(el_card.operation_button_ok_in_russia)
+        button_ok.click()
+        self.wait(el_card.subscription_ok)
+
     def add_card_in_belarussia(self):
         '''Добавление карты для Беларуси с главной страницы'''
         self.add_card_main_button(

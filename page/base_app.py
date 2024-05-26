@@ -95,7 +95,7 @@ class BaseApp:
         self.app.press_keycode(7)
         self.app.press_keycode(8)
 
-    def add_card_main_button(self, form_number_card, number, form_year_card, year, form_cvc, cvc, button_pay, ):
+    def add_card_main_button(self, form_number_card, number, form_year_card, year, form_cvc, cvc, button_pay):
         '''Добавление карты с главной страницы'''
         self.wait(el_card.main_button_card)
         button_card = self.find(el_card.main_button_card)
@@ -158,4 +158,22 @@ class BaseApp:
         back = self.find(el_card.back_to_map)
         time.sleep(2)
         back.click()
+
+    def add_card_in_subscription(self,form_number_card, number, form_year_card, year, form_cvc, cvc, button_pay):
+        '''Привязка карты через оформление подписки'''
+        self.wait(el_auth.subscription)
+        button_subscription = self.find(el_auth.subscription)
+        button_subscription.click()
+        self.wait(el_card.subscription_add)
+        connect_card = self.find(el_card.subscription_add)
+        connect_card.click()
+        self.wait(form_number_card)
+        number_card = self.find(form_number_card)
+        number_card.send_keys(number)
+        year_card = self.find(form_year_card)
+        year_card.send_keys(year)
+        cvc_card = self.find(form_cvc)
+        cvc_card.send_keys(cvc)
+        button_send_date_card = self.find(button_pay)
+        button_send_date_card.click()
 

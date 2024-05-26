@@ -28,6 +28,14 @@ add_card = (
     AppiumBy.XPATH,
     '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btChange"]'
 )
+subscription_add = (
+    AppiumBy.XPATH,
+    '//android.widget.LinearLayout[@resource-id="ru.berizaryad.android.staging:id/btActivate"]'
+)
+subscription_ok = (
+    AppiumBy.XPATH,
+    '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.LinearLayout'
+)
 
 
 '''Данные для России'''
@@ -111,3 +119,4 @@ operation_button_ok_in_kazahstan = (
     '//android.widget.Button[@text="Успех"]'
 )
 bin_kazahstan = '**** 4242'
+
