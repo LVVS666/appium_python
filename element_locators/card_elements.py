@@ -57,31 +57,32 @@ operation_button_ok_in_russia = (
 bin_russia = '**** 0013'
 
 
-# '''Данные для Беларуси'''
-#
-# form_number_card_in_belarussia = (
-#     AppiumBy.XPATH,
-#     '//android.view.View[@text="BePaidWidget"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.widget.EditText'
-# )
-# number_belarussia = '4200000000000000'
-# form_year_card_in_belarussia = (
-#     AppiumBy.XPATH,
-#     '//android.view.View[@text="BePaidWidget"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View/android.widget.EditText'
-# )
-# year_belarussia = '1224'
-# form_cvc_in_belarussia = (
-#     AppiumBy.XPATH,
-#     '//android.view.View[@text="BePaidWidget"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[3]/android.view.View/android.view.View[1]/android.widget.EditText'
-# )
-# cvc_belarussia = '123'
-# button_pay_in_belarussia = (
-#     AppiumBy.XPATH,
-#     '//android.widget.Button[@text="Pay 4.00 BYN"]'
-# )
-# operation_button_ok_in_belarussia = (
-#     AppiumBy.XPATH,
-#     '//android.widget.Button[@text="Continue"]'
-# )
+'''Данные для Беларуси'''
+
+form_number_card_in_belarussia = (
+    AppiumBy.XPATH,
+    '//android.view.View[@text="BePaidWidget"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.widget.EditText'
+)
+number_belarussia = '4200000000000000'
+form_year_card_in_belarussia = (
+    AppiumBy.XPATH,
+    '//android.view.View[@text="BePaidWidget"]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View/android.view.View/android.widget.EditText'
+)
+year_belarussia = '1224'
+form_cvc_in_belarussia = (
+    AppiumBy.XPATH,
+    '//android.view.View[@text="BePaidWidget"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[3]/android.view.View/android.view.View[1]/android.widget.EditText'
+)
+cvc_belarussia = '123'
+button_pay_in_belarussia = (
+    AppiumBy.XPATH,
+    '//android.widget.Button[@text="Pay 4.00 BYN"]'
+)
+operation_button_ok_in_belarussia = (
+    AppiumBy.XPATH,
+    '//android.widget.Button[@text="Continue"]'
+)
+bin_belarussia = '**** 0000'
 
 
 

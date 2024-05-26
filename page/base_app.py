@@ -17,11 +17,11 @@ class BaseApp:
 
     def wait(self, args):
         '''Ожидание видимого элемента'''
-        WebDriverWait(self.app, 10).until(EC.presence_of_element_located(args))
+        WebDriverWait(self.app, 20).until(EC.presence_of_element_located(args))
 
     def wait_click(self, args):
         '''Ожидание кликабельного элемента'''
-        WebDriverWait(self.app, 10).until(EC.element_to_be_clickable(args))
+        WebDriverWait(self.app, 20).until(EC.element_to_be_clickable(args))
 
     def documents_in_country(
                              self,
@@ -146,9 +146,10 @@ class BaseApp:
         cvc_card.send_keys(cvc)
         button_send_date_card = self.find(button_pay)
         button_send_date_card.click()
-        self.wait(operation_button_ok)
-        button_ok = self.find(operation_button_ok)
-        button_ok.click()
+        if number != el_card.number_belarussia:
+            self.wait(operation_button_ok)
+            button_ok = self.find(operation_button_ok)
+            button_ok.click()
         self.wait(el_card.banner_card_ok)
         self.wait(el_card.bin_card)
         access_bin = self.find(el_card.bin_card).text

@@ -252,6 +252,34 @@ class AndroidApp(BaseApp):
         banner_close = self.find(el_card.banner_off)
         banner_close.click()
 
+    def add_card_in_belarussia(self):
+        '''Добавление карты для Беларуси с главной страницы'''
+        self.add_card_main_button(
+            form_number_card=el_card.form_number_card_in_belarussia,
+            number=el_card.number_belarussia,
+            form_year_card=el_card.form_year_card_in_belarussia,
+            year=el_card.year_belarussia,
+            form_cvc=el_card.form_cvc_in_belarussia,
+            cvc=el_card.cvc_belarussia,
+            button_pay=el_card.button_pay_in_belarussia,
+        )
+        self.wait(el_card.banner_card_ok)
+        time.sleep(2)
+
+    def add_card_in_belarussia_menu(self):
+        '''Добавление карты для Беларуси из меню'''
+        self.add_card_menu(
+            form_number_card=el_card.form_number_card_in_belarussia,
+            number=el_card.number_belarussia,
+            form_year_card=el_card.form_year_card_in_belarussia,
+            year=el_card.year_belarussia,
+            form_cvc=el_card.form_cvc_in_belarussia,
+            cvc=el_card.cvc_belarussia,
+            button_pay=el_card.button_pay_in_belarussia,
+            operation_button_ok=el_card.operation_button_ok_in_belarussia,
+            bin_country=el_card.bin_belarussia
+        )
+
     def add_card_in_kazahstan(self):
         '''Добавление карты для Казахстан с главной страницы'''
         self.add_card_main_button(
@@ -282,4 +310,5 @@ class AndroidApp(BaseApp):
             operation_button_ok=el_card.operation_button_ok_in_kazahstan,
             bin_country=el_card.bin_kazahstan
         )
+
 
