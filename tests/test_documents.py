@@ -24,9 +24,8 @@ def test_all_doc_in_kirgistan(driver_android):
     app_login = AndroidApp(driver_android)
     app_login.documents_in_kirgistan()
 
+
 def test_all_doc_in_belarussia(driver_android):
     '''Проверка документов у Беларуси'''
     app_login = AndroidApp(driver_android)
     app_login.documents_in_belarussia()
-
-

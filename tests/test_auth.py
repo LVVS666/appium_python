@@ -43,4 +43,3 @@ def test_registration_in_phone_to_kirgistan_on_delete(driver_android):
     app_login.not_button_sub()
     app_login.button_bon()
     app_login.delete_user()
-
