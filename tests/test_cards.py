@@ -20,11 +20,20 @@ def test_add_card_in_russia_menu(driver_android):
 
 
 def test_add_card_in_russia_subscription(driver_android):
-    '''Добавление карты, для России, через кнопку на главном экране'''
+    '''Добавление карты, для России, через покупку подписки'''
     app_login = AndroidApp(driver_android)
     app_login.registration(code_phone=el_auth.russian_code, country=el_auth.russia, phone=el_auth.rus_kz_phone)
     app_login.add_card_in_russia_subscription()
     app_login.find_card(bin_country=el_card.bin_russia)
+    app_login.delete_user()
+
+
+def test_replace_russian_card(driver_android):
+    '''Замена карты для России'''
+    app_login = AndroidApp(driver_android)
+    app_login.registration(code_phone=el_auth.russian_code, country=el_auth.russia, phone=el_auth.rus_kz_phone)
+    app_login.add_card_in_russia()
+    app_login.replace_card_in_russia()
     app_login.delete_user()
 
 

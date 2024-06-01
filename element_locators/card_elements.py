@@ -37,21 +37,41 @@ subscription_ok = (
     '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.LinearLayout'
 )
 
+replace_new_card = (
+    AppiumBy.XPATH,
+    '//android.widget.Button[@text="Оплатить новой картой"]'
+)
+
 
 '''Данные для России'''
 form_number_card_in_russia = (
     AppiumBy.XPATH,
     '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[3]/android.view.View/android.view.View/android.widget.EditText'
+    ''
+)
+new_form_number_card_in_russia = (
+    AppiumBy.XPATH,
+    '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View[3]/android.view.View/android.view.View/android.widget.EditText'
 )
 number_russia = '2201382000000013'
+new_number_russia = '2201382000000054'
 form_year_card_in_russia = (
     AppiumBy.XPATH,
     '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[4]/android.view.View/android.view.View/android.widget.EditText'
+)
+new_form_year_card_in_russia = (
+    AppiumBy.XPATH,
+    '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View[4]/android.view.View/android.view.View/android.widget.EditText'
 )
 year_russia = '1224'
 form_cvc_in_russia = (
     AppiumBy.XPATH,
     '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[5]/android.view.View/android.view.View/android.widget.EditText'
+)
+new_form_cvc_in_russia = (
+    AppiumBy.XPATH,
+    '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[5]/android.view.View/android.view.View/android.widget.EditText'
+
 )
 cvc_russia = '123'
 button_pay_in_russia = (
@@ -63,6 +83,7 @@ operation_button_ok_in_russia = (
     '//android.widget.Button[@text="Success"]'
 )
 bin_russia = '**** 0013'
+new_bin_russia = '**** 0054'
 
 
 '''Данные для Беларуси'''
@@ -100,6 +121,7 @@ form_number_card_in_kazahstan = (
     '//android.widget.EditText[@resource-id="ru.berizaryad.android.staging:id/edCardNumber"]'
 )
 number_kazahstan = '4242424242424242'
+new_number_kazahstan = '5555555555554444'
 form_year_card_in_kazahstan = (
     AppiumBy.XPATH,
     '//android.widget.EditText[@resource-id="ru.berizaryad.android.staging:id/edCardDate"]'
@@ -119,4 +141,5 @@ operation_button_ok_in_kazahstan = (
     '//android.widget.Button[@text="Успех"]'
 )
 bin_kazahstan = '**** 4242'
+new_bin_kazahstan = '**** 4444'
 

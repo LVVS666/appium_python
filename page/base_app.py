@@ -177,3 +177,44 @@ class BaseApp:
         button_send_date_card = self.find(button_pay)
         button_send_date_card.click()
 
+    def card_replace(self, bin_country, form_number_card, new_number, form_year_card, new_year, form_cvc, new_cvc, button_pay, operation_button_ok, new_bin_country):
+        '''Замена карты'''
+        self.wait(el_auth.main_menu)
+        menu = self.find(el_auth.main_menu)
+        menu.click()
+        self.wait(el_card.user_cards)
+        cards = self.find(el_card.user_cards)
+        cards.click()
+        self.wait(el_card.bin_card)
+        access_bin = self.find(el_card.bin_card).text
+        assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
+        self.wait(el_card.add_card)
+        button_add_card = self.find(el_card.add_card)
+        button_add_card.click()
+        self.wait(el_card.replace_new_card)
+        button_replace = self.find(el_card.replace_new_card)
+        button_replace.click()
+        self.wait(form_number_card)
+        year_card = self.find(form_year_card)
+        year_card.send_keys(new_year)
+        number_card = self.find(form_number_card)
+        number_card.send_keys(new_number)
+        cvc_card = self.find(form_cvc)
+        cvc_card.send_keys(new_cvc)
+        button_send_date_card = self.find(button_pay)
+        button_send_date_card.click()
+        if new_number != el_card.number_belarussia:
+            self.wait(operation_button_ok)
+            button_ok = self.find(operation_button_ok)
+            button_ok.click()
+        self.wait(el_card.banner_card_ok)
+        self.wait(el_card.bin_card)
+        access_new_bin = self.find(el_card.bin_card).text
+        assert access_new_bin == new_bin_country, 'Номер добавленной карты не совпадает'
+        self.wait(el_card.back_to_map)
+        back = self.find(el_card.back_to_map)
+        time.sleep(2)
+        back.click()
+
+
+

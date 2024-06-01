@@ -252,6 +252,21 @@ class AndroidApp(BaseApp):
         banner_close = self.find(el_card.banner_off)
         banner_close.click()
 
+    def replace_card_in_russia(self):
+        '''Замена карты для России'''
+        self.card_replace(
+            bin_country=el_card.bin_russia,
+            form_number_card=el_card.new_form_number_card_in_russia,
+            new_number=el_card.new_number_russia,
+            form_year_card=el_card.new_form_year_card_in_russia,
+            new_year=el_card.year_russia,
+            form_cvc=el_card.new_form_cvc_in_russia,
+            new_cvc=el_card.cvc_russia,
+            button_pay=el_card.button_pay_in_russia,
+            operation_button_ok=el_card.operation_button_ok_in_russia,
+            new_bin_country=el_card.new_bin_russia
+        )
+
     def add_card_in_russia_subscription(self):
         '''Добавление карты для России с помощью покупки подписки'''
         self.add_card_in_subscription(
@@ -326,5 +341,7 @@ class AndroidApp(BaseApp):
             operation_button_ok=el_card.operation_button_ok_in_kazahstan,
             bin_country=el_card.bin_kazahstan
         )
+
+
 
 
