@@ -19,7 +19,10 @@ appium_server_url = 'http://localhost:4723'
 
 @pytest.fixture()
 def driver_android():
-    app_driver = webdriver.Remote(appium_server_url, options=UiAutomator2Options().load_capabilities(capabilities_android))
+    app_driver = webdriver.Remote(
+        appium_server_url,
+        options=UiAutomator2Options().load_capabilities(capabilities_android)
+    )
     yield app_driver
     if app_driver.session_id:
         app_driver.quit()
