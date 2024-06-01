@@ -60,7 +60,7 @@ code_input = (
 
 main_map = (
     AppiumBy.XPATH,
-    '//android.widget.RelativeLayout[@resource-id="ru.berizaryad.android.staging:id/mapView"]/android.view.View'
+    '//android.view.View'
     )
 
 russia = (
@@ -98,7 +98,6 @@ bonuse = (
     '//android.widget.FrameLayout[@resource-id="ru.berizaryad.android.staging:id/btBonus"]/android.view.ViewGroup'
 )
 
-
 main_menu = (
     AppiumBy.XPATH,
     '//android.widget.ImageButton[@content-desc="Открыть навигацию"]'
@@ -133,3 +132,9 @@ outside_map = (
     AppiumBy.XPATH,
     '//android.view.View[@resource-id="ru.berizaryad.android.staging:id/touch_outside"]'
 )
+
+complete_delete_button = (
+    AppiumBy.XPATH,
+    '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btnOk"]'
+)
+

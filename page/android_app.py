@@ -33,7 +33,6 @@ class AndroidApp(BaseApp):
         input_code = self.find(el_auth.code_input)
         input_code.click()
         self.sms()
-        self.wait(el_auth.main_map)
 
     def registration(self, code_phone, country, phone):
         '''Регистрация пользователя через телефон'''
@@ -66,11 +65,12 @@ class AndroidApp(BaseApp):
         time.sleep(2)
         button_send_country = self.find(el_auth.button_send_country)
         button_send_country.click()
-        self.wait(el_auth.main_map)
+        time.sleep(2)
+
 
     def delete_user(self):
         '''Удаление активного пользователя'''
-        self.wait(el_auth.main_menu)
+        self.wait_click(el_auth.main_menu)
         menu = self.find(el_auth.main_menu)
         menu.click()
         self.wait_click(el_auth.profile_user)
@@ -85,6 +85,9 @@ class AndroidApp(BaseApp):
         self.wait_click(el_auth.on_delete)
         delete = self.find(el_auth.on_delete)
         delete.click()
+        self.wait(el_auth.complete_delete_button)
+        complete_delete = self.find(el_auth.complete_delete_button)
+        complete_delete.click()
 
     def button_sub(self):
         '''Проверка кнопки подписки на карте'''
@@ -114,7 +117,7 @@ class AndroidApp(BaseApp):
 
     def exit(self):
         '''Выход из аккаунта'''
-        self.wait(el_auth.main_menu)
+        self.wait_click(el_auth.main_menu)
         menu = self.find(el_auth.main_menu)
         menu.click()
         self.wait_click(el_auth.profile_user)
@@ -248,9 +251,6 @@ class AndroidApp(BaseApp):
             operation_button_ok=el_card.operation_button_ok_in_russia,
             bin_country=el_card.bin_russia
         )
-        self.wait_click(el_card.banner_off)
-        banner_close = self.find(el_card.banner_off)
-        banner_close.click()
 
     def replace_card_in_russia(self):
         '''Замена карты для России'''
@@ -311,6 +311,21 @@ class AndroidApp(BaseApp):
             bin_country=el_card.bin_belarussia
         )
 
+    def replace_card_in_belarussia(self):
+        '''Замена карты для Беларуси'''
+        self.card_replace(
+            bin_country=el_card.bin_belarussia,
+            form_number_card=el_card.form_number_card_in_belarussia,
+            new_number=el_card.new_number_belarussia,
+            form_year_card=el_card.form_year_card_in_belarussia,
+            new_year=el_card.year_belarussia,
+            form_cvc=el_card.form_cvc_in_belarussia,
+            new_cvc=el_card.cvc_belarussia,
+            button_pay=el_card.button_pay_in_belarussia,
+            operation_button_ok=el_card.operation_button_ok_in_belarussia,
+            new_bin_country=el_card.new_bin_belarussia
+        )
+
     def add_card_in_kazahstan(self):
         '''Добавление карты для Казахстан с главной страницы'''
         self.add_card_main_button(
@@ -342,6 +357,17 @@ class AndroidApp(BaseApp):
             bin_country=el_card.bin_kazahstan
         )
 
-
-
-
+    def replace_card_in_kazahstan(self):
+        '''Замена карты для Казахстана'''
+        self.card_replace(
+            bin_country=el_card.bin_kazahstan,
+            form_number_card=el_card.form_number_card_in_kazahstan,
+            new_number=el_card.new_number_kazahstan,
+            form_year_card=el_card.form_year_card_in_kazahstan,
+            new_year=el_card.year_kazahstan,
+            form_cvc=el_card.form_cvc_in_kazahstan,
+            new_cvc=el_card.cvc_kazahstan,
+            button_pay=el_card.button_pay_in_kazahstan,
+            operation_button_ok=el_card.operation_button_ok_in_kazahstan,
+            new_bin_country=el_card.new_bin_kazahstan
+        )

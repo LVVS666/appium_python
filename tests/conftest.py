@@ -10,7 +10,8 @@ capabilities_android = {
     "appActivity": "ru.berizaryad.android.presentation.main.DrawerMainActivity",
     'language': 'ru',
     'noReset': False,
-    'locale': 'RU'
+    'locale': 'RU',
+    'autoGrantPermissions': True
 }
 
 
