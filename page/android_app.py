@@ -67,7 +67,6 @@ class AndroidApp(BaseApp):
         button_send_country.click()
         time.sleep(2)
 
-
     def delete_user(self):
         '''Удаление активного пользователя'''
         self.wait_click(el_auth.main_menu)
@@ -370,4 +369,54 @@ class AndroidApp(BaseApp):
             button_pay=el_card.button_pay_in_kazahstan,
             operation_button_ok=el_card.operation_button_ok_in_kazahstan,
             new_bin_country=el_card.new_bin_kazahstan
+        )
+
+    def add_card_in_kirgistan(self):
+        '''Добавление карты для Киргизии с главной страницы'''
+        self.add_card_main_button(
+            form_number_card=el_card.form_number_card_in_kirgistan,
+            number=el_card.number_kirgistan,
+            form_year_card_month=el_card.form_year_card_in_kirgistan_month,
+            year_month=el_card.year_kirgistan_month,
+            form_year_card=el_card.form_year_card_in_kirgistan_year,
+            year=el_card.year_kirgistan_year,
+            form_cvc=el_card.form_cvc_in_kirgistan,
+            cvc=el_card.cvc_kirgistan,
+            button_pay=el_card.button_pay_in_kirgistan,
+        )
+        self.wait(el_card.operation_button_ok_in_kazahstan)
+        button_ok = self.find(el_card.operation_button_ok_in_kazahstan)
+        button_ok.click()
+        self.wait(el_card.banner_card_ok)
+        time.sleep(2)
+
+    def add_card_in_kirgistan_menu(self):
+        '''Добавление карты для Киргизиииз меню'''
+        self.add_card_menu(
+            bin_country=el_card.bin_kirgistan,
+            form_number_card=el_card.form_number_card_in_kirgistan,
+            number=el_card.number_kirgistan,
+            form_year_card_month=el_card.form_year_card_in_kirgistan_month,
+            year_month=el_card.year_kirgistan_month,
+            form_year_card=el_card.form_year_card_in_kirgistan_year,
+            year=el_card.year_kirgistan_year,
+            form_cvc=el_card.form_cvc_in_kirgistan,
+            cvc=el_card.cvc_kirgistan,
+            button_pay=el_card.button_pay_in_kirgistan,
+        )
+
+    def replace_card_in_kirgistan(self):
+        '''Замена карты для Киргизии'''
+        self.card_replace(
+            bin_country=el_card.bin_kirgistan,
+            form_number_card=el_card.form_number_card_in_kirgistan,
+            new_number=el_card.new_number_kirgistan,
+            form_year_card_month=el_card.form_year_card_in_kirgistan_month,
+            year_month=el_card.new_year_kirgistan_month,
+            form_year_card=el_card.form_year_card_in_kirgistan_year,
+            new_year=el_card.new_year_kirgistan_year,
+            form_cvc=el_card.form_cvc_in_kirgistan,
+            new_cvc=el_card.new_cvc_kirgistan,
+            button_pay=el_card.button_pay_in_kirgistan,
+            new_bin_country=el_card.new_bin_kirgistan
         )

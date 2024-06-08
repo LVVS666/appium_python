@@ -86,3 +86,28 @@ def test_replace_belarussian_card(driver_android):
     app_login.add_card_in_belarussia()
     app_login.replace_card_in_belarussia()
     app_login.delete_user()
+
+def test_add_card_in_kirgistan_main(driver_android):
+    '''Добавление карты, для Киргизии, через кнопку на главном экране'''
+    app_login = AndroidApp(driver_android)
+    app_login.registration(code_phone=el_auth.kirgistan_code, country=el_auth.kirgistan, phone=el_auth.bld_kgz_phone)
+    app_login.add_card_in_kirgistan()
+    app_login.find_card(bin_country=el_card.bin_kirgistan)
+    app_login.delete_user()
+
+
+def test_add_card_in_kirgistan_menu(driver_android):
+    '''Добавление карты, для Киргизии, через меню'''
+    app_login = AndroidApp(driver_android)
+    app_login.registration(code_phone=el_auth.kirgistan_code, country=el_auth.kirgistan, phone=el_auth.bld_kgz_phone)
+    app_login.add_card_in_kirgistan_menu()
+    app_login.delete_user()
+
+
+def test_replace_kirgistan_card(driver_android):
+    '''Замена карты для Киргизии'''
+    app_login = AndroidApp(driver_android)
+    app_login.registration(code_phone=el_auth.kirgistan_code, country=el_auth.kirgistan, phone=el_auth.bld_kgz_phone)
+    app_login.add_card_in_kirgistan()
+    app_login.replace_card_in_kirgistan()
+    app_login.delete_user()

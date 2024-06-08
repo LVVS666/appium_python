@@ -87,7 +87,6 @@ new_bin_russia = '**** 0054'
 
 
 '''Данные для Беларуси'''
-
 form_number_card_in_belarussia = (
     AppiumBy.XPATH,
     '//android.view.View[@text="BePaidWidget"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.widget.EditText'
@@ -114,7 +113,6 @@ operation_button_ok_in_belarussia = (
 )
 bin_belarussia = '**** 0000'
 new_bin_belarussia = '**** 1055'
-
 
 
 '''Данные для Казахстана '''
@@ -145,3 +143,40 @@ operation_button_ok_in_kazahstan = (
 bin_kazahstan = '**** 4242'
 new_bin_kazahstan = '**** 4444'
 
+
+'''Данные для Киргизии'''
+form_number_card_in_kirgistan = (
+    AppiumBy.XPATH,
+    '//android.webkit.WebView[@text="Оплата"]/android.view.View/android.view.View/android.view.View[4]/android.view.View[1]/android.widget.EditText'
+)
+number_kirgistan = '4706393707891337.'
+new_number_kirgistan = '4478190023399995'
+form_year_card_in_kirgistan_month = (
+    AppiumBy.XPATH,
+    '//android.webkit.WebView[@text="Оплата"]/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View[2]/android.view.View[1]/android.view.View/android.view.View[1]/android.widget.EditText'
+)
+year_kirgistan_month = '09'
+new_year_kirgistan_month = '05'
+form_year_card_in_kirgistan_year = (
+    AppiumBy.XPATH,
+    '//android.webkit.WebView[@text="Оплата"]/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View[1]/android.widget.EditText'
+)
+year_kirgistan_year = '2026'
+new_year_kirgistan_year = '2027'
+form_cvc_in_kirgistan = (
+    AppiumBy.XPATH,
+    '//android.webkit.WebView[@text="Оплата"]/android.view.View/android.view.View[1]/android.view.View[4]/android.view.View[4]/android.widget.EditText'
+)
+cvc_kirgistan = '544'
+new_cvc_kirgistan = '840'
+click_window = (
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@text="Номер заказа №"]'
+)
+button_pay_in_kirgistan = (
+    AppiumBy.XPATH,
+    '//android.widget.Button[@text="Оплатить 1.00 KGS"]'
+)
+
+bin_kirgistan = '**** 1337'
+new_bin_kirgistan = '**** 9995'

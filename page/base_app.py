@@ -100,21 +100,43 @@ class BaseApp:
         self.app.press_keycode(7)
         self.app.press_keycode(8)
 
-    def add_card_main_button(self, form_number_card, number, form_year_card, year, form_cvc, cvc, button_pay):
+    def add_card_main_button(self,
+                             form_number_card,
+                             number,
+                             form_year_card=None,
+                             year=None,
+                             form_year_card_month = None,
+                             year_month = None,
+                             form_cvc=None,
+                             cvc=None,
+                             button_pay=None):
         '''Добавление карты с главной страницы'''
         self.wait(el_card.main_button_card)
         button_card = self.find(el_card.main_button_card)
         button_card.click()
         time.sleep(2)
-        self.wait(form_number_card)
-        number_card = self.find(form_number_card)
-        number_card.send_keys(number)
-        year_card = self.find(form_year_card)
-        year_card.send_keys(year)
-        cvc_card = self.find(form_cvc)
-        cvc_card.send_keys(cvc)
-        button_send_date_card = self.find(button_pay)
-        button_send_date_card.click()
+        if number == el_card.number_kirgistan:
+            self.wait(form_number_card)
+            number_card = self.find(form_number_card)
+            number_card.send_keys(number)
+            year_card_month = self.find(form_year_card_month)
+            year_card_month.send_keys(year_month)
+            year_card = self.find(form_year_card)
+            year_card.send_keys(year)
+            cvc_card = self.find(form_cvc)
+            cvc_card.send_keys(cvc)
+            button_send_date_card = self.find(button_pay)
+            button_send_date_card.click()
+        else:
+            self.wait(form_number_card)
+            number_card = self.find(form_number_card)
+            number_card.send_keys(number)
+            year_card = self.find(form_year_card)
+            year_card.send_keys(year)
+            cvc_card = self.find(form_cvc)
+            cvc_card.send_keys(cvc)
+            button_send_date_card = self.find(button_pay)
+            button_send_date_card.click()
 
 
     def find_card(self, bin_country):
@@ -131,7 +153,18 @@ class BaseApp:
         back = self.find(el_card.back_to_map)
         back.click()
 
-    def add_card_menu(self, form_number_card, number, form_year_card, year, form_cvc, cvc, button_pay, operation_button_ok, bin_country):
+    def add_card_menu(self,
+                      form_number_card,
+                      number,
+                      form_year_card,
+                      year,
+                      form_cvc,
+                      cvc,
+                      button_pay,
+                      bin_country,
+                      operation_button_ok=None,
+                      form_year_card_month=None,
+                      year_month=None):
         '''Добавление карты через меню'''
         self.wait(el_auth.main_menu)
         menu = self.find(el_auth.main_menu)
@@ -142,16 +175,29 @@ class BaseApp:
         self.wait(el_card.add_card)
         button_add_card = self.find(el_card.add_card)
         button_add_card.click()
-        self.wait(form_number_card)
-        number_card = self.find(form_number_card)
-        number_card.send_keys(number)
-        year_card = self.find(form_year_card)
-        year_card.send_keys(year)
-        cvc_card = self.find(form_cvc)
-        cvc_card.send_keys(cvc)
-        button_send_date_card = self.find(button_pay)
-        button_send_date_card.click()
-        if number != el_card.number_belarussia:
+        if number == el_card.number_kirgistan:
+            self.wait(form_number_card)
+            number_card = self.find(form_number_card)
+            number_card.send_keys(number)
+            year_card_month = self.find(form_year_card_month)
+            year_card_month.send_keys(year_month)
+            year_card = self.find(form_year_card)
+            year_card.send_keys(year)
+            cvc_card = self.find(form_cvc)
+            cvc_card.send_keys(cvc)
+            button_send_date_card = self.find(button_pay)
+            button_send_date_card.click()
+        else:
+            self.wait(form_number_card)
+            number_card = self.find(form_number_card)
+            number_card.send_keys(number)
+            year_card = self.find(form_year_card)
+            year_card.send_keys(year)
+            cvc_card = self.find(form_cvc)
+            cvc_card.send_keys(cvc)
+            button_send_date_card = self.find(button_pay)
+            button_send_date_card.click()
+        if number != el_card.number_belarussia and number != el_card.number_kirgistan:
             self.wait(operation_button_ok)
             button_ok = self.find(operation_button_ok)
             button_ok.click()
@@ -164,7 +210,13 @@ class BaseApp:
         time.sleep(2)
         back.click()
 
-    def add_card_in_subscription(self,form_number_card, number, form_year_card, year, form_cvc, cvc, button_pay):
+    def add_card_in_subscription(self,
+                                 form_number_card,
+                                 number, form_year_card,
+                                 year,
+                                 form_cvc,
+                                 cvc,
+                                 button_pay):
         '''Привязка карты через оформление подписки'''
         self.wait(el_auth.subscription)
         button_subscription = self.find(el_auth.subscription)
@@ -182,7 +234,19 @@ class BaseApp:
         button_send_date_card = self.find(button_pay)
         button_send_date_card.click()
 
-    def card_replace(self, bin_country, form_number_card, new_number, form_year_card, new_year, form_cvc, new_cvc, button_pay, operation_button_ok, new_bin_country):
+    def card_replace(self,
+                     bin_country,
+                     form_number_card,
+                     new_number,
+                     form_year_card,
+                     new_year,
+                     form_cvc,
+                     new_cvc,
+                     button_pay,
+                     new_bin_country,
+                     operation_button_ok=None,
+                     form_year_card_month=None,
+                     year_month=None):
         '''Замена карты'''
         self.wait(el_auth.main_menu)
         menu = self.find(el_auth.main_menu)
@@ -199,6 +263,22 @@ class BaseApp:
         self.wait(el_card.replace_new_card)
         button_replace = self.find(el_card.replace_new_card)
         button_replace.click()
+        if new_number == el_card.number_kirgistan:
+            self.wait(form_number_card)
+            number_card = self.find(form_number_card)
+            number_card.send_keys(new_number)
+            year_card_month = self.find(form_year_card_month)
+            year_card_month.send_keys(year_month)
+            year_card_month.click()
+            year_card = self.find(form_year_card)
+            year_card.send_keys(new_year)
+            year_card.click()
+            cvc_card = self.find(form_cvc)
+            cvc_card.send_keys(new_cvc)
+            click_off = self.find(el_card.click_window)
+            click_off.click()
+            button_send_date_card = self.find(button_pay)
+            button_send_date_card.click()
         self.wait(form_number_card)
         year_card = self.find(form_year_card)
         year_card.send_keys(new_year)
