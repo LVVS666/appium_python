@@ -1,7 +1,7 @@
 import time
 
 from selenium.common import TimeoutException
-from element_locators import auth_elements as el_auth, doc_elements as el_doc, tariff_elements as el_tariff, card_elements as el_card
+from element_locators import auth_elements as el_auth, doc_elements as el_doc, tariff_elements as el_tariff, card_elements as el_card, sub_elements as el_sub
 from page.base_app import BaseApp
 
 
@@ -417,3 +417,25 @@ class AndroidApp(BaseApp):
             button_pay=el_card.button_pay_in_kirgistan,
             new_bin_country=el_card.new_bin_kirgistan
         )
+
+    def pay_subscription_on_map(self):
+        '''Покупка подписки с главного экрана, проверка счетчика на главном экране и в разделе подписки'''
+        self.wait(el_auth.subscription)
+        sub_button = self.find(el_auth.subscription)
+        sub_button.click()
+        self.wait(el_card.subscription_add)
+        add_sub_button = self.find(el_card.subscription_add)
+        add_sub_button.click()
+        self.wait(el_card.subscription_ok)
+        self.wait(el_sub.button_subscription)
+        count_button = self.find(el_sub.button_subscription)
+        assert count_button.text == el_sub.access_button, 'На кнопке подписки не отображается количество аренд'
+        self.wait_click(el_sub.subscriptions)
+        button = self.find(el_sub.subscriptions)
+        button.click()
+        self.wait(el_sub.count_subscription)
+        count = self.find(el_sub.count_subscription)
+        assert count.text == el_sub.access_count, 'В разделе подписки не соответсвует количество аренд'
+        close = self.find(el_sub.off_subscription)
+        close.click()
+        self.wait(el_auth.main_map)
