@@ -51,7 +51,7 @@ form_number_card_in_russia = (
 )
 new_form_number_card_in_russia = (
     AppiumBy.XPATH,
-    '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View[3]/android.view.View/android.view.View/android.widget.EditText'
+    '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View/android.view.View/android.widget.EditText'
 )
 number_russia = '2201382000000013'
 new_number_russia = '2201382000000054'
@@ -149,20 +149,36 @@ form_number_card_in_kirgistan = (
     AppiumBy.XPATH,
     '//android.webkit.WebView[@text="Оплата"]/android.view.View/android.view.View/android.view.View[4]/android.view.View[1]/android.widget.EditText'
 )
-number_kirgistan = '4706393707891337.'
-new_number_kirgistan = '4478190023399995'
+number_kirgistan = '4706 3937 0789 1337.'
+new_number_kirgistan = '4478 1900 2339 9995'
 form_year_card_in_kirgistan_month = (
     AppiumBy.XPATH,
     '//android.webkit.WebView[@text="Оплата"]/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View[2]/android.view.View[1]/android.view.View/android.view.View[1]/android.widget.EditText'
 )
 year_kirgistan_month = '09'
+accec_09 = (
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@text="09"]'
+)
 new_year_kirgistan_month = '05'
+accec_05 = (
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@text="05"]'
+)
 form_year_card_in_kirgistan_year = (
     AppiumBy.XPATH,
     '//android.webkit.WebView[@text="Оплата"]/android.view.View/android.view.View/android.view.View[4]/android.view.View[2]/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View[1]/android.widget.EditText'
 )
 year_kirgistan_year = '2026'
+accec_2026 = (
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@text="2026"]'
+)
 new_year_kirgistan_year = '2027'
+accec_2027 = (
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@text="2027"]'
+)
 form_cvc_in_kirgistan = (
     AppiumBy.XPATH,
     '//android.webkit.WebView[@text="Оплата"]/android.view.View/android.view.View[1]/android.view.View[4]/android.view.View[4]/android.widget.EditText'

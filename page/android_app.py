@@ -384,9 +384,6 @@ class AndroidApp(BaseApp):
             cvc=el_card.cvc_kirgistan,
             button_pay=el_card.button_pay_in_kirgistan,
         )
-        self.wait(el_card.operation_button_ok_in_kazahstan)
-        button_ok = self.find(el_card.operation_button_ok_in_kazahstan)
-        button_ok.click()
         self.wait(el_card.banner_card_ok)
         time.sleep(2)
 
