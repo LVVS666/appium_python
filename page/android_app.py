@@ -1,7 +1,12 @@
 import time
 
 from selenium.common import TimeoutException
-from element_locators import auth_elements as el_auth, doc_elements as el_doc, tariff_elements as el_tariff, card_elements as el_card, sub_elements as el_sub
+
+from element_locators import auth_elements as el_auth
+from element_locators import card_elements as el_card
+from element_locators import doc_elements as el_doc
+from element_locators import sub_elements as el_sub
+from element_locators import tariff_elements as el_tariff
 from page.base_app import BaseApp
 
 
@@ -419,7 +424,7 @@ class AndroidApp(BaseApp):
         )
 
     def pay_subscription_on_map(self):
-        '''Покупка подписки с главного экрана, проверка счетчика на главном экране и в разделе подписки'''
+        '''Покупка подписки с главного экрана, проверка счетчика на главном экране,в разделе подписки, в меню'''
         self.wait(el_auth.subscription)
         sub_button = self.find(el_auth.subscription)
         sub_button.click()
@@ -438,4 +443,118 @@ class AndroidApp(BaseApp):
         assert count.text == el_sub.access_count, 'В разделе подписки не соответсвует количество аренд'
         close = self.find(el_sub.off_subscription)
         close.click()
+        self.wait(el_auth.main_map)
+        self.wait(el_auth.main_menu)
+        menu = self.find(el_auth.main_menu)
+        menu.click()
+        self.wait(el_sub.count_subscription_button)
+        sub_button_menu = self.find(el_sub.count_subscription_button)
+        assert sub_button_menu.text == el_sub.access_count, 'В главном меню не отображается количество аренд по подписке'
+        back = self.find(el_sub.back_map)
+        back.click()
+        self.wait(el_auth.main_map)
+
+    def pay_subscription_on_and_off(self):
+        '''Покупка подписки на главном экране, отказ от автопродление, автопродление'''
+        self.wait(el_auth.subscription)
+        sub_button = self.find(el_auth.subscription)
+        sub_button.click()
+        self.wait(el_card.subscription_add)
+        add_sub_button = self.find(el_card.subscription_add)
+        add_sub_button.click()
+        self.wait(el_card.subscription_ok)
+        self.wait_click(el_sub.subscriptions)
+        button = self.find(el_sub.subscriptions)
+        button.click()
+        self.wait(el_sub.off_subscription)
+        off_subscription = self.find(el_sub.button_off_subscription)
+        off_subscription.click()
+        self.wait(el_sub.on_delete)
+        delete_sub = self.find(el_sub.on_delete)
+        delete_sub.click()
+        self.wait(el_sub.subscription_off_text)
+        text_off_subscription = self.find(el_sub.subscription_off_text).text
+        assert text_off_subscription == el_sub.access_text, 'Нет уведомление об отключение автопродления'
+        back_sub = self.find(el_sub.button_return_subscription)
+        back_sub.click()
+        self.wait(el_card.subscription_add)
+        add_sub_button = self.find(el_card.subscription_add)
+        add_sub_button.click()
+        self.wait(el_card.subscription_ok)
+
+    def pay_subscription_on_banner(self):
+        '''Покупка подписки с через баннер после привязки карты, проверка счетчика на главном экране,в разделе подписки, в меню'''
+        self.add_card_main_button(
+            form_number_card=el_card.form_number_card_in_russia,
+            number=el_card.number_russia,
+            form_year_card=el_card.form_year_card_in_russia,
+            year=el_card.year_russia,
+            form_cvc=el_card.form_cvc_in_russia,
+            cvc=el_card.cvc_russia,
+            button_pay=el_card.button_pay_in_russia,
+        )
+        self.wait(el_card.operation_button_ok_in_russia)
+        button_ok = self.find(el_card.operation_button_ok_in_russia)
+        button_ok.click()
+        self.wait(el_sub.banner_subscription_pay)
+        banner_pay = self.find(el_sub.banner_subscription_pay)
+        banner_pay.click()
+        self.wait(el_card.subscription_add)
+        add_sub_button = self.find(el_card.subscription_add)
+        add_sub_button.click()
+        self.wait(el_card.subscription_ok)
+        self.wait(el_sub.button_subscription)
+        count_button = self.find(el_sub.button_subscription)
+        assert count_button.text == el_sub.access_button, 'На кнопке подписки не отображается количество аренд'
+        self.wait_click(el_sub.subscriptions)
+        button = self.find(el_sub.subscriptions)
+        button.click()
+        self.wait(el_sub.count_subscription)
+        count = self.find(el_sub.count_subscription)
+        assert count.text == el_sub.access_count, 'В разделе подписки не соответсвует количество аренд'
+        close = self.find(el_sub.off_subscription)
+        close.click()
+        self.wait(el_auth.main_map)
+        self.wait(el_auth.main_menu)
+        menu = self.find(el_auth.main_menu)
+        menu.click()
+        self.wait(el_sub.count_subscription_button)
+        sub_button_menu = self.find(el_sub.count_subscription_button)
+        assert sub_button_menu.text == el_sub.access_count, 'В главном меню не отображается количество аренд по подписке'
+        back = self.find(el_sub.back_map)
+        back.click()
+        self.wait(el_auth.main_map)
+
+    def pay_subscription_on_menu(self):
+        '''Покупка подписки в меню, проверка счетчика на главном экране,в разделе подписки, в меню'''
+        self.wait(el_auth.main_menu)
+        menu = self.find(el_auth.main_menu)
+        menu.click()
+        self.wait(el_sub.subscriptions_menu)
+        sub_menu = self.find(el_sub.subscriptions_menu)
+        sub_menu.click()
+        self.wait(el_card.subscription_add)
+        add_sub_button = self.find(el_card.subscription_add)
+        add_sub_button.click()
+        self.wait(el_card.subscription_ok)
+        self.wait(el_sub.button_subscription)
+        count_button = self.find(el_sub.button_subscription)
+        assert count_button.text == el_sub.access_button, 'На кнопке подписки не отображается количество аренд'
+        self.wait_click(el_sub.subscriptions)
+        button = self.find(el_sub.subscriptions)
+        button.click()
+        self.wait(el_sub.count_subscription)
+        count = self.find(el_sub.count_subscription)
+        assert count.text == el_sub.access_count, 'В разделе подписки не соответсвует количество аренд'
+        close = self.find(el_sub.off_subscription)
+        close.click()
+        self.wait(el_auth.main_map)
+        self.wait(el_auth.main_menu)
+        menu = self.find(el_auth.main_menu)
+        menu.click()
+        self.wait(el_sub.count_subscription_button)
+        sub_button_menu = self.find(el_sub.count_subscription_button)
+        assert sub_button_menu.text == el_sub.access_count, 'В главном меню не отображается количество аренд по подписке'
+        back = self.find(el_sub.back_map)
+        back.click()
         self.wait(el_auth.main_map)

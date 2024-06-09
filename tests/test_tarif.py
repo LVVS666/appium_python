@@ -1,5 +1,6 @@
+from element_locators import auth_elements as el_auth
+from element_locators import tariff_elements as el_tariff
 from page.android_app import AndroidApp
-from element_locators import auth_elements as el_auth, tariff_elements as el_tariff
 
 
 def test_tariff_russia(driver_android):

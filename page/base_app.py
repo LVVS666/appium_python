@@ -2,7 +2,10 @@ import time
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from element_locators import auth_elements as el_auth, doc_elements as el_doc, card_elements as el_card
+
+from element_locators import auth_elements as el_auth
+from element_locators import card_elements as el_card
+from element_locators import doc_elements as el_doc
 
 
 class BaseApp:

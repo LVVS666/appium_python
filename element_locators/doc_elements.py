@@ -1,6 +1,5 @@
 from appium.webdriver.common.appiumby import AppiumBy
 
-
 documents = (
     AppiumBy.XPATH,
     '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Документы"]'

@@ -1,5 +1,6 @@
+from element_locators import auth_elements as el_auth
+from element_locators import card_elements as el_card
 from page.android_app import AndroidApp
-from element_locators import auth_elements as el_auth, card_elements as el_card
 
 
 def test_add_card_in_russia_main(driver_android):

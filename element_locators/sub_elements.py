@@ -36,6 +36,7 @@ subscription_off_text = (
     AppiumBy.XPATH,
     '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvDescription"]'
 )
+access_text = 'Автопродление отключено'
 button_return_subscription = (
     AppiumBy.XPATH,
     '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btActivate"]'
@@ -60,4 +61,13 @@ access_button = '7 АРЕНД'
 count_subscription_button = (
     AppiumBy.XPATH,
     '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvSubscriptionTitle"]'
+)
+back_map = (
+    AppiumBy.XPATH,
+    '//android.widget.ImageButton[@resource-id="ru.berizaryad.android.staging:id/ivMinus"]'
+)
+
+subscriptions_menu = (
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Подписка"]'
 )
