@@ -138,3 +138,8 @@ complete_delete_button = (
     '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btnOk"]'
 )
 
+'''Зоны'''
+RUS_SBER = "RUS_SBER"
+KZ_CHARGE = "KZ_CHARGE"
+KGZ = "KGZ"
+BLR_BEPAID = "BLR_BEPAID"

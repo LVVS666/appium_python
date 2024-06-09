@@ -7,6 +7,7 @@ from element_locators import card_elements as el_card
 from element_locators import doc_elements as el_doc
 from element_locators import sub_elements as el_sub
 from element_locators import tariff_elements as el_tariff
+from fixtures.db_settings import DbConnect
 from page.base_app import BaseApp
 
 
@@ -39,7 +40,7 @@ class AndroidApp(BaseApp):
         input_code.click()
         self.sms()
 
-    def registration(self, code_phone, country, phone):
+    def registration(self, code_phone, country, phone, zone):
         '''Регистрация пользователя через телефон'''
         self.wait_click(el_auth.login_in_phone)
         method_start = self.find(el_auth.login_in_phone)
@@ -71,6 +72,9 @@ class AndroidApp(BaseApp):
         button_send_country = self.find(el_auth.button_send_country)
         button_send_country.click()
         time.sleep(2)
+        db_connect = DbConnect()
+        zone_search = db_connect.search_zone(phone=phone)
+        assert zone_search == zone, 'Пользователь создался с другой зоной или при создание зона не добавилась в базу'
 
     def delete_user(self):
         '''Удаление активного пользователя'''
