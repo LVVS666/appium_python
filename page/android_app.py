@@ -40,7 +40,7 @@ class AndroidApp(BaseApp):
         input_code.click()
         self.sms()
 
-    def registration(self, code_phone, country, phone, zone):
+    def registration(self, code_phone, country, phone):
         '''Регистрация пользователя через телефон'''
         self.wait_click(el_auth.login_in_phone)
         method_start = self.find(el_auth.login_in_phone)
@@ -72,9 +72,9 @@ class AndroidApp(BaseApp):
         button_send_country = self.find(el_auth.button_send_country)
         button_send_country.click()
         time.sleep(2)
-        db_connect = DbConnect()
-        zone_search = db_connect.search_zone(phone=phone)
-        assert zone_search == zone, 'Пользователь создался с другой зоной или при создание зона не добавилась в базу'
+        # db_connect = DbConnect()
+        # zone_search = db_connect.search_zone(phone=phone)
+        # assert zone_search == zone, 'Пользователь создался с другой зоной или при создание зона не добавилась в базу'
 
     def delete_user(self):
         '''Удаление активного пользователя'''

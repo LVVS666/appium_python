@@ -1,5 +1,6 @@
 from appium.webdriver.common.appiumby import AppiumBy
 
+# Меню тарифов
 tariff_menu = (
     AppiumBy.XPATH,
     '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Тарифы"]'
@@ -10,6 +11,7 @@ tariff_close = (
     '//android.widget.ImageButton[@content-desc="Открыть навигацию"]'
 )
 
+# Тарифы
 russian_tariff = (
     AppiumBy.XPATH,
     '//android.widget.TextView[@text="Тестовый тариф для России со Сбер. (rus_sber)"]'

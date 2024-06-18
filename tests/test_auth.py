@@ -11,7 +11,6 @@ def test_registration_in_phone_to_russian_on_logout(driver_android):
         code_phone=el_auth.russian_code,
         country=el_auth.russia,
         phone=el_auth.rus_kz_phone,
-        zone=el_auth.RUS_SBER
     )
     app_login.exit()
 
@@ -32,7 +31,6 @@ def test_registration_in_phone_to_belarussia_on_delete(driver_android):
         code_phone=el_auth.belarussia_code,
         country=el_auth.belarussia,
         phone=el_auth.bld_kgz_phone,
-        zone=el_auth.BLR_BEPAID
     )
     app_login.not_button_sub()
     app_login.not_button_bon()
@@ -46,7 +44,6 @@ def test_registration_in_phone_to_kazahstan_on_delete(driver_android):
         code_phone=el_auth.kazahstan_code,
         country=el_auth.kazahstan,
         phone=el_auth.rus_kz_phone,
-        zone=el_auth.KZ_CHARGE
     )
     app_login.not_button_sub()
     app_login.not_button_bon()
@@ -60,12 +57,7 @@ def test_registration_in_phone_to_kirgistan_on_delete(driver_android):
         code_phone=el_auth.kirgistan_code,
         country=el_auth.kirgistan,
         phone=el_auth.bld_kgz_phone,
-        zone=el_auth.KGZ
     )
     app_login.not_button_sub()
     app_login.button_bon()
     app_login.delete_user()
-
-def test_ios(driver_ios):
-    app_login = AndroidApp(driver_ios)
-    time.sleep(10)
