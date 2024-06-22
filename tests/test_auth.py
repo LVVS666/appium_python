@@ -1,5 +1,3 @@
-import time
-
 from element_locators import auth_elements as el_auth
 from page.android_app import AndroidApp
 
