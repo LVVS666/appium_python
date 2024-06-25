@@ -1,9 +1,30 @@
 from appium.webdriver.common.appiumby import AppiumBy
 
+sbp_button = (
+    AppiumBy.XPATH,
+    '//android.widget.ImageButton[@resource-id="ru.berizaryad.android.dev2:id/btSbp"]'
+)
+
+sberpay_button = (
+    AppiumBy.XPATH,
+    '//android.widget.ImageButton[@resource-id="ru.berizaryad.android.dev2:id/btSberPay"]'
+)
+
+card_button = (
+    AppiumBy.XPATH,
+    '//android.widget.Button[@resource-id="ru.berizaryad.android.dev2:id/btBankCard"]'
+)
+
+off_banner_card = (
+    AppiumBy.XPATH,
+    '//android.widget.ImageButton[@content-desc="Закрыть"]'
+)
+
 main_button_card = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/title"]'
+    '//android.widget.FrameLayout[@resource-id="ru.berizaryad.android.dev2:id/btTakePowerBank"]/android.widget.LinearLayout'
 )
+
 user_cards = (
     AppiumBy.XPATH,
     '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Способ оплаты"]'
