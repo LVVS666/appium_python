@@ -26,6 +26,15 @@ class BaseApp:
         '''Ожидание баннера или уведомления'''
         WebDriverWait(self.app, 10).until(EC.presence_of_element_located(args))
 
+    def click_element(self, locator):
+        '''Кликнуть по элементу'''
+        locator_element = self.find(locator)
+        locator_element.click()
+
+    def send_keys_element(self, locator, text):
+        locator_element = self.find(locator)
+        locator_element.click()
+        locator_element.send_keys(text)
 
     def wait_click(self, args):
         '''Ожидание кликабельного элемента'''

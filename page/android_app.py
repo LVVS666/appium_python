@@ -17,27 +17,19 @@ class AndroidApp(BaseApp):
     def auth(self, code_phone, phone):
         '''Авторизация пользователя через телефон'''
         self.wait_click(el_auth.login_in_phone)
-        method_start = self.find(el_auth.login_in_phone)
-        method_start.click()
+        self.click_element(el_auth.login_in_phone)
         self.wait_click(el_auth.code_country)
-        on_country_code = self.find(el_auth.code_country)
-        on_country_code.click()
+        self.click_element(el_auth.code_country)
         if code_phone == el_auth.kirgistan_code:
             self.wait(el_auth.search_country)
-            send_country = self.find(el_auth.search_country)
-            send_country.click()
-            send_country.send_keys('Киргизия')
+            self.send_keys_element(el_auth.search_country, 'Киргизия')
         self.wait_click(code_phone)
-        on_russian_code = self.find(code_phone)
-        on_russian_code.click()
+        self.click_element(code_phone)
         self.wait(el_auth.form_phone)
-        send_phone = self.find(el_auth.form_phone)
-        send_phone.send_keys(phone)
-        button_send_phone = self.find(el_auth.button_send_phone)
-        button_send_phone.click()
+        self.send_keys_element(el_auth.form_phone, phone)
+        self.click_element(el_auth.button_send_phone)
         self.wait_click(el_auth.code_input)
-        input_code = self.find(el_auth.code_input)
-        input_code.click()
+        self.click_element(el_auth.code_input)
         self.sms()
 
     def registration(self, code_phone, country, phone):
@@ -96,6 +88,7 @@ class AndroidApp(BaseApp):
         self.wait(el_auth.complete_delete_button)
         complete_delete = self.find(el_auth.complete_delete_button)
         complete_delete.click()
+
 
     def button_sub(self):
         '''Проверка кнопки подписки на карте'''
