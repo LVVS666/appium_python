@@ -35,35 +35,26 @@ class AndroidApp(BaseApp):
     def registration(self, code_phone, country, phone):
         '''Регистрация пользователя через телефон'''
         self.wait_click(el_auth.login_in_phone)
-        method_start = self.find(el_auth.login_in_phone)
-        method_start.click()
+        self.click_element(el_auth.login_in_phone)
         self.wait_click(el_auth.code_country)
-        on_country_code = self.find(el_auth.code_country)
-        on_country_code.click()
+        self.click_element(el_auth.code_country)
         if code_phone == el_auth.kirgistan_code:
             self.wait(el_auth.search_country)
-            send_country = self.find(el_auth.search_country)
-            send_country.click()
-            send_country.send_keys('Киргизия')
+            self.send_keys_element(el_auth.search_country, 'Киргизия')
         self.wait_click(code_phone)
-        on_russian_code = self.find(code_phone)
-        on_russian_code.click()
+        self.click_element(code_phone)
         self.wait(el_auth.form_phone)
-        send_phone = self.find(el_auth.form_phone)
-        send_phone.send_keys(phone)
-        button_send_phone = self.find(el_auth.button_send_phone)
-        button_send_phone.click()
+        self.send_keys_element(el_auth.form_phone, phone)
+        self.click_element(el_auth.button_send_phone)
         self.wait_click(el_auth.code_input)
-        input_code = self.find(el_auth.code_input)
-        input_code.click()
+        self.click_element(el_auth.code_input)
         self.sms()
         self.wait_click(country)
-        on_country = self.find(country)
-        on_country.click()
+        self.click_element(country)
         time.sleep(2)
-        button_send_country = self.find(el_auth.button_send_country)
-        button_send_country.click()
+        self.click_element(el_auth.button_send_country)
         time.sleep(2)
+        # проверить в базе зону пользователя(сделать такой же запрос на api)
         # db_connect = DbConnect()
         # zone_search = db_connect.search_zone(phone=phone)
         # assert zone_search == zone, 'Пользователь создался с другой зоной или при создание зона не добавилась в базу'
@@ -71,23 +62,18 @@ class AndroidApp(BaseApp):
     def delete_user(self):
         '''Удаление активного пользователя'''
         self.wait_click(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
+        self.click_element(el_auth.main_menu)
         self.wait_click(el_auth.profile_user)
-        profile = self.find(el_auth.profile_user)
-        profile.click()
+        self.click_element(el_auth.profile_user)
         self.wait_click(el_auth.exit_and_delete)
-        exit_delete = self.find(el_auth.exit_and_delete)
-        exit_delete.click()
+        self.click_element(el_auth.exit_and_delete)
         self.wait_click(el_auth.delete_user)
-        delete_button = self.find(el_auth.delete_user)
-        delete_button.click()
+        self.click_element(el_auth.delete_user)
         self.wait_click(el_auth.on_delete)
-        delete = self.find(el_auth.on_delete)
-        delete.click()
+        self.click_element(el_auth.on_delete)
         self.wait(el_auth.complete_delete_button)
-        complete_delete = self.find(el_auth.complete_delete_button)
-        complete_delete.click()
+        self.click_element(el_auth.complete_delete_button)
+        # cделать проверку на удаление в базе
 
 
     def button_sub(self):
@@ -119,35 +105,28 @@ class AndroidApp(BaseApp):
     def exit(self):
         '''Выход из аккаунта'''
         self.wait_click(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
+        self.click_element(el_auth.main_menu)
         self.wait_click(el_auth.profile_user)
-        profile = self.find(el_auth.profile_user)
-        profile.click()
+        self.click_element(el_auth.profile_user)
         self.wait_click(el_auth.exit_and_delete)
-        exit_delete = self.find(el_auth.exit_and_delete)
-        exit_delete.click()
+        self.click_element(el_auth.exit_and_delete)
         self.wait(el_auth.button_exit)
-        bt_exit = self.find(el_auth.button_exit)
-        bt_exit.click()
+        self.click_element(el_auth.button_exit)
+
 
     def documents(self):
         '''Проверка наличия всех стран в документах'''
         self.wait(el_auth.outside_map)
-        map = self.find(el_auth.outside_map)
-        map.click()
-        menu = self.find(el_auth.main_menu)
-        menu.click()
+        self.click_element(el_auth.outside_map)
+        self.click_element(el_auth.main_menu)
         self.wait(el_doc.documents)
-        documents = self.find(el_doc.documents)
-        documents.click()
+        self.click_element(el_doc.documents)
         self.wait(el_doc.russian_documents)
         assert self.find(el_doc.russian_documents),'В документах отсутствует раздел Российской Федерации'
         assert self.find(el_doc.kazahstan_documents), 'В документах отсутствует раздел Казахстана'
         assert self.find(el_doc.kirgistan_documents), 'В документах отсутствует раздел Кыргызстан'
         assert self.find(el_doc.belarussia_documents), 'В документах отсутствует раздел Беларуссии'
-        back = self.find(el_doc.button_back_documents)
-        back.click()
+        self.click_element(el_doc.button_back_documents)
 
     def documents_in_russia(self):
         '''Проверка документов у России'''
