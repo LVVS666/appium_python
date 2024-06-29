@@ -39,6 +39,13 @@ class BaseApp:
         locator_element.click()
         locator_element.send_keys(text)
 
+    def send_keys_element_click(self, locator, text):
+        '''Заполнить форму элемента текстом'''
+        self.wait(locator)
+        locator_element = self.find(locator)
+        locator_element.send_keys(text)
+        locator_element.click()
+
     def wait_click(self, args):
         '''Ожидание кликабельного элемента'''
         WebDriverWait(self.app, 20).until(EC.element_to_be_clickable(args))
@@ -56,56 +63,30 @@ class BaseApp:
                              assert_requisites
                             ):
         '''Проверка документов у стран'''
-        self.wait(el_auth.outside_map)
-        map = self.find(el_auth.outside_map)
-        map.click()
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(el_doc.documents)
-        documents = self.find(el_doc.documents)
-        documents.click()
-        self.wait(user_consent)
-        consent = self.find(user_consent)
-        consent.click()
+        self.click_element(el_auth.outside_map)
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_doc.documents)
+        self.click_element(user_consent)
         self.wait(consent_text)
         assert_consent_text = self.find(consent_text).text
         assert assert_consent_text == assert_consent, 'Текст из <Пользовательского соглашения> не соответствует'
-        button_close = self.find(el_doc.button_close)
-        button_close.click()
-        self.wait(el_auth.outside_map)
-        map = self.find(el_auth.outside_map)
-        map.click()
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(el_doc.documents)
-        documents = self.find(el_doc.documents)
-        documents.click()
-        self.wait(politice_date)
-        consent = self.find(politice_date)
-        consent.click()
+        self.click_element(el_doc.button_close)
+        self.click_element(el_auth.outside_map)
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_doc.documents)
+        self.click_element(politice_date)
         self.wait(politice_text)
         assert_politice_text = self.find(politice_text).text
         assert assert_politice_text == assert_politice, 'Текст из <Политика персональных данных> не соответствует'
-        button_close = self.find(el_doc.button_close)
-        button_close.click()
-        self.wait(el_auth.outside_map)
-        map = self.find(el_auth.outside_map)
-        map.click()
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(el_doc.documents)
-        documents = self.find(el_doc.documents)
-        documents.click()
-        self.wait(requisites)
-        consent = self.find(requisites)
-        consent.click()
+        self.click_element(el_doc.button_close)
+        self.click_element(el_auth.outside_map)
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_doc.documents)
+        self.click_element(requisites)
         self.wait(requisites_text)
         assert_requisites_text = self.find(requisites_text).text
         assert assert_requisites_text == assert_requisites, 'Текст из <Реквизиты> не соответствует'
-        button_close = self.find(el_doc.button_close)
-        button_close.click()
+        self.click_element(el_doc.button_close)
         self.wait(el_auth.outside_map)
 
     def sms(self):
@@ -126,56 +107,31 @@ class BaseApp:
                              cvc=None,
                              button_pay=None):
         '''Добавление карты с главной страницы'''
-        self.wait(el_card.main_button_card)
-        button_card = self.find(el_card.main_button_card)
-        button_card.click()
+        self.click_element(el_card.main_button_card)
         time.sleep(2)
         if number == el_card.number_kirgistan:
-            self.wait(form_number_card)
-            number_card = self.find(form_number_card)
-            number_card.send_keys(number)
+            self.send_keys_element(form_number_card, number)
             self.app.press_keycode(66)
-            year_card_month = self.find(form_year_card_month)
-            year_card_month.send_keys(year_month)
-            year_card_month.click()
-            self.wait(el_card.accec_09)
-            button_month = self.find(el_card.accec_09)
-            button_month.click()
-            year_card = self.find(form_year_card)
-            year_card.send_keys(year)
-            year_card.click()
-            self.wait(el_card.accec_2026)
-            button_month = self.find(el_card.accec_2026)
-            button_month.click()
-            cvc_card = self.find(form_cvc)
-            cvc_card.send_keys(cvc)
-            button_send_date_card = self.find(button_pay)
-            button_send_date_card.click()
+            self.send_keys_element_click(form_year_card_month, year_month)
+            self.click_element(el_card.accec_09)
+            self.send_keys_element_click(form_year_card, year)
+            self.click_element(el_card.accec_2026)
+            self.send_keys_element(form_cvc, cvc)
+            self.click_element(button_pay)
         else:
-            self.wait(form_number_card)
-            number_card = self.find(form_number_card)
-            number_card.send_keys(number)
-            year_card = self.find(form_year_card)
-            year_card.send_keys(year)
-            cvc_card = self.find(form_cvc)
-            cvc_card.send_keys(cvc)
-            button_send_date_card = self.find(button_pay)
-            button_send_date_card.click()
-
+            self.send_keys_element(form_number_card, number)
+            self.send_keys_element(form_year_card, year)
+            self.send_keys_element(form_cvc, cvc)
+            self.click_element(button_pay)
 
     def find_card(self, bin_country):
         '''Проверка добавленной карты в меню'''
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(el_card.user_cards)
-        cards = self.find(el_card.user_cards)
-        cards.click()
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_card.user_cards)
         self.wait(el_card.bin_card)
         access_bin = self.find(el_card.bin_card).text
         assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
-        back = self.find(el_card.back_to_map)
-        back.click()
+        self.click_element(el_card.back_to_map)
 
     def add_card_menu(self,
                       form_number_card,
@@ -190,58 +146,31 @@ class BaseApp:
                       form_year_card_month=None,
                       year_month=None):
         '''Добавление карты через меню'''
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(el_card.user_cards)
-        cards = self.find(el_card.user_cards)
-        cards.click()
-        self.wait(el_card.add_card)
-        button_add_card = self.find(el_card.add_card)
-        button_add_card.click()
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_card.user_cards)
+        self.click_element(el_card.add_card)
         if number == el_card.number_kirgistan:
-            self.wait(form_number_card)
-            number_card = self.find(form_number_card)
-            number_card.send_keys(number)
+            self.send_keys_element(form_number_card, number)
             self.app.press_keycode(66)
-            year_card_month = self.find(form_year_card_month)
-            year_card_month.send_keys(year_month)
-            year_card_month.click()
-            self.wait(el_card.accec_09)
-            button_month = self.find(el_card.accec_09)
-            button_month.click()
-            year_card = self.find(form_year_card)
-            year_card.send_keys(year)
-            year_card.click()
-            self.wait(el_card.accec_2026)
-            button_month = self.find(el_card.accec_2026)
-            button_month.click()
-            cvc_card = self.find(form_cvc)
-            cvc_card.send_keys(cvc)
-            button_send_date_card = self.find(button_pay)
-            button_send_date_card.click()
+            self.send_keys_element_click(form_year_card_month, year_month)
+            self.click_element(el_card.accec_09)
+            self.send_keys_element_click(form_year_card, year)
+            self.click_element(el_card.accec_2026)
+            self.send_keys_element(form_cvc, cvc)
+            self.click_element(button_pay)
         else:
-            self.wait(form_number_card)
-            number_card = self.find(form_number_card)
-            number_card.send_keys(number)
-            year_card = self.find(form_year_card)
-            year_card.send_keys(year)
-            cvc_card = self.find(form_cvc)
-            cvc_card.send_keys(cvc)
-            button_send_date_card = self.find(button_pay)
-            button_send_date_card.click()
+            self.send_keys_element(form_number_card, number)
+            self.send_keys_element(form_year_card, year)
+            self.send_keys_element(form_cvc, cvc)
+            self.click_element(button_pay)
         if number != el_card.number_belarussia and number != el_card.number_kirgistan:
-            self.wait(operation_button_ok)
-            button_ok = self.find(operation_button_ok)
-            button_ok.click()
+            self.click_element(operation_button_ok)
         self.wait(el_card.banner_card_ok)
         self.wait(el_card.bin_card)
         access_bin = self.find(el_card.bin_card).text
         assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
-        self.wait(el_card.back_to_map)
-        back = self.find(el_card.back_to_map)
         time.sleep(2)
-        back.click()
+        self.click_element(el_card.back_to_map)
 
     def add_card_in_subscription(self,
                                  form_number_card,
@@ -251,21 +180,12 @@ class BaseApp:
                                  cvc,
                                  button_pay):
         '''Привязка карты через оформление подписки'''
-        self.wait(el_auth.subscription)
-        button_subscription = self.find(el_auth.subscription)
-        button_subscription.click()
-        self.wait(el_card.subscription_add)
-        connect_card = self.find(el_card.subscription_add)
-        connect_card.click()
-        self.wait(form_number_card)
-        number_card = self.find(form_number_card)
-        number_card.send_keys(number)
-        year_card = self.find(form_year_card)
-        year_card.send_keys(year)
-        cvc_card = self.find(form_cvc)
-        cvc_card.send_keys(cvc)
-        button_send_date_card = self.find(button_pay)
-        button_send_date_card.click()
+        self.click_element(el_auth.subscription)
+        self.click_element(el_card.subscription_add)
+        self.send_keys_element(form_number_card, number)
+        self.send_keys_element(form_year_card, year)
+        self.send_keys_element(form_cvc, cvc)
+        self.click_element(button_pay)
 
     def card_replace(self,
                      bin_country,
@@ -281,68 +201,33 @@ class BaseApp:
                      form_year_card_month=None,
                      year_month=None):
         '''Замена карты'''
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(el_card.user_cards)
-        cards = self.find(el_card.user_cards)
-        cards.click()
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_card.user_cards)
         self.wait(el_card.bin_card)
         access_bin = self.find(el_card.bin_card).text
         assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
-        self.wait(el_card.add_card)
-        button_add_card = self.find(el_card.add_card)
-        button_add_card.click()
+        self.click_element(el_card.add_card)
         if new_number == el_card.new_number_russia:
-            self.wait(el_card.replace_new_card)
-            button_replace = self.find(el_card.replace_new_card)
-            button_replace.click()
+            self.click_element(el_card.replace_new_card)
         if new_number == el_card.new_number_kirgistan:
-            self.wait(form_number_card)
-            number_card = self.find(form_number_card)
-            number_card.send_keys(new_number)
+            self.send_keys_element(form_number_card, new_number)
             self.app.press_keycode(66)
-            year_card_month = self.find(form_year_card_month)
-            year_card_month.send_keys(year_month)
-            year_card_month.click()
-            self.wait(el_card.accec_05)
-            button_month = self.find(el_card.accec_05)
-            button_month.click()
-            year_card = self.find(form_year_card)
-            year_card.send_keys(new_year)
-            year_card.click()
-            self.wait(el_card.accec_2027)
-            button_month = self.find(el_card.accec_2027)
-            button_month.click()
-            cvc_card = self.find(form_cvc)
-            cvc_card.send_keys(new_cvc)
-            button_send_date_card = self.find(button_pay)
-            button_send_date_card.click()
+            self.send_keys_element_click(form_year_card_month, year_month)
+            self.click_element(el_card.accec_05)
+            self.send_keys_element_click(form_year_card, new_year)
+            self.click_element(el_card.accec_2027)
+            self.send_keys_element(form_cvc, new_cvc)
+            self.click_element(button_pay)
         if new_number != el_card.new_number_kirgistan:
-            self.wait(form_year_card)
-            year_card = self.find(form_year_card)
-            year_card.send_keys(new_year)
-            number_card = self.find(form_number_card)
-            number_card.send_keys(new_number)
-            cvc_card = self.find(form_cvc)
-            cvc_card.send_keys(new_cvc)
-            button_send_date_card = self.find(button_pay)
-            button_send_date_card.click()
+            self.send_keys_element(form_year_card, new_year)
+            self.send_keys_element(form_number_card, new_number)
+            self.send_keys_element(form_cvc,new_cvc)
+            self.click_element(button_pay)
         if new_number != el_card.new_number_belarussia and new_number != el_card.new_number_kirgistan:
-            self.wait(operation_button_ok)
-            button_ok = self.find(operation_button_ok)
-            button_ok.click()
+            self.click_element(operation_button_ok)
         self.wait(el_card.banner_card_ok)
         self.wait(el_card.bin_card)
         access_new_bin = self.find(el_card.bin_card).text
         assert access_new_bin == new_bin_country, 'Номер добавленной карты не совпадает'
-        self.wait(el_card.back_to_map)
-        back = self.find(el_card.back_to_map)
         time.sleep(2)
-        back.click()
-
-
-
-
-
-
+        self.click_element(el_card.back_to_map)

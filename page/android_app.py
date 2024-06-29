@@ -7,7 +7,6 @@ from element_locators import card_elements as el_card
 from element_locators import doc_elements as el_doc
 from element_locators import sub_elements as el_sub
 from element_locators import tariff_elements as el_tariff
-from fixtures.db_settings import DbConnect
 from page.base_app import BaseApp
 
 
@@ -41,10 +40,6 @@ class AndroidApp(BaseApp):
         time.sleep(2)
         self.click_element(el_auth.button_send_country)
         time.sleep(2)
-        # проверить в базе зону пользователя(сделать такой же запрос на api)
-        # db_connect = DbConnect()
-        # zone_search = db_connect.search_zone(phone=phone)
-        # assert zone_search == zone, 'Пользователь создался с другой зоной или при создание зона не добавилась в базу'
 
     def delete_user(self):
         '''Удаление активного пользователя'''
@@ -54,7 +49,6 @@ class AndroidApp(BaseApp):
         self.click_element(el_auth.delete_user)
         self.click_element(el_auth.on_delete)
         self.click_element(el_auth.complete_delete_button)
-        # cделать проверку на удаление в базе
 
 
     def button_sub(self):
