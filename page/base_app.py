@@ -28,10 +28,12 @@ class BaseApp:
 
     def click_element(self, locator):
         '''Кликнуть по элементу'''
+        self.wait_click(locator)
         locator_element = self.find(locator)
         locator_element.click()
 
     def send_keys_element(self, locator, text):
+        self.wait(locator)
         locator_element = self.find(locator)
         locator_element.click()
         locator_element.send_keys(text)

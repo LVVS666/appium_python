@@ -16,40 +16,27 @@ class AndroidApp(BaseApp):
 
     def auth(self, code_phone, phone):
         '''Авторизация пользователя через телефон'''
-        self.wait_click(el_auth.login_in_phone)
         self.click_element(el_auth.login_in_phone)
-        self.wait_click(el_auth.code_country)
         self.click_element(el_auth.code_country)
         if code_phone == el_auth.kirgistan_code:
-            self.wait(el_auth.search_country)
             self.send_keys_element(el_auth.search_country, 'Киргизия')
-        self.wait_click(code_phone)
         self.click_element(code_phone)
-        self.wait(el_auth.form_phone)
         self.send_keys_element(el_auth.form_phone, phone)
         self.click_element(el_auth.button_send_phone)
-        self.wait_click(el_auth.code_input)
         self.click_element(el_auth.code_input)
         self.sms()
 
     def registration(self, code_phone, country, phone):
         '''Регистрация пользователя через телефон'''
-        self.wait_click(el_auth.login_in_phone)
         self.click_element(el_auth.login_in_phone)
-        self.wait_click(el_auth.code_country)
         self.click_element(el_auth.code_country)
         if code_phone == el_auth.kirgistan_code:
-            self.wait(el_auth.search_country)
             self.send_keys_element(el_auth.search_country, 'Киргизия')
-        self.wait_click(code_phone)
         self.click_element(code_phone)
-        self.wait(el_auth.form_phone)
         self.send_keys_element(el_auth.form_phone, phone)
         self.click_element(el_auth.button_send_phone)
-        self.wait_click(el_auth.code_input)
         self.click_element(el_auth.code_input)
         self.sms()
-        self.wait_click(country)
         self.click_element(country)
         time.sleep(2)
         self.click_element(el_auth.button_send_country)
@@ -61,17 +48,11 @@ class AndroidApp(BaseApp):
 
     def delete_user(self):
         '''Удаление активного пользователя'''
-        self.wait_click(el_auth.main_menu)
         self.click_element(el_auth.main_menu)
-        self.wait_click(el_auth.profile_user)
         self.click_element(el_auth.profile_user)
-        self.wait_click(el_auth.exit_and_delete)
         self.click_element(el_auth.exit_and_delete)
-        self.wait_click(el_auth.delete_user)
         self.click_element(el_auth.delete_user)
-        self.wait_click(el_auth.on_delete)
         self.click_element(el_auth.on_delete)
-        self.wait(el_auth.complete_delete_button)
         self.click_element(el_auth.complete_delete_button)
         # cделать проверку на удаление в базе
 
@@ -104,22 +85,16 @@ class AndroidApp(BaseApp):
 
     def exit(self):
         '''Выход из аккаунта'''
-        self.wait_click(el_auth.main_menu)
         self.click_element(el_auth.main_menu)
-        self.wait_click(el_auth.profile_user)
         self.click_element(el_auth.profile_user)
-        self.wait_click(el_auth.exit_and_delete)
         self.click_element(el_auth.exit_and_delete)
-        self.wait(el_auth.button_exit)
         self.click_element(el_auth.button_exit)
 
 
     def documents(self):
         '''Проверка наличия всех стран в документах'''
-        self.wait(el_auth.outside_map)
         self.click_element(el_auth.outside_map)
         self.click_element(el_auth.main_menu)
-        self.wait(el_doc.documents)
         self.click_element(el_doc.documents)
         self.wait(el_doc.russian_documents)
         assert self.find(el_doc.russian_documents),'В документах отсутствует раздел Российской Федерации'
@@ -186,18 +161,12 @@ class AndroidApp(BaseApp):
 
     def tarif(self, tariff_country, assert_text):
         '''Проверка тарифа для страны'''
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(el_tariff.tariff_menu)
-        tariff = self.find(el_tariff.tariff_menu)
-        tariff.click()
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_tariff.tariff_menu)
         self.wait(tariff_country)
         text_tariff = self.find(tariff_country).text
         assert assert_text == text_tariff, 'Название тарифа не соответствует'
-        self.wait(el_tariff.tariff_close)
-        close = self.find(el_tariff.tariff_close)
-        close.click()
+        self.click_element(el_tariff.tariff_close)
 
     def add_card_in_russia(self):
         '''Добавление карты для России с главной страницы'''
@@ -210,13 +179,9 @@ class AndroidApp(BaseApp):
             cvc=el_card.cvc_russia,
             button_pay=el_card.button_pay_in_russia,
         )
-        self.wait(el_card.operation_button_ok_in_russia)
-        button_ok = self.find(el_card.operation_button_ok_in_russia)
-        button_ok.click()
+        self.click_element(el_card.operation_button_ok_in_russia)
         self.wait(el_card.banner_card_ok)
-        self.wait(el_card.banner_off)
-        banner_close = self.find(el_card.banner_off)
-        banner_close.click()
+        self.click_element(el_card.banner_off)
 
     def add_card_in_russia_menu(self):
         '''Добавление карты для России из меню'''
@@ -258,9 +223,7 @@ class AndroidApp(BaseApp):
             cvc=el_card.cvc_russia,
             button_pay=el_card.button_pay_in_russia,
         )
-        self.wait(el_card.operation_button_ok_in_russia)
-        button_ok = self.find(el_card.operation_button_ok_in_russia)
-        button_ok.click()
+        self.click_element(el_card.operation_button_ok_in_russia)
         self.wait(el_card.subscription_ok)
 
     def add_card_in_belarussia(self):
@@ -317,9 +280,7 @@ class AndroidApp(BaseApp):
             cvc=el_card.cvc_kazahstan,
             button_pay=el_card.button_pay_in_kazahstan,
         )
-        self.wait(el_card.operation_button_ok_in_kazahstan)
-        button_ok = self.find(el_card.operation_button_ok_in_kazahstan)
-        button_ok.click()
+        self.click_element(el_card.operation_button_ok_in_kazahstan)
         self.wait(el_card.banner_card_ok)
         time.sleep(2)
 
@@ -401,61 +362,38 @@ class AndroidApp(BaseApp):
 
     def pay_subscription_on_map(self):
         '''Покупка подписки с главного экрана, проверка счетчика на главном экране,в разделе подписки, в меню'''
-        self.wait(el_auth.subscription)
-        sub_button = self.find(el_auth.subscription)
-        sub_button.click()
-        self.wait(el_card.subscription_add)
-        add_sub_button = self.find(el_card.subscription_add)
-        add_sub_button.click()
+        self.click_element(el_auth.subscription)
+        self.click_element(el_card.subscription_add)
         self.wait(el_card.subscription_ok)
         self.wait(el_sub.button_subscription)
         count_button = self.find(el_sub.button_subscription)
         assert count_button.text == el_sub.access_button, 'На кнопке подписки не отображается количество аренд'
-        self.wait_click(el_sub.subscriptions)
-        button = self.find(el_sub.subscriptions)
-        button.click()
+        self.click_element(el_sub.subscriptions)
         self.wait(el_sub.count_subscription)
         count = self.find(el_sub.count_subscription)
         assert count.text == el_sub.access_count, 'В разделе подписки не соответсвует количество аренд'
-        close = self.find(el_sub.off_subscription)
-        close.click()
+        self.click_element(el_sub.off_subscription)
         self.wait(el_auth.main_map)
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
+        self.click_element(el_auth.main_menu)
         self.wait(el_sub.count_subscription_button)
         sub_button_menu = self.find(el_sub.count_subscription_button)
         assert sub_button_menu.text == el_sub.access_count, 'В главном меню не отображается количество аренд по подписке'
-        back = self.find(el_sub.back_map)
-        back.click()
+        self.click_element(el_sub.back_map)
         self.wait(el_auth.main_map)
 
     def pay_subscription_on_and_off(self):
         '''Покупка подписки на главном экране, отказ от автопродление, автопродление'''
-        self.wait(el_auth.subscription)
-        sub_button = self.find(el_auth.subscription)
-        sub_button.click()
-        self.wait(el_card.subscription_add)
-        add_sub_button = self.find(el_card.subscription_add)
-        add_sub_button.click()
+        self.click_element(el_auth.subscription)
+        self.click_element(el_card.subscription_add)
         self.wait(el_card.subscription_ok)
-        self.wait_click(el_sub.subscriptions)
-        button = self.find(el_sub.subscriptions)
-        button.click()
-        self.wait(el_sub.off_subscription)
-        off_subscription = self.find(el_sub.button_off_subscription)
-        off_subscription.click()
-        self.wait(el_sub.on_delete)
-        delete_sub = self.find(el_sub.on_delete)
-        delete_sub.click()
+        self.click_element(el_sub.subscriptions)
+        self.click_element(el_sub.off_subscription)
+        self.click_element(el_sub.on_delete)
         self.wait(el_sub.subscription_off_text)
         text_off_subscription = self.find(el_sub.subscription_off_text).text
         assert text_off_subscription == el_sub.access_text, 'Нет уведомление об отключение автопродления'
-        back_sub = self.find(el_sub.button_return_subscription)
-        back_sub.click()
-        self.wait(el_card.subscription_add)
-        add_sub_button = self.find(el_card.subscription_add)
-        add_sub_button.click()
+        self.click_element(el_sub.button_return_subscription)
+        self.click_element(el_card.subscription_add)
         self.wait(el_card.subscription_ok)
 
     def pay_subscription_on_banner(self):
@@ -469,68 +407,44 @@ class AndroidApp(BaseApp):
             cvc=el_card.cvc_russia,
             button_pay=el_card.button_pay_in_russia,
         )
-        self.wait(el_card.operation_button_ok_in_russia)
-        button_ok = self.find(el_card.operation_button_ok_in_russia)
-        button_ok.click()
-        self.wait(el_sub.banner_subscription_pay)
-        banner_pay = self.find(el_sub.banner_subscription_pay)
-        banner_pay.click()
-        self.wait(el_card.subscription_add)
-        add_sub_button = self.find(el_card.subscription_add)
-        add_sub_button.click()
+        self.click_element(el_card.operation_button_ok_in_russia)
+        self.click_element(el_sub.banner_subscription_pay)
+        self.click_element(el_card.subscription_add)
         self.wait(el_card.subscription_ok)
         self.wait(el_sub.button_subscription)
         count_button = self.find(el_sub.button_subscription)
         assert count_button.text == el_sub.access_button, 'На кнопке подписки не отображается количество аренд'
-        self.wait_click(el_sub.subscriptions)
-        button = self.find(el_sub.subscriptions)
-        button.click()
+        self.click_element(el_sub.subscriptions)
         self.wait(el_sub.count_subscription)
         count = self.find(el_sub.count_subscription)
         assert count.text == el_sub.access_count, 'В разделе подписки не соответсвует количество аренд'
-        close = self.find(el_sub.off_subscription)
-        close.click()
+        self.click_element(el_sub.off_subscription)
         self.wait(el_auth.main_map)
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
+        self.click_element(el_auth.main_menu)
         self.wait(el_sub.count_subscription_button)
         sub_button_menu = self.find(el_sub.count_subscription_button)
         assert sub_button_menu.text == el_sub.access_count, 'В главном меню не отображается количество аренд по подписке'
-        back = self.find(el_sub.back_map)
-        back.click()
+        self.click_element(el_sub.back_map)
         self.wait(el_auth.main_map)
 
     def pay_subscription_on_menu(self):
         '''Покупка подписки в меню, проверка счетчика на главном экране,в разделе подписки, в меню'''
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
-        self.wait(el_sub.subscriptions_menu)
-        sub_menu = self.find(el_sub.subscriptions_menu)
-        sub_menu.click()
-        self.wait(el_card.subscription_add)
-        add_sub_button = self.find(el_card.subscription_add)
-        add_sub_button.click()
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_sub.subscriptions_menu)
+        self.click_element(el_card.subscription_add)
         self.wait(el_card.subscription_ok)
         self.wait(el_sub.button_subscription)
         count_button = self.find(el_sub.button_subscription)
         assert count_button.text == el_sub.access_button, 'На кнопке подписки не отображается количество аренд'
-        self.wait_click(el_sub.subscriptions)
-        button = self.find(el_sub.subscriptions)
-        button.click()
+        self.click_element(el_sub.subscriptions)
         self.wait(el_sub.count_subscription)
         count = self.find(el_sub.count_subscription)
         assert count.text == el_sub.access_count, 'В разделе подписки не соответсвует количество аренд'
-        close = self.find(el_sub.off_subscription)
-        close.click()
+        self.click_element(el_sub.off_subscription)
         self.wait(el_auth.main_map)
-        self.wait(el_auth.main_menu)
-        menu = self.find(el_auth.main_menu)
-        menu.click()
+        self.click_element(el_auth.main_menu)
         self.wait(el_sub.count_subscription_button)
         sub_button_menu = self.find(el_sub.count_subscription_button)
         assert sub_button_menu.text == el_sub.access_count, 'В главном меню не отображается количество аренд по подписке'
-        back = self.find(el_sub.back_map)
-        back.click()
+        self.click_element(el_sub.back_map)
         self.wait(el_auth.main_map)
