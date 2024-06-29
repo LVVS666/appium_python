@@ -33,6 +33,7 @@ class BaseApp:
         locator_element.click()
 
     def send_keys_element(self, locator, text):
+        '''Заполнить форму элемента текстом'''
         self.wait(locator)
         locator_element = self.find(locator)
         locator_element.click()
