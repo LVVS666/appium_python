@@ -1,11 +1,17 @@
-from element_locators import menu_elements as menu_el
+from element_locators import menu_elements as el_menu, auth_elements as el_auth
+from page.android_app import AndroidApp
 
 
-def test_not_auth_menu():
+def test_not_auth_menu(driver_android):
     '''Проверка разделов бокового меню у неавторизованного пользователя'''
-    pass
+    app_login = AndroidApp(driver_android)
+    app_login.checkout_menu()
 
 
-def test_auth_menu():
+
+def test_auth_menu(driver_android):
     '''Проверка разделов бокового меню у авторизованного пользователя'''
-    pass
+    app_login = AndroidApp(driver_android)
+    app_login.auth(code_phone=el_auth.russian_code, phone=el_auth.rus_kz_phone)
+    app_login.checkout_menu(auth=True)
+    app_login.delete_user()
