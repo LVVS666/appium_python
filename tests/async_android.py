@@ -82,4 +82,4 @@ def test_registration_in_phone_to_kazahstan_on_delete(driver_android_2):
     app_login.delete_user()
 
 # также нужно прокинуть по аппиум серверу на порт appium http://localhost:4725 и appium http://localhost:4723
-# pytest -n 2 tests/test_async_android.py - команда для запуска
+# pytest -n 2 tests/async_android.py - команда для запуска

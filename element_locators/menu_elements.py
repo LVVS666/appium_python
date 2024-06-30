@@ -1,5 +1,6 @@
 from appium.webdriver.common.appiumby import AppiumBy
 
+# Основное меню
 main_menu = (
     AppiumBy.XPATH,
     '//android.widget.ImageButton[@content-desc="Открыть навигацию"]'
@@ -13,38 +14,35 @@ back = (
     '//android.widget.ImageButton'
 )
 
-
 # Неавторизованный пользователь
 auth = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Войти"]'
+    '//android.widget.TextView[@text="Войти"]'
 )
 auth_access = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvChooseTitle"]'
+    '//android.widget.TextView[@text="Выберете способ верификации"]'
 )
 text_auth = 'Выберете способ верификации'
 # закрывается out_back_map
 
-
 support = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Поддержка"]'
+    '//android.widget.TextView[@text="Поддержка"]'
 )
 support_content = (
     AppiumBy.XPATH,
-    '(//android.widget.LinearLayout[@resource-id="ru.berizaryad.android.staging:id/layoutContent"])[1]'
+    '(//android.widget.LinearLayout[contains(@resource-id, "layoutContent")])[1]'
 )
 # закрывается out_back_map
 
-
 documents = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Документы"]'
+    '//android.widget.TextView[@text="Документы"]'
 )
 doc_access = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvTitle"]'
+    '//android.widget.TextView[@text="Выбери страну"]'
 )
 text_doc = 'Выбери страну'
 back_documents = (
@@ -52,10 +50,9 @@ back_documents = (
     '//android.widget.ImageButton[@resource-id="ru.berizaryad.android.staging:id/btnBack"]'
 )
 
-
 franchizing = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Франчайзинг"]'
+    '//android.widget.TextView[@text="Франчайзинг"]'
 )
 main_banner = (
     AppiumBy.XPATH,
@@ -65,46 +62,43 @@ main_banner = (
 
 about = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="О приложении"]'
+    '//android.widget.TextView[@text="О приложении"]'
 )
 about_content = (
     AppiumBy.XPATH,
-    '//android.widget.FrameLayout[@resource-id="ru.berizaryad.android.staging:id/container"]/android.widget.LinearLayout/android.view.ViewGroup'
+    '//android.widget.FrameLayout/android.widget.LinearLayout/android.view.ViewGroup'
 )
 # использует локатор back для возврата
 
 # Авторизованный пользователь
 profile = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Профиль"]'
+    '//android.widget.TextView[@text="Профиль"]'
 )
 profile_content = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvPhoneTitle"]'
+    '//android.widget.TextView[@text="Телефон"]'
 )
 # использует локатор back для возврата
 
-
 pay = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Способ оплаты"]'
+    '//android.widget.TextView[@text="Способ оплаты"]'
 )
 pay_content = (
     AppiumBy.XPATH,
-    '//android.widget.LinearLayout[@resource-id="ru.berizaryad.android.staging:id/llCard"]'
+    '//android.widget.LinearLayout[contains(@resource-id, "llCard")]'
 )
 # использует для закрытия локатор бокового меню
 
-
-subsctiption = (
+subscription = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Подписка"]'
+    '//android.widget.TextView[@text="Подписка"]'
 )
-
 
 partners = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Акции партнеров"]'
+    '//android.widget.TextView[@text="Акции партнеров"]'
 )
 partners_content = (
     AppiumBy.XPATH,
@@ -112,25 +106,23 @@ partners_content = (
 )
 # использует для закрытия локатор бокового меню
 
-
 tariff = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Тарифы"]'
+    '//android.widget.TextView[@text="Тарифы"]'
 )
 tariff_content = (
     AppiumBy.XPATH,
-    '//android.view.ViewGroup[@resource-id="ru.berizaryad.android.staging:id/clMainModal"]/android.webkit.WebView/android.webkit.WebView'
+    '//android.webkit.WebView/android.webkit.WebView'
 )
 # использует для закрытия локатор бокового меню
 
-
-bonuse = (
+bonuses = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/menuText" and @text="Бонусы"]'
+    '//android.widget.TextView[@text="Бонусы"]'
 )
 bonus_access = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvShare"]'
+    '//android.widget.TextView[@text="Делись бонусами и заряжайся бесплатно"]'
 )
 text_bonus = 'Делись бонусами и заряжайся бесплатно'
 # использует для закрытия локатор бокового меню
