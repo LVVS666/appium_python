@@ -22,6 +22,10 @@ class BaseApp:
         '''Ожидание видимого элемента'''
         WebDriverWait(self.app, 20).until(EC.presence_of_element_located(args))
 
+    def wait_not(self, args):
+        '''Ожидание невидимого элемента'''
+        WebDriverWait(self.app, 5).until(EC.presence_of_element_located(args))
+
     def wait_banner_and_push(self, args):
         '''Ожидание баннера или уведомления'''
         WebDriverWait(self.app, 10).until(EC.presence_of_element_located(args))

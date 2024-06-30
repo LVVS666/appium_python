@@ -7,7 +7,7 @@ main_menu = (
 )
 out_back_map = (
     AppiumBy.XPATH,
-    '//android.view.View[@resource-id="ru.berizaryad.android.staging:id/touch_outside"]'
+    "//*[ends-with(@resource-id, 'touch_outside')]"
 )
 back = (
     AppiumBy.XPATH,
@@ -21,9 +21,9 @@ auth = (
 )
 auth_access = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@text="Выберете способ верификации"]'
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvChooseTitle"]'
 )
-text_auth = 'Выберете способ верификации'
+text_auth = 'Выбери способ верификации'
 # закрывается out_back_map
 
 support = (

@@ -60,7 +60,7 @@ class AndroidApp(BaseApp):
     def not_button_sub(self):
         '''Проверка отсутствия кнопки подписки на карте'''
         try:
-            self.wait(el_auth.subscription)
+            self.wait_not(el_auth.subscription)
             assert self.find(el_auth.subscription) is None, 'Кнопка подписки найдена'
         except TimeoutException:
             return True
@@ -73,7 +73,7 @@ class AndroidApp(BaseApp):
     def not_button_bon(self):
         '''Проверка отсутствия кнопки бонусов на карте'''
         try:
-            self.wait(el_auth.bonuse)
+            self.wait_not(el_auth.bonuse)
             assert self.find(el_auth.bonuse) is None, 'Кнопка бонусов найдена'
         except TimeoutException:
             return True
@@ -446,6 +446,7 @@ class AndroidApp(BaseApp):
 
     def checkout_menu(self, auth=False):
         '''Проверка меню'''
+        self.click_element(el_menu.out_back_map)
         self.click_element(el_menu.main_menu)
         if auth is False:
             self.click_element(el_menu.auth)
@@ -461,7 +462,7 @@ class AndroidApp(BaseApp):
             assert self.find(el_menu.pay_content), 'Кнопка способы оплаты не сработала'
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.main_menu)
-            self.click_element(el_menu.subsctiption)
+            self.click_element(el_menu.subscription)
             assert self.find(el_sub.banner_subscription_pay), 'Кнопка подписка не сработала'
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.main_menu)
@@ -473,21 +474,25 @@ class AndroidApp(BaseApp):
             assert self.find(el_menu.tariff_content), 'Кнопка тарифы не сработала'
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.main_menu)
-            self.click_element(el_menu.bonuse)
+            self.click_element(el_menu.bonuses)
             assert self.find(el_menu.bonus_access).text == el_menu.text_bonus, 'Кнопка бонусы не сработала'
             self.click_element(el_menu.main_menu)
         self.click_element(el_menu.main_menu)
         self.click_element(el_menu.support)
+        self.wait(el_menu.support_content)
         assert self.find(el_menu.support_content), 'Кнопка поддержки не сработала'
         self.click_element(el_menu.out_back_map)
         self.click_element(el_menu.main_menu)
         self.click_element(el_menu.documents)
+        self.wait(el_menu.doc_access)
         assert self.find(el_menu.doc_access).text == el_menu.text_doc, 'Кнопка документов не сработала'
         self.click_element(el_menu.main_menu)
         self.click_element(el_menu.franchizing)
+        self.wait(el_menu.main_banner)
         assert self.find(el_menu.main_banner), 'Кнопка франшизы не сработала'
         self.click_element(el_menu.main_menu)
         self.click_element(el_menu.main_menu)
         self.click_element(el_menu.about)
+        self.wait(el_menu.about_content)
         assert self.find(el_menu.about_content), 'Кнопка о приложение не сработала'
         self.click_element(el_menu.back)
