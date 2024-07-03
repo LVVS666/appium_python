@@ -1,7 +1,4 @@
-import time
-
 from selenium.common import TimeoutException
-
 from element_locators import auth_elements as el_auth
 from element_locators import card_elements as el_card
 from element_locators import doc_elements as el_doc
@@ -38,9 +35,7 @@ class AndroidApp(BaseApp):
         self.click_element(el_auth.code_input)
         self.sms()
         self.click_element(country)
-        time.sleep(2)
         self.click_element(el_auth.button_send_country)
-        time.sleep(2)
 
     def delete_user(self):
         '''Удаление активного пользователя'''
@@ -233,7 +228,6 @@ class AndroidApp(BaseApp):
             button_pay=el_card.button_pay_in_belarussia,
         )
         self.wait(el_card.banner_card_ok)
-        time.sleep(2)
 
     def add_card_in_belarussia_menu(self):
         '''Добавление карты для Беларуси из меню'''
@@ -277,7 +271,6 @@ class AndroidApp(BaseApp):
         )
         self.click_element(el_card.operation_button_ok_in_kazahstan)
         self.wait(el_card.banner_card_ok)
-        time.sleep(2)
 
     def add_card_in_kazahstan_menu(self):
         '''Добавление карты для Казахстана из меню'''
@@ -322,7 +315,6 @@ class AndroidApp(BaseApp):
             button_pay=el_card.button_pay_in_kirgistan,
         )
         self.wait(el_card.banner_card_ok)
-        time.sleep(2)
 
     def add_card_in_kirgistan_menu(self):
         '''Добавление карты для Киргизиииз меню'''

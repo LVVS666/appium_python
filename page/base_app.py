@@ -1,5 +1,3 @@
-import time
-
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -112,7 +110,6 @@ class BaseApp:
                              button_pay=None):
         '''Добавление карты с главной страницы'''
         self.click_element(el_card.main_button_card)
-        time.sleep(2)
         if number == el_card.number_kirgistan:
             self.send_keys_element(form_number_card, number)
             self.app.press_keycode(66)
@@ -173,7 +170,6 @@ class BaseApp:
         self.wait(el_card.bin_card)
         access_bin = self.find(el_card.bin_card).text
         assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
-        time.sleep(2)
         self.click_element(el_card.back_to_map)
 
     def add_card_in_subscription(self,
@@ -233,5 +229,4 @@ class BaseApp:
         self.wait(el_card.bin_card)
         access_new_bin = self.find(el_card.bin_card).text
         assert access_new_bin == new_bin_country, 'Номер добавленной карты не совпадает'
-        time.sleep(2)
         self.click_element(el_card.back_to_map)
