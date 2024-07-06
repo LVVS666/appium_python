@@ -1,6 +1,6 @@
 import pytest
 from element_locators import auth_elements as el_auth
-from page.android_app import AndroidApp
+from page.main_menu import AndroidApp
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 
