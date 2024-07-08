@@ -17,6 +17,45 @@ class Documents(BaseApp):
         assert self.find(el_doc.belarussia_documents), 'В документах отсутствует раздел Беларуссии'
         self.click_element(el_doc.button_back_documents)
 
+    def documents_in_country(
+                             self,
+                             user_consent,
+                             consent_text,
+                             assert_consent,
+                             politice_date,
+                             politice_text,
+                             assert_politice,
+                             requisites,
+                             requisites_text,
+                             assert_requisites
+                            ):
+        '''Проверка документов у стран'''
+        self.click_element(el_auth.outside_map)
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_doc.documents)
+        self.click_element(user_consent)
+        self.wait(consent_text)
+        assert_consent_text = self.find(consent_text).text
+        assert assert_consent_text == assert_consent, 'Текст из <Пользовательского соглашения> не соответствует'
+        self.click_element(el_doc.button_close)
+        self.click_element(el_auth.outside_map)
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_doc.documents)
+        self.click_element(politice_date)
+        self.wait(politice_text)
+        assert_politice_text = self.find(politice_text).text
+        assert assert_politice_text == assert_politice, 'Текст из <Политика персональных данных> не соответствует'
+        self.click_element(el_doc.button_close)
+        self.click_element(el_auth.outside_map)
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_doc.documents)
+        self.click_element(requisites)
+        self.wait(requisites_text)
+        assert_requisites_text = self.find(requisites_text).text
+        assert assert_requisites_text == assert_requisites, 'Текст из <Реквизиты> не соответствует'
+        self.click_element(el_doc.button_close)
+        self.wait(el_auth.outside_map)
+
     def documents_in_russia(self):
         '''Проверка документов у России'''
         self.documents_in_country(

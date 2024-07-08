@@ -1,10 +1,144 @@
 from element_locators import card_elements as el_card
+from element_locators import auth_elements as el_auth
 from page.auth import Auth
 from page.base_app import BaseApp
 
 
 class Cards(BaseApp, Auth):
     '''Класс банковских карт'''
+    def add_card_main_button(self,
+                             form_number_card,
+                             number,
+                             form_year_card=None,
+                             year=None,
+                             form_year_card_month = None,
+                             year_month = None,
+                             form_cvc=None,
+                             cvc=None,
+                             button_pay=None):
+        '''Добавление карты с главной страницы'''
+        self.click_element(el_card.main_button_card)
+        if number == el_card.number_kirgistan:
+            self.send_keys_element(form_number_card, number)
+            self.app.press_keycode(66)
+            self.send_keys_element_click(form_year_card_month, year_month)
+            self.click_element(el_card.accec_09)
+            self.send_keys_element_click(form_year_card, year)
+            self.click_element(el_card.accec_2026)
+            self.send_keys_element(form_cvc, cvc)
+            self.click_element(button_pay)
+        else:
+            self.send_keys_element(form_number_card, number)
+            self.send_keys_element(form_year_card, year)
+            self.send_keys_element(form_cvc, cvc)
+            self.click_element(button_pay)
+
+    def find_card(self, bin_country):
+        '''Проверка добавленной карты в меню'''
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_card.user_cards)
+        self.wait(el_card.bin_card)
+        access_bin = self.find(el_card.bin_card).text
+        assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
+        self.click_element(el_card.back_to_map)
+
+    def add_card_menu(self,
+                      form_number_card,
+                      number,
+                      form_year_card,
+                      year,
+                      form_cvc,
+                      cvc,
+                      button_pay,
+                      bin_country,
+                      operation_button_ok=None,
+                      form_year_card_month=None,
+                      year_month=None):
+        '''Добавление карты через меню'''
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_card.user_cards)
+        self.click_element(el_card.add_card)
+        if number == el_card.number_kirgistan:
+            self.send_keys_element(form_number_card, number)
+            self.app.press_keycode(66)
+            self.send_keys_element_click(form_year_card_month, year_month)
+            self.click_element(el_card.accec_09)
+            self.send_keys_element_click(form_year_card, year)
+            self.click_element(el_card.accec_2026)
+            self.send_keys_element(form_cvc, cvc)
+            self.click_element(button_pay)
+        else:
+            self.send_keys_element(form_number_card, number)
+            self.send_keys_element(form_year_card, year)
+            self.send_keys_element(form_cvc, cvc)
+            self.click_element(button_pay)
+        if number != el_card.number_belarussia and number != el_card.number_kirgistan:
+            self.click_element(operation_button_ok)
+        self.wait(el_card.banner_card_ok)
+        self.wait(el_card.bin_card)
+        access_bin = self.find(el_card.bin_card).text
+        assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
+        self.click_element(el_card.back_to_map)
+
+    def add_card_in_subscription(self,
+                                 form_number_card,
+                                 number, form_year_card,
+                                 year,
+                                 form_cvc,
+                                 cvc,
+                                 button_pay):
+        '''Привязка карты через оформление подписки'''
+        self.click_element(el_auth.subscription)
+        self.click_element(el_card.subscription_add)
+        self.send_keys_element(form_number_card, number)
+        self.send_keys_element(form_year_card, year)
+        self.send_keys_element(form_cvc, cvc)
+        self.click_element(button_pay)
+
+    def card_replace(self,
+                     bin_country,
+                     form_number_card,
+                     new_number,
+                     form_year_card,
+                     new_year,
+                     form_cvc,
+                     new_cvc,
+                     button_pay,
+                     new_bin_country,
+                     operation_button_ok=None,
+                     form_year_card_month=None,
+                     year_month=None):
+        '''Замена карты'''
+        self.click_element(el_auth.main_menu)
+        self.click_element(el_card.user_cards)
+        self.wait(el_card.bin_card)
+        access_bin = self.find(el_card.bin_card).text
+        assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
+        self.click_element(el_card.add_card)
+        if new_number == el_card.new_number_russia:
+            self.click_element(el_card.replace_new_card)
+        if new_number == el_card.new_number_kirgistan:
+            self.send_keys_element(form_number_card, new_number)
+            self.app.press_keycode(66)
+            self.send_keys_element_click(form_year_card_month, year_month)
+            self.click_element(el_card.accec_05)
+            self.send_keys_element_click(form_year_card, new_year)
+            self.click_element(el_card.accec_2027)
+            self.send_keys_element(form_cvc, new_cvc)
+            self.click_element(button_pay)
+        if new_number != el_card.new_number_kirgistan:
+            self.send_keys_element(form_year_card, new_year)
+            self.send_keys_element(form_number_card, new_number)
+            self.send_keys_element(form_cvc,new_cvc)
+            self.click_element(button_pay)
+        if new_number != el_card.new_number_belarussia and new_number != el_card.new_number_kirgistan:
+            self.click_element(operation_button_ok)
+        self.wait(el_card.banner_card_ok)
+        self.wait(el_card.bin_card)
+        access_new_bin = self.find(el_card.bin_card).text
+        assert access_new_bin == new_bin_country, 'Номер добавленной карты не совпадает'
+        self.click_element(el_card.back_to_map)
+
     def add_card_in_russia(self):
         '''Добавление карты для России с главной страницы'''
         self.add_card_main_button(
