@@ -17,6 +17,7 @@ class Cards(BaseApp, Auth):
                              cvc=None,
                              button_pay=None):
         '''Добавление карты с главной страницы'''
+        # добавить нажатие на кнопку <взять заряд> для добавления карты
         self.click_element(el_card.main_button_card)
         if number == el_card.number_kirgistan:
             self.send_keys_element(form_number_card, number)
@@ -57,6 +58,7 @@ class Cards(BaseApp, Auth):
         '''Добавление карты через меню'''
         self.click_element(el_auth.main_menu)
         self.click_element(el_card.user_cards)
+        # выбрать изменить способ оплаты
         self.click_element(el_card.add_card)
         if number == el_card.number_kirgistan:
             self.send_keys_element(form_number_card, number)
@@ -90,6 +92,7 @@ class Cards(BaseApp, Auth):
         '''Привязка карты через оформление подписки'''
         self.click_element(el_auth.subscription)
         self.click_element(el_card.subscription_add)
+        # выбрать способ оплаты банковская карта
         self.send_keys_element(form_number_card, number)
         self.send_keys_element(form_year_card, year)
         self.send_keys_element(form_cvc, cvc)
@@ -114,6 +117,7 @@ class Cards(BaseApp, Auth):
         self.wait(el_card.bin_card)
         access_bin = self.find(el_card.bin_card).text
         assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
+        # выбрать изменить способ оплаты
         self.click_element(el_card.add_card)
         if new_number == el_card.new_number_russia:
             self.click_element(el_card.replace_new_card)

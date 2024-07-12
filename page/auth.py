@@ -15,6 +15,8 @@ class Auth(BaseApp):
         self.click_element(el_auth.button_send_phone)
         self.click_element(el_auth.code_input)
         self.sms()
+        # добавить ожидание плашки с картами
+        # закрыть плашку
 
     def registration(self, code_phone, country, phone):
         '''Регистрация пользователя через телефон'''
@@ -29,6 +31,8 @@ class Auth(BaseApp):
         self.sms()
         self.click_element(country)
         self.click_element(el_auth.button_send_country)
+        # добавить ожидание плашки с картами
+        # закрыть плашку
 
     def delete_user(self):
         '''Удаление активного пользователя'''
