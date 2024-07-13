@@ -1,11 +1,7 @@
-import time
-
 from selenium.common import TimeoutException
-
 from element_locators import card_elements as el_card
 from element_locators import auth_elements as el_auth
 from page.auth import Auth
-from page.base_app import BaseApp
 
 
 class Cards(Auth):
