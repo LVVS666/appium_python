@@ -1,11 +1,50 @@
+import time
+
+from selenium.common import TimeoutException
+
 from element_locators import card_elements as el_card
 from element_locators import auth_elements as el_auth
 from page.auth import Auth
 from page.base_app import BaseApp
 
 
-class Cards(BaseApp, Auth):
+class Cards(Auth):
     '''Класс банковских карт'''
+    def button_sberpay(self):
+        '''Проверка кнопки сберпей для зоны RUS_SBER'''
+        self.wait(el_card.sberpay_button)
+        assert self.find(el_card.sberpay_button), 'Кнопка Сберпей не найдена'
+
+    def button_sbp(self):
+        '''Проверка кнопки СБП для зоны RUS_SBER'''
+        self.wait(el_card.sbp_button)
+        assert self.find(el_card.sbp_button), 'Кнопка СБП не найдена'
+
+    def not_button_sberpay(self):
+        '''Проверка отсутствия кнопки Сберпей у пользователей зоны НЕ RUS_SBER'''
+        try:
+            self.wait_not(el_card.sberpay_button)
+            assert self.find(el_card.sberpay_button) is None, 'Кнопка Сберпей найдена'
+        except TimeoutException:
+            return True
+
+    def not_button_sbp(self):
+        '''Проверка отсутствия кнопки СБП у пользователей зоны НЕ RUS_SBER'''
+        try:
+            self.wait_not(el_card.sbp_button)
+            assert self.find(el_card.sbp_button) is None, 'Кнопка СБП найдена'
+        except TimeoutException:
+            return True
+
+    def button_expect(self, number):
+        '''Проверка отображения кнопок у зон'''
+        if number == el_card.number_russia and number == el_card.new_number_russia:
+            self.button_sbp()
+            self.button_sberpay()
+        elif number != el_card.number_russia and number != el_card.new_number_russia:
+            self.not_button_sberpay()
+            self.not_button_sbp()
+
     def add_card_main_button(self,
                              form_number_card,
                              number,
@@ -17,8 +56,9 @@ class Cards(BaseApp, Auth):
                              cvc=None,
                              button_pay=None):
         '''Добавление карты с главной страницы'''
-        # добавить нажатие на кнопку <взять заряд> для добавления карты
-        self.click_element(el_card.main_button_card)
+        self.click_element(el_card.add_card_in_map)
+        self.button_expect(number)
+        self.click_element(el_card.card_button)
         if number == el_card.number_kirgistan:
             self.send_keys_element(form_number_card, number)
             self.app.press_keycode(66)
@@ -36,7 +76,7 @@ class Cards(BaseApp, Auth):
 
     def find_card(self, bin_country):
         '''Проверка добавленной карты в меню'''
-        self.click_element(el_auth.main_menu)
+        self.click_element(el_card.main_menu)
         self.click_element(el_card.user_cards)
         self.wait(el_card.bin_card)
         access_bin = self.find(el_card.bin_card).text
@@ -58,8 +98,9 @@ class Cards(BaseApp, Auth):
         '''Добавление карты через меню'''
         self.click_element(el_auth.main_menu)
         self.click_element(el_card.user_cards)
-        # выбрать изменить способ оплаты
-        self.click_element(el_card.add_card)
+        self.click_element(el_card.replace_and_added_newcard)
+        self.button_expect(number)
+        self.click_element(el_card.card_button)
         if number == el_card.number_kirgistan:
             self.send_keys_element(form_number_card, number)
             self.app.press_keycode(66)
@@ -92,7 +133,8 @@ class Cards(BaseApp, Auth):
         '''Привязка карты через оформление подписки'''
         self.click_element(el_auth.subscription)
         self.click_element(el_card.subscription_add)
-        # выбрать способ оплаты банковская карта
+        self.button_expect(number)
+        self.click_element(el_card.card_button)
         self.send_keys_element(form_number_card, number)
         self.send_keys_element(form_year_card, year)
         self.send_keys_element(form_cvc, cvc)
@@ -117,10 +159,9 @@ class Cards(BaseApp, Auth):
         self.wait(el_card.bin_card)
         access_bin = self.find(el_card.bin_card).text
         assert access_bin == bin_country, 'Номер добавленной карты не совпадает'
-        # выбрать изменить способ оплаты
-        self.click_element(el_card.add_card)
-        if new_number == el_card.new_number_russia:
-            self.click_element(el_card.replace_new_card)
+        self.click_element(el_card.replace_and_added_newcard)
+        self.click_element(el_card.card_button)
+        self.button_expect(new_number)
         if new_number == el_card.new_number_kirgistan:
             self.send_keys_element(form_number_card, new_number)
             self.app.press_keycode(66)

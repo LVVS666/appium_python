@@ -1,5 +1,6 @@
 from appium.webdriver.common.appiumby import AppiumBy
 
+#Способы оплаты
 sbp_button = (
     AppiumBy.XPATH,
     '//android.widget.ImageButton[@resource-id="ru.berizaryad.android.dev2:id/btSbp"]'
@@ -12,17 +13,34 @@ sberpay_button = (
 
 card_button = (
     AppiumBy.XPATH,
-    '//android.widget.Button[@resource-id="ru.berizaryad.android.dev2:id/btBankCard"]'
+    '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btBankCard"]'
 )
+
+#Добавление изменене карт
+add_card_in_map = (
+    AppiumBy.XPATH,
+    '//android.widget.FrameLayout[@resource-id="ru.berizaryad.android.staging:id/btTakePowerBank"]/android.widget.LinearLayout'
+)
+
+subscription_add = (
+    AppiumBy.XPATH,
+    '//android.widget.LinearLayout[@resource-id="ru.berizaryad.android.staging:id/btActivate"]'
+)
+
+replace_and_added_newcard = (
+    AppiumBy.XPATH,
+    '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btChange"]'
+)
+
+main_menu = (
+    AppiumBy.XPATH,
+    '//android.widget.ImageButton[@content-desc="Открыть навигацию"]'
+)
+
 
 off_banner_card = (
     AppiumBy.XPATH,
     '//android.widget.ImageButton[@content-desc="Закрыть"]'
-)
-
-main_button_card = (
-    AppiumBy.XPATH,
-    '//android.widget.FrameLayout[@resource-id="ru.berizaryad.android.dev2:id/btTakePowerBank"]/android.widget.LinearLayout'
 )
 
 user_cards = (
@@ -45,22 +63,10 @@ banner_card_ok = (
     AppiumBy.XPATH,
     '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.LinearLayout'
 )
-add_card = (
-    AppiumBy.XPATH,
-    '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btChange"]'
-)
-subscription_add = (
-    AppiumBy.XPATH,
-    '//android.widget.LinearLayout[@resource-id="ru.berizaryad.android.staging:id/btActivate"]'
-)
+
 subscription_ok = (
     AppiumBy.XPATH,
     '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.widget.LinearLayout'
-)
-
-replace_new_card = (
-    AppiumBy.XPATH,
-    '//android.widget.Button[@text="Оплатить новой картой"]'
 )
 
 

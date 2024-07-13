@@ -1,5 +1,6 @@
 from selenium.common import TimeoutException
 from element_locators import auth_elements as el_auth
+from element_locators import card_elements as el_card
 from page.base_app import BaseApp
 
 class Auth(BaseApp):
@@ -15,8 +16,8 @@ class Auth(BaseApp):
         self.click_element(el_auth.button_send_phone)
         self.click_element(el_auth.code_input)
         self.sms()
-        # добавить ожидание плашки с картами
-        # закрыть плашку
+        self.click_element(el_card.off_banner_card)
+
 
     def registration(self, code_phone, country, phone):
         '''Регистрация пользователя через телефон'''
@@ -31,8 +32,8 @@ class Auth(BaseApp):
         self.sms()
         self.click_element(country)
         self.click_element(el_auth.button_send_country)
-        # добавить ожидание плашки с картами
-        # закрыть плашку
+        self.click_element(el_card.off_banner_card)
+
 
     def delete_user(self):
         '''Удаление активного пользователя'''
