@@ -104,8 +104,8 @@ outside_map = (
 
 # Меню
 main_menu = (
-    AppiumBy.XPATH,
-    "//*[@content-desc='Открыть навигацию']"
+    AppiumBy.ACCESSIBILITY_ID,
+    "Открыть навигацию"
 )
 exit_and_delete = (
     AppiumBy.XPATH,

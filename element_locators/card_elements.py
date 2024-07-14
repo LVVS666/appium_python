@@ -12,8 +12,8 @@ sberpay_button = (
 )
 
 card_button = (
-    AppiumBy.XPATH,
-    '//android.widget.Button[@resource-id="ru.berizaryad.android.staging:id/btBankCard"]'
+    AppiumBy.ID,
+    'ru.berizaryad.android.staging:id/btBankCard'
 )
 
 #Добавление изменене карт
@@ -33,14 +33,14 @@ replace_and_added_newcard = (
 )
 
 main_menu = (
-    AppiumBy.XPATH,
-    '//android.widget.ImageButton[@content-desc="Открыть навигацию"]'
+    AppiumBy.ACCESSIBILITY_ID,
+    'Открыть навигацию'
 )
 
 
 off_banner_card = (
-    AppiumBy.XPATH,
-    '//android.widget.ImageButton[@content-desc="Закрыть"]'
+    AppiumBy.ACCESSIBILITY_ID,
+    'Закрыть'
 )
 
 user_cards = (

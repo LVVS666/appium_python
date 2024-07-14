@@ -1,3 +1,5 @@
+import time
+
 from selenium.common import TimeoutException
 from element_locators import card_elements as el_card
 from element_locators import auth_elements as el_auth
@@ -72,6 +74,7 @@ class Cards(Auth):
 
     def find_card(self, bin_country):
         '''Проверка добавленной карты в меню'''
+        time.sleep(5)
         self.click_element(el_card.main_menu)
         self.click_element(el_card.user_cards)
         self.wait(el_card.bin_card)
