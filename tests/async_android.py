@@ -1,6 +1,6 @@
 import pytest
 from element_locators import auth_elements as el_auth
-from page.main_menu import AndroidApp
+from page.auth import Auth
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 
@@ -58,7 +58,7 @@ def driver_android_2():
 # Тесты
 def test_registration_in_phone_to_belarussia_on_delete(driver_android_1):
     '''Регистрация через телефон для Беларуссии, после удаление аккаунта'''
-    app_login = AndroidApp(driver_android_1)
+    app_login = Auth(driver_android_1)
     app_login.registration(
         code_phone=el_auth.belarussia_code,
         country=el_auth.belarussia,
@@ -71,7 +71,7 @@ def test_registration_in_phone_to_belarussia_on_delete(driver_android_1):
 
 def test_registration_in_phone_to_kazahstan_on_delete(driver_android_2):
     '''Регистрация через телефон для Казахстана, после удаление аккаунта'''
-    app_login = AndroidApp(driver_android_2)
+    app_login = Auth(driver_android_2)
     app_login.registration(
         code_phone=el_auth.kazahstan_code,
         country=el_auth.kazahstan,
