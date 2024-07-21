@@ -56,12 +56,17 @@ success_promocode = (
     '//android.widget.Toast[@text="Промокод применен"]'
 )
 
+not_work_promocode = (
+    AppiumBy.XPATH,
+    '//android.widget.Toast[@text="Этот промокод больше не работает :("]'
+)
+
 not_activate_promocode = (
     AppiumBy.XPATH,
     '//android.widget.Toast[@text="Этот промокод уже применен. Повторно активировать его не получится"]'
 )
 
-new_user_promocode = 'sccn8'
-old_user_promocode = 'sccn81'
-count_0_promocode = 'sccn811'
-expiry_promocode = 'uw6mf'
+new_user_promocode = 'newpromik1'
+old_user_promocode = 'newpromik2'
+count_0_promocode = 'newpromik3'
+expiry_promocode = 'newpromik4'
