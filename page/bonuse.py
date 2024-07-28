@@ -26,31 +26,35 @@ class Bonuse(Auth):
         '''Повторный ввод промокода для нового юзера'''
         self.send_promocode(el_bonus.new_user_promocode)
         self.wait(el_bonus.not_activate_promocode)
+        self.click_element(el_bonus.main_menu)
 
     def new_promocode_old_user(self):
         '''Ввод промокода для нового юзера старым юзером'''
         self.send_promocode(el_bonus.new_user_promocode)
         self.wait(el_bonus.not_activate_promocode)
+        self.click_element(el_bonus.main_menu)
 
     def old_user_promocode(self):
         '''Ввод промокода для старого юзера'''
         self.send_promocode(el_bonus.old_user_promocode)
         self.wait(el_bonus.success_promocode)
-        self.wait(el_bonus.not_activate_promocode)
         self.wait(el_bonus.bunuse_count)
         count = self.find(el_bonus.bunuse_count)
-        assert count.text == 200, 'Количество бонусов не соответствует'
+        assert count.text == 100, 'Количество бонусов не соответствует'
 
     def repeat_old_user_promocode(self):
         '''Повторный ввод промокода для старого юзера'''
         self.send_promocode(el_bonus.old_user_promocode)
         self.wait(el_bonus.not_activate_promocode)
+        self.click_element(el_bonus.main_menu)
 
     def company_promocode(self):
+        '''Ввод промокода компании'''
+        self.send_promocode(el_bonus.company_promocode)
+        self.wait(el_bonus.success_promocode)
         self.wait(el_bonus.bunuse_count)
         count = self.find(el_bonus.bunuse_count)
-        assert count.text == 300, 'Количество бонусов не соответствует'
-        pass
+        assert count.text == 100, 'Количество бонусов не соответствует'
 
     def expiry_promocode(self):
         '''Ввод протухшего промокода'''
@@ -61,6 +65,13 @@ class Bonuse(Auth):
         '''Ввод промокода с количеством использований = 0'''
         self.send_promocode(el_bonus.count_0_promocode)
         self.wait(el_bonus.not_work_promocode)
+        self.click_element(el_bonus.main_menu)
+
+    def not_validate_promocode(self):
+        '''Ввод несуществующего промокода'''
+        self.send_promocode('NotValidate')
+        self.wait(el_bonus.not_work_promocode)
+        self.click_element(el_bonus.main_menu)
 
     def exit_map_bonus_count_in_menu(self, bonuse):
         '''Проверка отображения количества бонусов в меню'''

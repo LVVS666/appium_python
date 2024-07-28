@@ -13,6 +13,10 @@ back = (
     AppiumBy.XPATH,
     '//android.widget.ImageButton'
 )
+document_back = (
+    AppiumBy.ID,
+    'ru.berizaryad.android.staging:id/btnBack'
+)
 
 # Неавторизованный пользователь
 auth = (
@@ -126,3 +130,7 @@ bonus_access = (
 )
 text_bonus = 'Делись бонусами и заряжайся бесплатно'
 # использует для закрытия локатор бокового меню
+
+x = 647  # координата x для возврата из раздела поддержки
+y = 363  # координата y для возврата из раздела поддержки
+

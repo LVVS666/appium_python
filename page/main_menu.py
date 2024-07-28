@@ -3,10 +3,9 @@ from element_locators import sub_elements as el_sub
 from element_locators import tariff_elements as el_tariff
 from element_locators import menu_elements as el_menu
 from page.auth import Auth
-from page.base_app import BaseApp
 
 
-class MainMenu(BaseApp, Auth):
+class MainMenu(Auth):
     '''Класс Андроид устройства'''
     def tarif(self, tariff_country, assert_text):
         '''Проверка тарифа для страны'''
@@ -54,18 +53,22 @@ class MainMenu(BaseApp, Auth):
         self.click_element(el_menu.support)
         self.wait(el_menu.support_content)
         assert self.find(el_menu.support_content), 'Кнопка поддержки не сработала'
-        self.click_element(el_menu.out_back_map)
+        self.app.tap([(el_menu.x, el_menu.y)])
         self.click_element(el_menu.main_menu)
         self.click_element(el_menu.documents)
         self.wait(el_menu.doc_access)
         assert self.find(el_menu.doc_access).text == el_menu.text_doc, 'Кнопка документов не сработала'
+        self.click_element(el_menu.document_back)
+        self.click_element(el_menu.out_back_map)
         self.click_element(el_menu.main_menu)
         self.click_element(el_menu.franchizing)
         self.wait(el_menu.main_banner)
         assert self.find(el_menu.main_banner), 'Кнопка франшизы не сработала'
         self.click_element(el_menu.main_menu)
+        self.click_element(el_menu.out_back_map)
         self.click_element(el_menu.main_menu)
         self.click_element(el_menu.about)
         self.wait(el_menu.about_content)
         assert self.find(el_menu.about_content), 'Кнопка о приложение не сработала'
         self.click_element(el_menu.back)
+        self.click_element(el_menu.out_back_map)

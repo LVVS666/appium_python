@@ -48,6 +48,7 @@ class BaseApp:
         '''Ожидание кликабельного элемента'''
         WebDriverWait(self.app, 20).until(EC.element_to_be_clickable(args))
 
+
     def sms(self):
         '''Ввод смс подтверждения'''
         self.app.press_keycode(7)
