@@ -101,6 +101,10 @@ outside_map = (
     AppiumBy.XPATH,
     "//*[ends-with(@resource-id, 'touch_outside')]"
 )
+close_banner_subscription = (
+    AppiumBy.ID,
+    'ru.berizaryad.android.staging:id/closeImageView'
+)
 
 # Меню
 main_menu = (

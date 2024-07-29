@@ -81,7 +81,7 @@ profile = (
 )
 profile_content = (
     AppiumBy.XPATH,
-    '//android.widget.TextView[@text="Телефон"]'
+    'ru.berizaryad.android.staging:id/tvPhoneValue'
 )
 # использует локатор back для возврата
 

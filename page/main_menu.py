@@ -18,35 +18,42 @@ class MainMenu(Auth):
 
     def checkout_menu(self, auth=False):
         '''Проверка меню'''
-        self.click_element(el_menu.out_back_map)
         self.click_element(el_menu.main_menu)
         if auth is False:
+            self.click_element(el_menu.out_back_map)
+            self.click_element(el_menu.main_menu)
             self.click_element(el_menu.auth)
             self.wait(el_menu.auth_access)
             assert self.find(el_menu.auth_access).text == el_menu.text_auth, 'Кнопка авторизации не сработала'
             self.click_element(el_menu.out_back_map)
         elif auth is True:
             self.click_element(el_menu.profile)
+            self.wait(el_menu.profile_content)
             assert self.find(el_menu.profile_content), 'Кнопка профиль не сработала'
             self.click_element(el_menu.back)
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.pay)
+            self.wait(el_menu.pay_content)
             assert self.find(el_menu.pay_content), 'Кнопка способы оплаты не сработала'
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.subscription)
+            self.wait(el_sub.banner_subscription_pay)
             assert self.find(el_sub.banner_subscription_pay), 'Кнопка подписка не сработала'
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.partners)
+            self.wait(el_menu.partners_content)
             assert self.find(el_menu.partners_content), 'Кнопка акции партнеров не сработала'
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.tariff)
+            self.wait(el_menu.tariff_content)
             assert self.find(el_menu.tariff_content), 'Кнопка тарифы не сработала'
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.main_menu)
             self.click_element(el_menu.bonuses)
+            self.wait(el_menu.bonus_access)
             assert self.find(el_menu.bonus_access).text == el_menu.text_bonus, 'Кнопка бонусы не сработала'
             self.click_element(el_menu.main_menu)
         self.click_element(el_menu.main_menu)
