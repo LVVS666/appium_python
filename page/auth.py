@@ -3,6 +3,7 @@ from element_locators import auth_elements as el_auth
 from element_locators import card_elements as el_card
 from page.base_app import BaseApp
 
+
 class Auth(BaseApp):
     '''Класс авторизации пользователя'''
     def auth(self, code_phone, phone):
@@ -18,7 +19,6 @@ class Auth(BaseApp):
         self.sms()
         self.click_element(el_card.off_banner_card)
         self.click_element(el_auth.close_banner_subscription)
-
 
     def registration(self, code_phone, country, phone):
         '''Регистрация пользователя через телефон'''
@@ -36,7 +36,6 @@ class Auth(BaseApp):
         self.click_element(el_card.off_banner_card)
         self.click_element(el_auth.close_banner_subscription)
 
-
     def delete_user(self):
         '''Удаление активного пользователя'''
         self.click_element(el_auth.main_menu)
@@ -45,7 +44,6 @@ class Auth(BaseApp):
         self.click_element(el_auth.delete_user)
         self.click_element(el_auth.on_delete)
         self.click_element(el_auth.complete_delete_button)
-
 
     def button_sub(self):
         '''Проверка кнопки подписки на карте'''

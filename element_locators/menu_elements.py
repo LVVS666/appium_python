@@ -17,6 +17,10 @@ document_back = (
     AppiumBy.ID,
     'ru.berizaryad.android.staging:id/btnBack'
 )
+subscription_close = (
+    AppiumBy.ACCESSIBILITY_ID,
+    'Закрыть'
+)
 
 # Неавторизованный пользователь
 auth = (
@@ -81,7 +85,7 @@ profile = (
 )
 profile_content = (
     AppiumBy.XPATH,
-    'ru.berizaryad.android.staging:id/tvPhoneValue'
+    '//androidx.cardview.widget.CardView[@resource-id="ru.berizaryad.android.staging:id/cvPhone"]/android.widget.LinearLayout'
 )
 # использует локатор back для возврата
 

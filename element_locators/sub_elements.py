@@ -2,8 +2,8 @@ from appium.webdriver.common.appiumby import AppiumBy
 
 # Баннер подписки и оплаты
 banner_subscription_pay = (
-    AppiumBy.XPATH,
-    '//android.widget.Button[contains(@resource-id, "btnNavSubscription")]'
+    AppiumBy.ID,
+    'ru.berizaryad.android.staging:id/btActivate'
 )
 
 # Как работает подписка
