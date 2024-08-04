@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  android-testing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4723:4723"
+    volumes:
+      - ./tests:/app/tests
+    environment:
+      - ANDROID_HOME=/opt/android-sdk
+      - PATH=/opt/android-sdk/emulator:/opt/android-sdk/tools:/opt/android-sdk/tools/bin:/opt/android-sdk/platform-tools
+    command: >
+      sh -c "appium & sleep 5 && pytest /app/tests"
