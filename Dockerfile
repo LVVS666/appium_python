@@ -49,4 +49,4 @@ RUN appium-doctor --android
 # Запускаем Appium сервер и тесты
 CMD appium & \
     sleep 5 && \
-    python3 -m unittest discover -s /app/tests
+    pytest /app/tests
