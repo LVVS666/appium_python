@@ -30,8 +30,8 @@
 
 5. **Работа с докером**:
    - Убедитесь, что андроид устройство подключено к компьютеру.
-   - Собрать контейнер: '''docker build -t android-appium .'''
-   - Запустить контейнер: '''docker run --rm android-appium'''
+   - Собрать контейнер: 'docker build -t android-appium .'
+   - Запустить контейнер: 'docker run --rm android-appium'
 
 ## Ресурсы
 - [Документация Appium](https://appium.io/docs/en/latest/quickstart/install/)
