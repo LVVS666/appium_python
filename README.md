@@ -29,9 +29,9 @@
    - Введите в терминал команду 'pytest -u'
 
 5. **Работа с докером**:
-   - Убедитесь, что андроид устройство подключено к компьютеру.
+   - Убедитесь, что андроид устройство подключено к компьютеру, в консоле ввести 'adb devices'
    - Собрать контейнер: 'docker build -t android-appium .'
-   - Запустить контейнер: 'docker run --rm android-appium'
+   - Запустить контейнер: 'docker run --rm --device=/dev/bus/usb:/dev/bus/usb android-appium'
 
 ## Ресурсы
 - [Документация Appium](https://appium.io/docs/en/latest/quickstart/install/)
