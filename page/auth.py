@@ -1,3 +1,5 @@
+import time
+
 from selenium.common import TimeoutException
 from element_locators import auth_elements as el_auth
 from element_locators import card_elements as el_card
@@ -34,6 +36,7 @@ class Auth(BaseApp):
         self.click_element(country)
         self.click_element(el_auth.button_send_country)
         self.click_element(el_card.off_banner_card)
+        self.click_element(el_auth.off_banner_90_orders)
         self.click_element(el_auth.close_banner_subscription)
 
     def delete_user(self):

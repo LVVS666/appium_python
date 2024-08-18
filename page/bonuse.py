@@ -1,3 +1,5 @@
+import time
+
 from element_locators import bonuse_elements as el_bonus
 from page.auth import Auth
 
@@ -26,12 +28,16 @@ class Bonuse(Auth):
         '''Повторный ввод промокода для нового юзера'''
         self.send_promocode(el_bonus.new_user_promocode)
         self.wait(el_bonus.not_activate_promocode)
+        self.wait(el_bonus.main_menu)
+        self.click_element(el_bonus.main_menu)
         self.click_element(el_bonus.main_menu)
 
     def new_promocode_old_user(self):
         '''Ввод промокода для нового юзера старым юзером'''
         self.send_promocode(el_bonus.new_user_promocode)
         self.wait(el_bonus.not_activate_promocode)
+        self.wait(el_bonus.main_menu)
+        self.click_element(el_bonus.main_menu)
         self.click_element(el_bonus.main_menu)
 
     def old_user_promocode(self):
@@ -40,7 +46,7 @@ class Bonuse(Auth):
         self.wait(el_bonus.success_promocode)
         self.wait(el_bonus.bunuse_count)
         count = self.find(el_bonus.bunuse_count)
-        assert count.text == 100, 'Количество бонусов не соответствует'
+        assert count.text == '100', 'Количество бонусов не соответствует'
 
     def repeat_old_user_promocode(self):
         '''Повторный ввод промокода для старого юзера'''
@@ -54,7 +60,7 @@ class Bonuse(Auth):
         self.wait(el_bonus.success_promocode)
         self.wait(el_bonus.bunuse_count)
         count = self.find(el_bonus.bunuse_count)
-        assert count.text == 100, 'Количество бонусов не соответствует'
+        assert count.text == '100', 'Количество бонусов не соответствует'
 
     def expiry_promocode(self):
         '''Ввод протухшего промокода'''

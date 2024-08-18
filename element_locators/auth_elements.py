@@ -106,10 +106,15 @@ close_banner_subscription = (
     'ru.berizaryad.android.staging:id/closeImageView'
 )
 
+off_banner_90_orders = (
+    AppiumBy.ID,
+    'ru.berizaryad.android.staging:id/ibCloseVkComboNotification'
+)
+
 # Меню
 main_menu = (
     AppiumBy.ACCESSIBILITY_ID,
-    "Открыть навигацию"
+    'Открыть навигацию'
 )
 exit_and_delete = (
     AppiumBy.XPATH,
