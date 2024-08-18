@@ -20,7 +20,7 @@ class Bonuse(Auth):
         self.wait(el_bonus.success_promocode)
         self.wait(el_bonus.bunuse_count)
         count = self.find(el_bonus.bunuse_count)
-        assert count.text == 100, 'Количество бонусов не соответствует'
+        assert count.text == '100', 'Количество бонусов не соответствует'
 
     def repeat_new_user_promocode(self):
         '''Повторный ввод промокода для нового юзера'''

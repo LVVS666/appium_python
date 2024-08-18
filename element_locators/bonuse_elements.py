@@ -11,8 +11,8 @@ bonuse_menu_button = (
 )
 
 bonuse_count_menu = (
-    AppiumBy.ID,
-    'ru.berizaryad.android.staging:id/tvCountBonus'
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvCountBonus"]'
 )
 
 enter_promocode_button = (
@@ -31,8 +31,8 @@ send_promocode = (
 )
 
 bunuse_count = (
-    AppiumBy.ID,
-    'ru.berizaryad.android.staging:id/tvBonusCount'
+    AppiumBy.XPATH,
+    '//android.widget.TextView[@resource-id="ru.berizaryad.android.staging:id/tvBonusCount"]'
 )
 
 gift_button = (

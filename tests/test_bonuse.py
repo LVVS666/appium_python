@@ -13,7 +13,7 @@ def test_add_bonuse_in_new_user(driver_android):
     )
     app_login.open_bonuse()
     app_login.new_user_promocode()
-    app_login.exit_map_bonus_count_in_menu(100)
+    app_login.exit_map_bonus_count_in_menu('100')
     app_login.open_bonuse()
     app_login.repeat_new_user_promocode()
     app_login.delete_user()
