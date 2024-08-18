@@ -45,6 +45,10 @@ gift_page = (
     'ru.berizaryad.android.staging:id/webViewGift'
 )
 
+clear_promocode = (
+    AppiumBy.ID,
+    'ru.berizaryad.android.staging:id/imgClose'
+)
 
 #Уведомление о добавление промокода
 not_promocode = (
@@ -66,6 +70,12 @@ not_activate_promocode = (
     '//android.widget.Toast[@text="Этот промокод уже применен. Повторно активировать его не получится"]'
 )
 
+not_promocode_new_user = (
+    AppiumBy.XPATH,
+    '//android.widget.Toast[@text="Это промокод только для новых пользователей"]'
+)
+
+old_user = '9996663344'
 new_user_promocode = 'newpromik1'
 old_user_promocode = 'newpromik2'
 count_0_promocode = 'newpromik3'

@@ -38,14 +38,13 @@ def test_add_bonuse_in_old_user(driver_android):
 def test_add_bonuse_new_user_promocode_in_old_user(driver_android):
     '''Ввести промокод для нового юзера, старым юзером'''
     app_login = Bonuse(driver_android)
-    app_login.registration(
+    app_login.auth(
         code_phone=el_auth.russian_code,
-        country=el_auth.russia,
-        phone=el_auth.rus_kz_phone,
+        phone=el_bonuse.old_user,
     )
     app_login.open_bonuse()
     app_login.new_promocode_old_user()
-    app_login.delete_user()
+    app_login.exit()
 
 
 def test_send_expiry_promocode_and_count_0_promocode(driver_android):
@@ -92,11 +91,10 @@ def test_send_not_validate_promocode_in_new_user(driver_android):
 def test_send_not_validate_promocode_in_old_user(driver_android):
     '''Ввод несуществующего промокода старым юзером'''
     app_login = Bonuse(driver_android)
-    app_login.registration(
+    app_login.auth(
         code_phone=el_auth.russian_code,
-        country=el_auth.russia,
-        phone=el_auth.rus_kz_phone,
+        phone=el_bonuse.old_user,
     )
     app_login.open_bonuse()
     app_login.not_validate_promocode()
-    app_login.delete_user()
+    app_login.exit()

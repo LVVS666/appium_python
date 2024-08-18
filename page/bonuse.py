@@ -16,6 +16,11 @@ class Bonuse(Auth):
         self.send_keys_element(el_bonus.form_promocode, promocode)
         self.click_element(el_bonus.send_promocode)
 
+    def send_promocode_repeat(self, promocode):
+        '''Ввод промокода'''
+        self.send_keys_element(el_bonus.form_promocode, promocode)
+        self.click_element(el_bonus.send_promocode)
+
     def new_user_promocode(self):
         '''Промокод для нового юзера'''
         self.send_promocode(el_bonus.new_user_promocode)
@@ -35,7 +40,7 @@ class Bonuse(Auth):
     def new_promocode_old_user(self):
         '''Ввод промокода для нового юзера старым юзером'''
         self.send_promocode(el_bonus.new_user_promocode)
-        self.wait(el_bonus.not_activate_promocode)
+        self.wait(el_bonus.not_promocode_new_user)
         self.wait(el_bonus.main_menu)
         self.click_element(el_bonus.main_menu)
         self.click_element(el_bonus.main_menu)
@@ -52,6 +57,8 @@ class Bonuse(Auth):
         '''Повторный ввод промокода для старого юзера'''
         self.send_promocode(el_bonus.old_user_promocode)
         self.wait(el_bonus.not_activate_promocode)
+        self.wait(el_bonus.main_menu)
+        self.click_element(el_bonus.main_menu)
         self.click_element(el_bonus.main_menu)
 
     def company_promocode(self):
@@ -66,11 +73,14 @@ class Bonuse(Auth):
         '''Ввод протухшего промокода'''
         self.send_promocode(el_bonus.expiry_promocode)
         self.wait(el_bonus.not_work_promocode)
+        self.click_element(el_bonus.clear_promocode)
 
     def count_0_promocode(self):
         '''Ввод промокода с количеством использований = 0'''
-        self.send_promocode(el_bonus.count_0_promocode)
+        self.send_promocode_repeat(el_bonus.count_0_promocode)
         self.wait(el_bonus.not_work_promocode)
+        self.wait(el_bonus.main_menu)
+        self.click_element(el_bonus.main_menu)
         self.click_element(el_bonus.main_menu)
 
     def not_validate_promocode(self):
