@@ -86,7 +86,9 @@ class Bonuse(Auth):
     def not_validate_promocode(self):
         '''Ввод несуществующего промокода'''
         self.send_promocode('NotValidate')
-        self.wait(el_bonus.not_work_promocode)
+        self.wait(el_bonus.not_promocode)
+        self.click_element(el_bonus.main_menu)
+        self.wait(el_bonus.main_menu)
         self.click_element(el_bonus.main_menu)
 
     def exit_map_bonus_count_in_menu(self, bonuse):

@@ -72,6 +72,8 @@ def test_add_bonuse_company_promocode_new_user(driver_android):
     app_login.open_bonuse()
     app_login.company_promocode()
     app_login.exit_map_bonus_count_in_menu('100')
+    app_login.click_element(el_bonuse.bonuse_menu_button)
+    app_login.click_element(el_bonuse.main_menu)
     app_login.delete_user()
 
 
