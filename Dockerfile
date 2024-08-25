@@ -12,7 +12,14 @@ RUN apt-get update && \
     nodejs \
     npm \
     git \
-    curl
+    curl \
+    tzdata && \
+    rm -rf /var/lib/apt/lists/*
+
+# Настраиваем временную зону
+ENV TZ=Asia/Krasnoyarsk
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
 
 # Устанавливаем Appium и Appium Doctor
 RUN npm install -g appium@next
@@ -47,6 +54,4 @@ EXPOSE 4723
 RUN appium-doctor --android
 
 # Запускаем Appium сервер и тесты
-CMD appium & \
-    sleep 5 && \
-    pytest /app/tests
+CMD ["sh", "-c", "appium & sleep 5 && pytest /app/tests"]
