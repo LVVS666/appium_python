@@ -1,6 +1,9 @@
 # Используем официальный образ Ubuntu в качестве базового
 FROM ubuntu:20.04
 
+#Создаем енву
+ENV TZ=Asia/Krasnoyarsk
+
 # Устанавливаем необходимые пакеты и зависимости
 RUN apt-get update && \
     apt-get install -y \
@@ -17,7 +20,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Настраиваем временную зону
-ENV TZ=Asia/Krasnoyarsk
 RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 
