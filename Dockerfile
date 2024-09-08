@@ -27,28 +27,25 @@ RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata
 
 # Устанавливаем Node.js LTS версии и npm
-RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
-    apt-get install -y nodejs
+RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - || exit 1 && apt-get install -y nodejs
 
 # Устанавливаем Appium версии 2.10.3 и Appium Doctor
 RUN npm install -g appium@2.10.3
 RUN npm install -g appium-doctor
 
 # Устанавливаем Android SDK cmdline-tools
-RUN mkdir -p /opt/android-sdk/cmdline-tools && \
-    cd /opt/android-sdk/cmdline-tools && \
+RUN mkdir -p /opt/android-sdk/cmdline-tools/latest && \
+    cd /opt/android-sdk/cmdline-tools/latest && \
     wget https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip -O cmdline-tools.zip && \
     unzip cmdline-tools.zip && \
+    mv cmdline-tools/* . && \
     rm cmdline-tools.zip
 
 # Принятие лицензий
-RUN yes | /opt/android-sdk/cmdline-tools/cmdline-tools/bin/sdkmanager --licenses
+RUN yes | /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
 
-# Обновление SDK Manager с флагом --no_https
-RUN /opt/android-sdk/cmdline-tools/cmdline-tools/bin/sdkmanager --update --no_https
-
-# Установка необходимых компонентов SDK
-RUN /opt/android-sdk/cmdline-tools/cmdline-tools/bin/sdkmanager --no_https "platform-tools" "platforms;android-30" "build-tools;30.0.3"
+# Обновление SDK Manager с указанием пути к SDK и установкой необходимых компонентов
+RUN /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/opt/android-sdk --no_https --verbose "platform-tools" "platforms;android-30" "build-tools;30.0.3"
 
 # Устанавливаем зависимости Python
 COPY requirements.txt /app/requirements.txt
@@ -56,7 +53,7 @@ RUN pip3 install --no-cache-dir -r /app/requirements.txt
 
 # Устанавливаем переменные окружения для Android SDK
 ENV ANDROID_HOME=/opt/android-sdk
-ENV PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
+ENV PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
 
 # Копируем тесты в контейнер
 COPY tests /app/tests
@@ -69,3 +66,4 @@ RUN appium-doctor --android
 
 # Запускаем Appium сервер и тесты
 CMD ["sh", "-c", "appium & sleep 5 && pytest /app/tests"]
+
