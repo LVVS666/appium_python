@@ -1,5 +1,5 @@
-from element_locators import auth_elements as el_auth
-from page.subscriptions import Subscriptions
+# from element_locators import auth_elements as el_auth
+# from page.subscriptions import Subscriptions
 
 
 # def test_pay_subscription_in_main(driver_android):
