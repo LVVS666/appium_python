@@ -19,7 +19,7 @@ class Auth(BaseApp):
         self.click_element(el_auth.button_send_phone)
         self.click_element(el_auth.code_input)
         self.sms()
-        # self.click_element(el_card.off_banner_card)
+        self.click_element(el_card.off_banner_card)
         self.click_element(el_auth.close_banner_subscription)
 
     def registration(self, code_phone, country, phone):
@@ -36,8 +36,8 @@ class Auth(BaseApp):
         self.click_element(country)
         self.click_element(el_auth.button_send_country)
         self.click_element(el_card.off_banner_card)
+        self.click_element(el_auth.off_banner_90_orders)
         if code_phone == el_auth.russian_code:
-            self.click_element(el_auth.off_banner_90_orders)
             self.click_element(el_auth.close_banner_subscription)
 
 
