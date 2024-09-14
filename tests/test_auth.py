@@ -2,7 +2,6 @@ from element_locators import auth_elements as el_auth
 from page.auth import Auth
 
 
-
 def test_registration_in_phone_to_russian_on_logout(driver_android):
     '''Регистрация через телефон для России, после Логаут'''
     app_login = Auth(driver_android)
