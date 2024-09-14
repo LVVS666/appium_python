@@ -36,8 +36,10 @@ class Auth(BaseApp):
         self.click_element(country)
         self.click_element(el_auth.button_send_country)
         self.click_element(el_card.off_banner_card)
-        if code_phone == el_auth.russian_code:
+        if country == el_auth.kazahstan and country == el_auth.russia:
+            time.sleep(2)
             self.click_element(el_auth.off_banner_90_orders)
+        if country == el_auth.russia:
             self.click_element(el_auth.close_banner_subscription)
 
 
