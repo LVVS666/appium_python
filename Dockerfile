@@ -45,7 +45,16 @@ RUN mkdir -p /opt/android-sdk/cmdline-tools/latest && \
 RUN yes | /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
 
 # Обновление SDK Manager с указанием пути к SDK и установкой необходимых компонентов
-RUN /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/opt/android-sdk --no_https --verbose "platform-tools" "platforms;android-30" "build-tools;30.0.3"
+RUN yes | /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/opt/android-sdk --licenses && \
+       /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/opt/android-sdk --no_https "platform-tools" && \
+       /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/opt/android-sdk --no_https "platforms;android-30" && \
+       /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/opt/android-sdk --no_https "build-tools;30.0.3" && \
+       /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/opt/android-sdk --no_https "emulator"
+
+
+
+
+
 
 # Устанавливаем зависимости Python
 COPY requirements.txt /app/requirements.txt
