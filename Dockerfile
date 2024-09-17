@@ -51,11 +51,6 @@ RUN yes | /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/opt/a
        /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/opt/android-sdk --no_https "build-tools;30.0.3" && \
        /opt/android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=/opt/android-sdk --no_https "emulator"
 
-
-
-
-
-
 # Устанавливаем зависимости Python
 COPY requirements.txt /app/requirements.txt
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
@@ -75,4 +70,3 @@ RUN appium-doctor --android
 
 # Запускаем Appium сервер и тесты
 CMD ["sh", "-c", "appium & sleep 5 && pytest /app/tests"]
-
