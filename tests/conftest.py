@@ -6,7 +6,7 @@ capabilities_android = {
     'platformName': 'Android',
     'automationName': 'uiautomator2',
     'deviceName': 'Android',
-    "appPackage": "ru.berizaryad.android.staging",
+    "appPackage": "ru.berizaryad.android.dev3",
     "appActivity": "ru.berizaryad.android.presentation.main.DrawerMainActivity",
     'language': 'ru',
     'noReset': False,
