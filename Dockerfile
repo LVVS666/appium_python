@@ -66,13 +66,10 @@ RUN yes | ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROI
 COPY requirements.txt /app/requirements.txt
 RUN pip3 install --no-cache-dir -r /app/requirements.txt
 
-# Устанавливаем драйвер uiautomator2 для Appium
-RUN appium driver install uiautomator2
-
 # Рабочая директория
 WORKDIR /app
 
-# Копируем содержимое
+# Копировать содержимое
 COPY . .
 
 # Задаем переменную окружения
@@ -84,5 +81,7 @@ EXPOSE 4723
 # Проверяем установку
 RUN appium-doctor --android
 
-# Запускаем Appium сервер и тесты
-CMD ["sh", "-c", "appium & sleep 10 && pytest /app/tests/test_auth.py"]
+# Запускаем ADB и проверяем доступные устройства
+CMD ["sh", "-c", "adb kill-server && adb start-server && sleep 5 && appium & sleep 10 && adb devices && pytest /app/tests/test_auth.py"]
+
+
