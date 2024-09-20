@@ -3,39 +3,39 @@ from element_locators import card_elements as el_card
 from page.cards import Cards
 
 
-# def test_add_card_in_russia_main(driver_android):
-#     '''Добавление карты, для России, через кнопку на главном экране'''
-#     app_login = Cards(driver_android)
-#     app_login.registration(code_phone=el_auth.russian_code, country=el_auth.russia, phone=el_auth.rus_kz_phone)
-#     app_login.add_card_in_russia()
-#     app_login.find_card(bin_country=el_card.bin_russia)
-#     app_login.delete_user()
+def test_add_card_in_russia_main(driver_android):
+    '''Добавление карты, для России, через кнопку на главном экране'''
+    app_login = Cards(driver_android)
+    app_login.registration(code_phone=el_auth.russian_code, country=el_auth.russia, phone=el_auth.rus_kz_phone)
+    app_login.add_card_in_russia()
+    app_login.find_card(bin_country=el_card.bin_russia)
+    app_login.delete_user()
 
 
-# def test_add_card_in_russia_menu(driver_android):
-#     '''Добавление карты, для России, через меню'''
-#     app_login = Cards(driver_android)
-#     app_login.registration(code_phone=el_auth.russian_code, country=el_auth.russia, phone=el_auth.rus_kz_phone)
-#     app_login.add_card_in_russia_menu()
-#     app_login.delete_user()
+def test_add_card_in_russia_menu(driver_android):
+    '''Добавление карты, для России, через меню'''
+    app_login = Cards(driver_android)
+    app_login.registration(code_phone=el_auth.russian_code, country=el_auth.russia, phone=el_auth.rus_kz_phone)
+    app_login.add_card_in_russia_menu()
+    app_login.delete_user()
 
 
-# def test_add_card_in_russia_subscription(driver_android):
-#     '''Добавление карты, для России, через покупку подписки'''
-#     app_login = Cards(driver_android)
-#     app_login.registration(code_phone=el_auth.russian_code, country=el_auth.russia, phone=el_auth.rus_kz_phone)
-#     app_login.add_card_in_russia_subscription()
-#     app_login.find_card(bin_country=el_card.bin_russia)
-#     app_login.delete_user()
+def test_add_card_in_russia_subscription(driver_android):
+    '''Добавление карты, для России, через покупку подписки'''
+    app_login = Cards(driver_android)
+    app_login.registration(code_phone=el_auth.russian_code, country=el_auth.russia, phone=el_auth.rus_kz_phone)
+    app_login.add_card_in_russia_subscription()
+    app_login.find_card(bin_country=el_card.bin_russia)
+    app_login.delete_user()
 
 
-# def test_replace_russian_card(driver_android):
-#     '''Замена карты для России'''
-#     app_login = Cards(driver_android)
-#     app_login.registration(code_phone=el_auth.russian_code, country=el_auth.russia, phone=el_auth.rus_kz_phone)
-#     app_login.add_card_in_russia()
-#     app_login.replace_card_in_russia()
-#     app_login.delete_user()
+def test_replace_russian_card(driver_android):
+    '''Замена карты для России'''
+    app_login = Cards(driver_android)
+    app_login.registration(code_phone=el_auth.russian_code, country=el_auth.russia, phone=el_auth.rus_kz_phone)
+    app_login.add_card_in_russia()
+    app_login.replace_card_in_russia()
+    app_login.delete_user()
 
 
 def test_add_card_in_kazahstan_main(driver_android):

@@ -80,8 +80,8 @@ new_form_number_card_in_russia = (
     AppiumBy.XPATH,
     '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[3]/android.view.View/android.view.View/android.widget.EditText'
 )
-number_russia = '2201382000000013'
-new_number_russia = '2201382000000054'
+number_russia = '2202205000012424'
+new_number_russia = '2202206100040083'
 form_year_card_in_russia = (
     AppiumBy.XPATH,
     '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[4]/android.view.View/android.view.View/android.widget.EditText'
@@ -90,7 +90,8 @@ new_form_year_card_in_russia = (
     AppiumBy.XPATH,
     '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View[2]/android.view.View/android.view.View[4]/android.view.View[4]/android.view.View/android.view.View/android.widget.EditText'
 )
-year_russia = '1224'
+year_russia = '0528'
+new_year_russia = '0526'
 form_cvc_in_russia = (
     AppiumBy.XPATH,
     '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View[2]/android.view.View/android.view.View[3]/android.view.View[5]/android.view.View/android.view.View/android.widget.EditText'
@@ -100,7 +101,8 @@ new_form_cvc_in_russia = (
     '//android.webkit.WebView[@text="Страница оплаты"]/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[5]/android.view.View/android.view.View/android.widget.EditText'
 
 )
-cvc_russia = '123'
+cvc_russia = '649'
+new_cvc_russia = '061'
 button_pay_in_russia = (
     AppiumBy.XPATH,
     '//android.widget.Button[@text="Оплатить"]'
@@ -109,8 +111,8 @@ operation_button_ok_in_russia = (
     AppiumBy.XPATH,
     '//android.widget.Button[@text="Success"]'
 )
-bin_russia = '**** 0013'
-new_bin_russia = '**** 0054'
+bin_russia = '**** 2424'
+new_bin_russia = '**** 0083'
 
 
 '''Данные для Беларуси'''

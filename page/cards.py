@@ -219,9 +219,9 @@ class Cards(Auth):
             form_number_card=el_card.new_form_number_card_in_russia,
             new_number=el_card.new_number_russia,
             form_year_card=el_card.new_form_year_card_in_russia,
-            new_year=el_card.year_russia,
+            new_year=el_card.new_year_russia,
             form_cvc=el_card.new_form_cvc_in_russia,
-            new_cvc=el_card.cvc_russia,
+            new_cvc=el_card.new_cvc_russia,
             button_pay=el_card.button_pay_in_russia,
             operation_button_ok=el_card.operation_button_ok_in_russia,
             new_bin_country=el_card.new_bin_russia
