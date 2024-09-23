@@ -1,5 +1,11 @@
-# Используем официальный образ Ubuntu в качестве базового
-FROM arm64v8/ubuntu:20.04
+# Установка QEMU для поддержки разных архитектур
+FROM multiarch/qemu-user-static:latest as qemu
+
+# Используем образ Ubuntu для x86_64
+FROM ubuntu:20.04
+
+# Копируем QEMU в образ
+COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin/
 
 # Отключаем интерактивные запросы и устанавливаем временную зону
 ENV TZ=Asia/Krasnoyarsk
@@ -16,7 +22,7 @@ RUN apt-get update && \
     dpkg-reconfigure -f noninteractive tzdata
 
 # Устанавливаем JAVA_HOME
-ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-arm64"
+ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 ENV PATH="$JAVA_HOME/bin:$PATH"
 
 # Проверяем правильность установки Java
